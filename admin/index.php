@@ -1,4 +1,4 @@
 <?php
-    var_dump('HELLO WORLD');
+var_dump('Hello world');
 
 ?>
