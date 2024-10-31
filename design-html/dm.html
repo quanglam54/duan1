@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang ADMIN shop giày</title>
+    <link rel="stylesheet" href="../public/css/ad.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <main class="main-block">
+      <aside class="sidebar">
+        <div class="navigation">
+          <ul>
+            <li>
+              <a href="#">
+                <span class="icon"><i class="fa-brands fa-shopify"></i></span>
+                <span class="title"><h2>Shop Quang Lâm</h2></span></a
+              >
+            </li>
+            <li>
+              <a href="admin1.html">
+                <span class="icon"><i class="fa-solid fa-house"></i></span>
+                <span class="title"><h2>Dashboard</h2></span></a
+              >
+            </li>
+            <li>
+              <a href="dm.html">
+                <span class="icon"
+                  ><i class="fa-solid fa-layer-group"></i
+                ></span>
+                <span class="title"><h2>Danh Mục</h2></span></a
+              >
+            </li>
+            <li>
+              <a href="sanpham.html">
+                <span class="icon">
+                  <i class="fa-solid fa-shoe-prints"></i>
+                </span>
+                <span class="title"><h2>Sản Phẩm</h2></span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="icon">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+                <span class="title"><h2>Khách hàng</h2></span></a
+              >
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon">
+                  <i class="fa-solid fa-gift"></i>
+                </span>
+                <span class="title"><h2>Hàng hóa</h2></span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="icon"><i class="fa-solid fa-message"></i></span>
+                <span class="title"><h2>Bình luận</h2></span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="icon"><i class="fa-solid fa-gear"></i></span>
+                <span class="title"><h2>Settings</h2></span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="icon"
+                  ><i class="fa-solid fa-right-from-bracket"></i
+                ></span>
+                <span class="title"><h2>Logout</h2></span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <article class="article">
+        <div class="article-header">
+          <marquee>Đây là trang danh mục</marquee>
+
+          <form action="">
+            <input type="text" />
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </form>
+        </div>
+        <div class="form-article">
+          <button type="submit">Thêm mới danh mục</button>
+          <form action="" method="post">
+            <div class="mb20">
+              Mã loại
+              <input type="text" name="maloai" disabled />
+            </div>
+            <div class="mb20">
+              Tên loại
+              <input type="text" name="tenloai" />
+            </div>
+            <div class="mb20">
+              <input type="reset" value="Nhập lại" />
+
+              <a href="dm.html"><input type="button" value="Danh sách" /></a>
+            </div>
+          </form>
+        </div>
+        <!--  -->
+        <div class="form-article">
+          <div class="mb20 form-dsloai">
+            <table>
+              <tr>
+                <th>Ảnh</th>
+                <th>Mã loại</th>
+                <th>Tên loại</th>
+                <th>Thao tác</th>
+              </tr>
+              <tr>
+                <td>
+                  <img width="100px" src="../public/img/,lb2.webp" alt="" />
+                </td>
+                <td>0001</td>
+                <td>MLB</td>
+                <td>
+                  <input type="button" value="Sửa" />
+                  <input type="button" value="Xóa" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img width="100px" src="../public/img/,lb2.webp" alt="" />
+                </td>
+                <td>0001</td>
+                <td>MLB</td>
+                <td>
+                  <input type="button" value="Sửa" />
+                  <input type="button" value="Xóa" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img width="100px" src="../public/img/,lb2.webp" alt="" />
+                </td>
+                <td>0001</td>
+                <td>MLB</td>
+                <td>
+                  <input type="button" value="Sửa" />
+                  <input type="button" value="Xóa" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img width="100px" src="../public/img/,lb2.webp" alt="" />
+                </td>
+                <td>0001</td>
+                <td>MLB</td>
+                <td>
+                  <input type="button" value="Sửa" />
+                  <input type="button" value="Xóa" />
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="mb20">
+            <input type="button" value="Chọn tất cả" />
+            <input type="button" value="Bỏ chọn tất cả" />
+            <input type="button" value="Xóa mục đã chọn" />
+            <a href="dm.html"><input type="button" value="Nhập thêm" /></a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
