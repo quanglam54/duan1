@@ -1,4 +1,4 @@
 <?php
-    var_dump('faada');
+    var_dump('Hello world');
 
 ?>
