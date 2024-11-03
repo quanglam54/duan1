@@ -100,10 +100,6 @@
             echo "Lỗi: ".$e->getMessage();
         }
 
-   
-
-
-
     }
     public function destroySanPham($id){
         try{

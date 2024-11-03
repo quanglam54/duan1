@@ -29,7 +29,7 @@ class AdminSanPhamConTroller
             // Lấy dl từ form
             $ten_san_pham = $_POST['ten_san_pham'] ?? '';
             $gia_san_pham = $_POST['gia_san_pham'] ?? '';
-            $gia_khuyen_mai = isset($_POST['gia_khuyen_mai']) && $_POST['gia_khuyen_mai'] !=='' ? $_POST['gia_khuyen_mai'] : null;
+            $gia_khuyen_mai = isset($_POST['gia_khuyen_mai']) && $_POST['gia_khuyen_mai'] !== '' ? $_POST['gia_khuyen_mai'] : null;
             $so_luong = $_POST['so_luong'] ?? '';
             $ngay_nhap = $_POST['ngay_nhap'] ?? '';
             $danh_muc_id = $_POST['danh_muc_id'] ?? '';
@@ -70,7 +70,8 @@ class AdminSanPhamConTroller
             if (empty($trang_thai)) {
                 $errors['trang_thai'] = 'Vui lòng chọn trạng thái sản phẩm';
             }
-            if ($hinh_anh === null) {
+            // Kiểm tra nếu không có hình ảnh hoặc có lỗi tải lên
+            if ($hinh_anh['error'] !== UPLOAD_ERR_OK) {
                 $errors['hinh_anh'] = 'Vui lòng chọn ảnh sản phẩm';
             }
 
@@ -120,6 +121,7 @@ class AdminSanPhamConTroller
     public function editSanPham()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // var_dump($_POST);die();
             // Lấy ra dl
             // Lấy ra dữ liệu của sản phẩm
             $san_pham_id = $_POST['san_pham_id'] ?? '';
@@ -129,13 +131,13 @@ class AdminSanPhamConTroller
 
             $ten_san_pham = $_POST['ten_san_pham'] ?? '';
             $gia_san_pham = $_POST['gia_san_pham'] ?? '';
-            $gia_khuyen_mai = isset($_POST['gia_khuyen_mai']) && $_POST['gia_khuyen_mai'] !=='' ? $_POST['gia_khuyen_mai'] : null;
+            $gia_khuyen_mai = isset($_POST['gia_khuyen_mai']) && $_POST['gia_khuyen_mai'] !== '' ? $_POST['gia_khuyen_mai'] : null;
             $so_luong = $_POST['so_luong'] ?? '';
             $ngay_nhap = $_POST['ngay_nhap'] ?? '';
             // Đặt giá trị mặc định cho các trường
             $danh_muc_id =  $_POST['danh_muc_id'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? '';
-            
+
             $mo_ta = $_POST['mo_ta'];
 
             $hinh_anh = $_FILES['hinh_anh'] ?? null;
@@ -164,7 +166,7 @@ class AdminSanPhamConTroller
             $_SESSION['errors'] = $errors;
 
             // Logic sửa ảnh
-            if (isset($hinh_anh) && $hinh_anh['errors'] == UPLOAD_ERR_OK) {
+            if (isset($hinh_anh) && $hinh_anh['error'] == UPLOAD_ERR_OK) {
                 // upload file ảnh mới lên
                 $new_file = uploadFile($hinh_anh, '../uploads/');
                 if (!empty($old_file)) { // Nếu có ảnh cũ thì xóa đi
@@ -174,12 +176,9 @@ class AdminSanPhamConTroller
                 $new_file = $old_file;
             }
 
-            $_SESSION['errors'] = $errors;
-
-
-            // Nếu k có lỗi thì thêm sản phẩm
+            // Nếu k có lỗi thì sửa sản phẩm
             if (empty($errors)) {
-                $san_pham_id = $this->modelSanPham->updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $new_file);
+                $this->modelSanPham->updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $new_file);
                 header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
                 exit();
             } else {
@@ -192,18 +191,19 @@ class AdminSanPhamConTroller
         }
     }
 
-    public function deleteSanPham(){
+    public function deleteSanPham()
+    {
         $id = $_GET['id_san_pham'];
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
-        
-        if($sanPham){
+
+        if ($sanPham) {
             $this->modelSanPham->destroySanPham($id);
             deleteFile($sanPham)['hinh_anh'];
 
             // Tạo thông báo xóa thành công
             $_SESSION['mess'] = 'Xóa sản phẩm thành công!';
         }
-    
+
         // Chuyển hướng về trang danh sách sản phẩm
         header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
         exit();

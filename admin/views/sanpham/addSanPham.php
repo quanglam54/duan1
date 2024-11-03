@@ -43,14 +43,14 @@
 
                 <div class="form-group col-6">
                   <label>Giá sản phẩm</label>
-                  <input type="number" class="form-control" name="gia_san_pham"  value="<?= isset($_SESSION['old_data']['gia_san_pham']) ? $_SESSION['old_data']['gia_san_pham'] : '' ?>" placeholder="Nhập giá sản phẩm">
+                  <input type="text" class="form-control" name="gia_san_pham"  value="<?= isset($_SESSION['old_data']['gia_san_pham']) ? $_SESSION['old_data']['gia_san_pham'] : '' ?>" placeholder="Nhập giá sản phẩm">
                   <?php if (isset($_SESSION['errors']['gia_san_pham'])) { ?>
                     <p class="text-danger"><?= $_SESSION['errors']['gia_san_pham'] ?></p>
                   <?php } ?>
                 </div>
                 <div class="form-group col-6">
                   <label>Giá khuyến mãi</label>
-                  <input type="number" class="form-control" name="gia_khuyen_mai"  value="<?= isset($_SESSION['old_data']['gia_khuyen_mai']) ? $_SESSION['old_data']['gia_khuyen_mai'] : '' ?>" placeholder="Nhập giá khuyến mãi sản phẩm">
+                  <input type="text" class="form-control" name="gia_khuyen_mai"  value="<?= isset($_SESSION['old_data']['gia_khuyen_mai']) ? $_SESSION['old_data']['gia_khuyen_mai'] : '' ?>" placeholder="Nhập giá khuyến mãi sản phẩm">
                   <?php if (isset($_SESSION['errors']['gia_khuyen_mai'])) { ?>
                     <p class="text-danger"><?= $_SESSION['errors']['gia_khuyen_mai'] ?></p>
                   <?php } ?>

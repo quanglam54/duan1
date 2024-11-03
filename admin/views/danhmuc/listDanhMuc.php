@@ -28,6 +28,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php if(isset($_SESSION['mess'])){ ?>
+                                    <div class="alert alert-success">
+                                        <?= $_SESSION['mess']?>
+                                        <?php unset($_SESSION['mess']); ?> <!--Xóa thông báo sau khi hiển thị-->
+                                    </div>
+                                <?php } ?>
                                 <?php foreach($listDanhMuc as $key=>$danhMuc) { ?>
                                 <tr>
                                     <td><?= $key+1 ?></td>
