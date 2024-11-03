@@ -33,6 +33,8 @@ match($act){
     'form-sua-san-pham' =>(new AdminSanPhamController)->formEditSanPham(),
     'sua-san-pham' => (new AdminSanPhamController)->editSanPham(),
     'xoa-san-pham' => (new AdminSanPhamController)->deleteSanPham(),
+    'xem-san-pham' => (new AdminSanPhamController)->detailSanPham(),
+
 
 
 

@@ -208,4 +208,19 @@ class AdminSanPhamConTroller
         header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
         exit();
     }
+
+    public function detailSanPham(){
+        $id = $_GET['id_san_pham'];
+        $sanPham = $this->modelSanPham->getDetailSanPham($id);
+        $listBinhLuan  = $this->modelSanPham->getBinhLuanFromSanPham($id);
+        // var_dump($listBinhLuan);die();
+        if(isset($sanPham)){
+            require_once './views/sanpham/detailSanPham.php';
+        }else{
+            header("Location:".BASE_URL_ADMIN.'?act=san-pham');
+            exit();
+        }
+    }
+
+  
 }
