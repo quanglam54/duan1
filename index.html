@@ -55,19 +55,35 @@
     </section>
     <!-- hết header -->
     <section class="sliders">
-      <div class="banner">
-        <div class="banner-img">
-          <img
-            src="./public/img/banner (1).jpg"
-            alt="sale ngày phụ nữ"
-            class="img-item"
-          />
-          <img
-            src="./public/img/banner-2.jpg"
-            alt="sale bạn mới"
-            class="img-item"
-          />
-          <img src="./public/img/banner-3.jpg" alt="" class="img-item" />
+      <div class="banner-wrapper">
+        <div class="banner-container">
+            <img
+              src="./public/img/banner (1).jpg"
+              alt="sale ngày phụ nữ"
+              class="img-item"
+            />
+            <img
+              src="./public/img/banner-2.jpg"
+              alt="sale ngày phụ nữ"
+              class="img-item"
+            />
+            <img
+              src="./public/img/banner-3.jpg"
+              alt="sale ngày phụ nữ"
+              class="img-item"
+            />
+          </div>
+          <!-- buttons -->
+          <div class="buttons">
+            <button id="prev"><</button>
+            <button id="next">></button>
+          </div>
+          <!-- dots -->
+          <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -151,6 +167,7 @@
             <h2>Bộ sưu tập mới nhất</h2>
           </div>
           <div class="collection-menu">
+            
             <div class="collection-menu-one active">
               <span><i class="fa-solid fa-arrow-right"></i></span>
               <h3>Gọng kính</h3>
@@ -178,7 +195,8 @@
     <!-- hết -->
     <section class="main-block">
       <div class="container">
-        <div class="block-products">
+        
+        <div class="block-products ">
           <div class="product-item">
             <div class="product-item-img">
               <img src="./public/img/sp-gọng1.jpg" alt="" />
@@ -284,6 +302,7 @@
           </div>
           <!--  -->
         </div>
+        
         <button>Xem thêm gọng kính +</button>
       </div>
     </section>
@@ -682,5 +701,7 @@
         </div>
       </div>
     </footer>
+   <script src="./public/js/main.js"></script>
+   <script src="./public/js/slide.js"></script>
   </body>
 </html>

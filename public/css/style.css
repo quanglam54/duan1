@@ -108,22 +108,60 @@ header {
   margin-top: 5px;
   margin-right: 5px;
 }
-
-.banner {
+/* css banner */
+.banner-wrapper {
   width: 100%;
+  position: relative;
   overflow: hidden;
 }
-
-.banner-img {
-  width: 100%;
+.banner-container {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: all 0.5s ease-in;
 }
-
-.banner-img .img-item {
+.banner-container img {
   min-width: 100%;
   height: auto;
   object-fit: cover;
+}
+.buttons {
+  position: absolute;
+  top: 45%;
+  left: 5%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.buttons button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff5;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+}
+.dots {
+  position: absolute;
+  bottom: 10px;
+  color: #fff;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.dots li {
+  list-style: none;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 20px;
+  transition: all 0.5s ease-in;
+}
+.dots li.active {
+  width: 30px;
 }
 /* css section bestseller */
 .blog-bestseller {
@@ -322,7 +360,6 @@ header {
   margin-top: 50px;
 }
 .block-products {
-  /* position: relative; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -330,6 +367,7 @@ header {
 .product-item {
   margin-bottom: 30px;
 }
+
 .product-item:hover .product-item-price {
   background-color: #f58f5d;
 }
