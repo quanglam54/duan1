@@ -34,6 +34,8 @@ match($act){
     'sua-san-pham' => (new AdminSanPhamController)->editSanPham(),
     'xoa-san-pham' => (new AdminSanPhamController)->deleteSanPham(),
     'xem-san-pham' => (new AdminSanPhamController)->detailSanPham(),
+    'edit-album-anh-san-pham' => (new AdminSanPhamController)->editAlbumAnhSanPham(),
+
 
 
 

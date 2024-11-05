@@ -66,6 +66,11 @@
                 </div>
 
                 <div class="form-group col-6">
+                  <label>Album ảnh</label>
+                  <input type="file" name="img_array[]" class="form-control" multiple>
+                </div>
+
+                <div class="form-group col-6">
                   <label>Số lượng</label>
                   <input type="text" class="form-control" name="so_luong" value="<?= isset($_SESSION['old_data']['so_luong']) ? $_SESSION['old_data']['so_luong'] : '' ?>" placeholder="Nhập số lượng">
                   <?php if (isset($_SESSION['errors']['so_luong'])) { ?>

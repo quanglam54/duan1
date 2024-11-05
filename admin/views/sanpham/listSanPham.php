@@ -1,6 +1,12 @@
 <?php include './views/layout/header.php' ?>
 <?php include './views/layout/navbar.php' ?>
 <?php include './views/layout/sidebar.php' ?>
+<style>
+    .btn-group{
+        display: flex;
+        gap:5px;
+    }
+</style>
 
 <div class="content-wrapper">
     <div class="card">
@@ -50,11 +56,14 @@
                                         <td><?= $sanPham['so_luong'] ?></td>
                                         <td><?= $sanPham['ten_danh_muc'] ?></td>
                                         <td><?= $sanPham['trang_thai'] == 1 ? 'Còn bán' : 'Dừng bán' ?></td>
-                                        <td>
-                                            <a href="<?= BASE_URL_ADMIN . '?act=xem-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button class="btn btn-warning">Xem</button></a>
-                                            <a href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button class="btn btn-warning">Sửa</button></a>
-                                            <a href="<?= BASE_URL_ADMIN . '?act=xoa-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button class="btn btn-danger" onclick=" return confirm('Bạn có muốn xóa không?')">Xóa</button></a>
+                                       <td>
+                                          <div class="d-flex gap-5">
+                                          <a href="<?= BASE_URL_ADMIN . '?act=xem-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button class="btn btn-primary btn-sm">Xem</button></a>
+                                            <a href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button class="btn btn-warning btn-sm">Sửa</button></a>
+                                            <a href="<?= BASE_URL_ADMIN . '?act=xoa-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button class="btn btn-danger btn-sm" onclick=" return confirm('Bạn có muốn xóa không?')">Xóa</button></a>
+                                          </div>
                                         </td>
+                                       
                                     </tr>
                                 <?php } ?>
 

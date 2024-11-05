@@ -23,7 +23,7 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12">
+        <div class="col-md-8">
 
           <div class="card card-success">
             <div class="card-header">
@@ -128,6 +128,53 @@
             </form>
           </div>
         </div>
+        <div class="col-md-4">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Album ảnh sản phẩm</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <form action="<?= BASE_URL_ADMIN . '?act=edit-album-anh-san-pham' ?>" method="POST" enctype="multipart/form-data">
+
+              <div class="table-responsive">
+                <table id="faqs" class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Ảnh</th>
+                      <th>File</th>
+                      <th>
+                        <div class="text-center"><button type="button" onclick="addfaqs();" class="badge badge-success"><i class="fa fa-plus"></i> ADD NEW</button></div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <input type="hidden" name="san_pham_id" value="<?=$sanPham['id']?>">
+                  <input type="hidden" name="img_delete" id="img_delete">
+                  <?php foreach($listAnhSanPham as $key=>$value){?>
+                    <tr id = "faqs-row-<?=$key?>">
+                      <input type="hidden" name="current_img_ids[]" value="<?=$value['id']?>">
+                      <td><img src="<?= BASE_URL_ADMIN .$value['link_hinh_anh']?>" alt="" style = "width: 50px; height: 50px"></td>
+                      <td><input type="file" name="img_array[]" class="form-control"></td>
+                      <td class="mt-10"><button type= "button" class="badge badge-danger" onclick="removeRow(<?=$key?>, <?=$value['id']?>)"><i class="fa fa-trash"></i> Delete</button></td>
+                    </tr>
+                    <?php }?>
+                  </tbody>
+                </table>
+              </div>
+
+
+          </div>
+          <div class="card-footer text-center">
+            <button type="submit" class="btn btn-primary">Sửa thông tin</button>
+          </div>
+          </form>
+        </div>
+        </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -139,6 +186,31 @@
 <!-- /.content-wrapper -->
 <!--footer-->
 <?php include './views/layout/footer.php'; ?>
+<script>
+  var faqs_row = <?=count($listAnhSanPham);?>;
+
+  function addfaqs() {
+    html = '<tr id="faqs-row' + faqs_row + '">';
+    html += '<td><img src="" alt="" style = "width: 50px; height: 50px"></td>';
+    html += '<td><input type="file"name ="img_array[]" class="form-control"></td>';
+    html += '<td class="mt-10"><button type= "button" class="badge badge-danger" onclick="removeRow('+ faqs_row + ', null);' + faqs_row + '\').remove();"><i class="fa fa-trash"></i> Delete</button></td>';
+
+    html += '</tr>';
+
+    $('#faqs tbody').append(html);
+
+    faqs_row++;
+  }
+  function removeRow(rowId, imgId){
+    $('#faqs-row-' + rowId).remove()
+    if (imgId !== null){
+      var imgDeleteInput = document.getElementById('img_delete');
+      var currentValue = imgDeleteInput.value;
+      imgDeleteInput.value = currentValue ? currentValue + ',' + imgId : imgId;
+    }
+
+}
+</script>
 <!-- Control Sidebar -->
 
 <!-- /.control-sidebar -->

@@ -34,10 +34,21 @@ function uploadFile($file, $folderUpload)
     return null;
 }
 
+function uploadFileAlbum($file,$folderUpload,$key){
+    $pathStorage = $folderUpload . time() . $file['name'][$key];
+
+    $from = $file['tmp_name'][$key];
+    $to = PATH_ROOT . $pathStorage;
+
+    if(move_uploaded_file($from,$to)){
+        return $pathStorage;
+    }
+    return null;
+}
+
 // Xóa session sau khi load trang
 function deleteSession(){
     if(isset($_SESSION['flash'])){
-
         unset($_SESSION['errors']);
         unset($_SESSION['old_data']);
     }

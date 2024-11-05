@@ -40,7 +40,8 @@ class AdminSanPham
                     ':hinh_anh' => $hinh_anh
                 ]
             );
-            return true;
+            //Lấy id sp vừa thêm
+            return $this->conn->lastInsertId();
         } catch (Exception $e) {
             echo "Lỗi: " . $e->getMessage();
         }
@@ -134,4 +135,78 @@ class AdminSanPham
             echo "Lỗi: ".$e->getMessage();
         }
     }
+
+    public function insertAlbumAnhSanPham($san_pham_id,$link_hinh_anh){
+        try{
+            $sql = "INSERT INTO hinh_anh_san_phams (san_pham_id,link_hinh_anh) VALUES (:san_pham_id, :link_hinh_anh)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(
+                [
+                    ':san_pham_id' => $san_pham_id,
+                    ':link_hinh_anh' => $link_hinh_anh
+                ]
+            );
+            return true;
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
+    public function getListAnhSanPham($id){
+        try{
+            $sql = "SELECT * FROM hinh_anh_san_phams WHERE san_pham_id = :id";
+            $stmt = $this->conn->prepare($sql); 
+            $stmt->execute([':id'=>$id]);
+            
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
+    function getDetailAnhSanPham($id){
+        try{
+            $sql = "SELECT * FROM hinh_anh_san_phams WHERE id = :id";
+            $stmt = $this->conn->prepare($sql); 
+            $stmt->execute([':id'=>$id]);
+            
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
+    function updateAnhSanPham($id,$new_file){
+        try{
+            $sql = "UPDATE hinh_anh_san_phams SET link_hinh_anh = :new_file WHERE id =:id";
+            $stmt = $this->conn->prepare($sql); 
+            $stmt->execute([
+                ':id'=>$id,
+                ':new_file'=>$new_file
+            ]);
+            
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
+    public function destroyAnhSanPham($id)
+    {
+        try {
+            $sql = "DELETE FROM hinh_anh_san_phams WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(
+                [
+                    ':id' => $id
+                ]
+            );
+            return true;
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
+
+
+
 }
