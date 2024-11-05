@@ -39,6 +39,7 @@ header {
   font-size: 20px;
   margin-top: 20px;
   margin-left: 10px;
+  position: relative;
 }
 .header-left h2:hover {
   color: #55d5d2;
@@ -108,6 +109,7 @@ header {
   margin-top: 5px;
   margin-right: 5px;
 }
+
 /* css login-block */
 .login-block {
   margin-top: 50px;
@@ -116,6 +118,9 @@ header {
 .login-center {
   display: flex;
   gap: 50px;
+}
+.login-item-right {
+  margin-left: 50px;
 }
 .login-item-left img {
   width: 100%;
@@ -154,13 +159,16 @@ header {
   border: 1px solid #55d5d2;
   border-radius: 11px;
 }
-.form-checkbox {
+.form-security {
   margin: 10px 0;
 }
-.form-checkbox span {
-  color: #454545;
-  font-weight: bold;
-  margin-left: 10px;
+.form-security p {
+  margin: 0;
+  padding: 0;
+}
+.form-security b {
+  color: red;
+  cursor: pointer;
 }
 .form-control button {
   width: 100%;
@@ -173,11 +181,15 @@ header {
   font-weight: bold;
   cursor: pointer;
 }
-.form-control a {
-  text-decoration: none;
+.or p {
   color: #454545;
   font-weight: bold;
 }
+/* .form-control a {
+  text-decoration: none;
+  color: #454545;
+  font-weight: bold;
+} */
 .form-google {
   margin: 10px 0;
   text-align: center;

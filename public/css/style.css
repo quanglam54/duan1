@@ -39,6 +39,7 @@ header {
   font-size: 20px;
   margin-top: 20px;
   margin-left: 10px;
+  position: relative;
 }
 .header-left h2:hover {
   color: #55d5d2;
@@ -107,6 +108,46 @@ header {
   color: #fff;
   margin-top: 5px;
   margin-right: 5px;
+}
+/* css hover-blog */
+/* .hover-blog {
+  display: none;
+} */
+.header-left h2 .hover-blog {
+  position: absolute;
+  top: 50px;
+  z-index: 10;
+  left: 10%;
+  background-color: #fff;
+  width: 1170px;
+  height: 405px;
+  border-radius: 20px;
+  color: #000;
+}
+.hover-product {
+  display: flex;
+  justify-content: space-between;
+}
+.hover-product li {
+  list-style: none;
+}
+.product-hover-cate {
+  background-color: #4cd0bd;
+  width: 33%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.product-hover-text {
+  display: flex;
+}
+.product-hover-text h3 {
+  color: #000;
+}
+.product-hover-img img {
+  width: 350px;
+  height: 400px;
+  object-fit: cover;
+  padding: 10px;
 }
 /* css banner */
 .banner-wrapper {
