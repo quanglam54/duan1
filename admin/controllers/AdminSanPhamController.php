@@ -24,7 +24,7 @@ class AdminSanPhamConTroller
 
     public function addSanPham()
     {
-        
+
         // var_dump($_POST);die();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Lấy dl từ form
@@ -109,7 +109,6 @@ class AdminSanPhamConTroller
                         $link_hinh_anh = uploadFile($file, '../uploads/');
                         $album = $this->modelSanPham->insertAlbumAnhSanPham($san_pham_id, $link_hinh_anh);
                     }
-
                 }
                 deleteSession();
                 header("Location:" . BASE_URL_ADMIN . '?act=san-pham');
@@ -199,7 +198,9 @@ class AdminSanPhamConTroller
             // Nếu k có lỗi thì sửa sản phẩm
             if (empty($errors)) {
                 $this->modelSanPham->updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $new_file);
-                header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
+                // Tạo thông báo xóa thành công
+                $_SESSION['messInfo'] = 'Sửa sản phẩm thành công!';
+                header("Location: " . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $san_pham_id);
                 exit();
             } else {
                 // trả lỗi
@@ -249,12 +250,14 @@ class AdminSanPhamConTroller
             foreach ($listAnhSanPhamCurrent as $anhSP) {
                 $anh_id = $anhSP['id'];
                 if (in_array($anh_id, $image_delete)) {
-                   $del = $this->modelSanPham->destroyAnhSanPham($anh_id);
+                    $del = $this->modelSanPham->destroyAnhSanPham($anh_id);
                     // var_dump($del);die();
                     deleteFile($anhSP['link_hinh_anh']);
                 }
             }
-            header("Location:" . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham='.$san_pham_id);
+              // Tạo thông báo thành công
+            $_SESSION['messAlbum'] = 'Sửa album ảnh sản phẩm thành công!';
+            header("Location:" . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $san_pham_id);
             exit();
         }
     }
@@ -271,8 +274,8 @@ class AdminSanPhamConTroller
             $_SESSION['mess'] = 'Xóa sản phẩm thành công!';
         }
 
-        if($listAnhSanPham){
-            foreach($listAnhSanPham as $key=>$anhSP){
+        if ($listAnhSanPham) {
+            foreach ($listAnhSanPham as $key => $anhSP) {
                 deleteFile($anhSP['link_hinh_anh']);
                 $this->modelSanPham->destroyAnhSanPham($anhSP['id']);
             }
