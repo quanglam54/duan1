@@ -224,10 +224,61 @@ header {
 .blog-bestseller {
   margin-top: 50px;
 }
+.bestseller-wrap {
+  position: relative;
+}
+.products-bestseller-container {
+  overflow: auto;
+  width: 1160px;
+  margin: auto;
+  height: 500px;
+  transition: 0.5s ease-in;
+  scroll-behavior: smooth;
+}
+.products-bestseller-container::-webkit-scrollbar {
+  display: none;
+}
+.products-bestseller {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  align-items: center;
+  width: max-content;
+  height: 100%;
+  margin: auto;
+}
+.item-bestseller {
+  position: relative;
+  overflow: hidden;
+  width: 270px;
+  margin: 0 10px;
+  height: 350px;
+}
+.buttons-seller {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.buttons-seller button {
+  background-color: #fff;
+  color: #55d5d2;
+  border: 1px solid #00ced1;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: rgba(15, 170, 213, 0.718) 0px 3px 8px;
+  font-weight: bold;
+}
+
 .blog-bestseller h1 {
   color: #55d5d2;
   font-size: 30px;
-  margin-bottom: 20px;
   position: relative;
   animation: title 5s infinite linear;
 }
@@ -258,16 +309,12 @@ header {
   top: 38px;
   border-radius: 5px;
 }
-.products-bestseller {
-  display: flex;
-  gap: 20px;
-}
-.item-bestseller {
-  position: relative;
+.item-bestseller-img {
+  border-radius: 15px;
 }
 .item-bestseller-img img {
-  width: 320px;
-  height: 323px;
+  width: 100%;
+  height: 300px;
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.3s ease-in;
@@ -285,12 +332,14 @@ header {
 }
 .item-bestseller .item-title {
   background-color: #fff;
-  box-shadow: 0 0 2px #000;
-  width: 320px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 100%;
   height: 120px;
   border-radius: 5px;
   position: absolute;
-  bottom: -70px;
+  top: 65%;
+  left: 0;
+  border: 1px solid #0000005c;
 }
 .item-bestseller-img {
   overflow: hidden;
@@ -322,7 +371,7 @@ header {
 }
 /* css banner-second */
 .banner-second {
-  margin-top: 150px;
+  margin-top: 30px;
 }
 .image-second {
   display: flex;
