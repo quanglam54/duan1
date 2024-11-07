@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart - Kính mắt LML</title>
-    <link rel="stylesheet" href="/public/css/cart.css" />
+    <title>Thanh toán - Kính mắt LML</title>
+    <link rel="stylesheet" href="/public/css/pay.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -92,97 +92,83 @@
           </header>
         </section>
     <!--  -->
-    <section class="banner-cart">
-     <div class="banner-img">
-          <img src="../public/img/banner-cart.jpeg" alt="">
+    <section class="checkout-section">
+    <div class="container">
+     <div class="checkout-block">
+          <div class="checkout-form">
+               <h2>THANH TOÁN</h2>
+               <form>
+                   <label for="name">Họ và tên *</label>
+                   <input type="text" id="name" placeholder="Họ và tên">
+                   
+                   <label for="phone">Số điện thoại *</label>
+                   <input type="text" id="phone" placeholder="Số điện thoại">
+                   
+                   <label for="email">Email *</label>
+                   <input type="email" id="email" placeholder="Email">
+                   
+                   <label for="address">Địa chỉ chi tiết *</label>
+                   <input type="text" id="address" placeholder="Địa chỉ chi tiết">
+                   
+                   <label for="additional-info">Thông tin bổ sung</label>
+                   <textarea id="additional-info" placeholder="Thông tin bổ sung"></textarea>
+                   
+                   <div class="payment-method">
+                    <p>Phương thức thanh toán</p>
+
+                    <div class="payment-radio">
+                         <input type="radio" name="">
+                         <p>Thanh toán khi nhận hàng</p>
+                    </div>
+                   </div>
+                   
+                   <button type="submit">Đặt hàng</button>
+               </form>
+           </div>
+       
+           <div class="checkout-summary">
+               <div class="discount-section">
+                   <h3>Nhập mã giảm giá</h3>
+                   <input type="text" placeholder="Nhập mã giảm giá">
+                   <button class="apply-btn">Áp dụng</button>
+               </div>
+               
+               <div class="product-summary">
+                   <h4>Sản phẩm</h4>
+                   <div class="product-item">
+                       <img src="../public/img/sp-1.jpg" alt="Product Image">
+                       <div class="product-info">
+                           <p>GK. Gọng nhựa cầu kim loại Titan cao cấp NAA2037 (48.21.148)</p>
+                           <p>Màu sắc: Đen Ghi</p>
+                       </div>
+                       <p>x1</p>
+                       <p>1.600.000đ</p>
+                   </div>
+               </div>
+       
+               <div class="summary-totals">
+                   <div class="summary-item">
+                       <span>Tạm tính</span>
+                       <span>1.600.000đ</span>
+                   </div>
+                   <div class="summary-item">
+                       <span>Phí vận chuyển</span>
+                       <span>30.000đ</span>
+                   </div>
+                   <div class="summary-item">
+                       <span>Giảm</span>
+                       <span>0đ</span>
+                   </div>
+                   <div class="summary-item total">
+                       <span>Tổng cộng</span>
+                       <span>1.630.000đ</span>
+                   </div>
+               </div>
+           </div>
      </div>
-     <div class="banner-text">
-          <h2>GIỎ HÀNG</h2>
-          <ul>
-               <li>Trang chủ</li>
-               <li>Giỏ hàng</li>
-          </ul>
-     </div>
-    </section>
-    <!--  -->
-    <section class="product-title">
-      <div class="container">
-          <span>Sản Phẩm</span>
-      </div>
-  </section>
-  
-  <section class="component">
-      <div class="container">
-          <div class="cart-block">
-              <div class="cart-component-l">
-                  <table class="cart-table">
-                      <thead>
-                          <tr>
-                              <th><input type="checkbox"></th>
-                              <th>Thông tin sản phẩm</th>
-                              <th>Giá</th>
-                              <th>Số lượng</th>
-                              <th>Còn lại</th>
-                              <th>Tổng cộng</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td><input type="checkbox"></td>
-                              <td class="cart-product-info">
-                                  <img src="../public/img/sp-1.jpg" alt="Product Image">
-                                  <div class="cart-a">
-                                      <a href="#">GK.Gọng nhựa cầu kim loại</a>
-                                      <p>Màu sắc: Đen ghi</p>
-                                  </div>
-                              </td>
-                              <td>1.600.000đ</td>
-                              <td>
-                                  <div class="cart-quantity">
-                                      <button class="decre">-</button>
-                                      <input type="text" value="1">
-                                      <button class="incre">+</button>
-                                  </div>
-                              </td>
-                              <td>9 sản phẩm</td>
-                              <td>1.600.000đ</td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
-  
-              <div class="cart-component-r">
-                  <p>Tóm tắt đơn hàng</p>
-                  <div class="price-start">
-                      <span>Tạm tính</span>
-                      <p>1.600.000đ</p>
-                  </div>
-                  <div class="total-end">
-                      <span>Tổng</span>
-                      <p>1.600.000đ</p>
-                  </div>
-                  <button>Thanh toán ngay</button>
-              </div>
-          </div>
-  
-          <div class="cart-block-end">
-              <div class="cart-delete-conti">
-                  <button>Xóa sản phẩm đã chọn</button>
-                  <button>Tiếp tục mua hàng</button>
-              </div>
-              <div class="cart-pay">
-                  <p>Chúng tôi chấp nhận thanh toán</p>
-                  <div class="cart-pay-img">
-                      <img src="../public/img/visa.png" alt="Visa">
-                      <img src="../public/img/amex.png" alt="Amex">
-                      <img src="../public/img/discover.png" alt="Discover">
-                      <img src="../public/img/mastercard.png" alt="Mastercard">
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-  
+    </div>
+ </section>
+ 
     <!--  -->
     <footer class="footer">
       <div class="container">
