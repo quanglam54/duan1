@@ -347,6 +347,10 @@ header {
 .item-title p {
   color: #454545;
   padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
 }
 .item-icon {
   display: flex;
@@ -419,42 +423,56 @@ header {
 .collection-menu {
   display: flex;
 }
-.collection-menu-one {
+.collection-menu-one.active {
   display: flex;
   margin-left: 20px;
+  align-items: center;
 }
-.collection-menu-one h3 {
-  text-transform: uppercase;
-  margin-left: 10px;
+/* .collection-menu-one h3 {
   font-size: 15px;
   color: #f58f5d;
-}
-.collection-menu-one span i {
+} */
+.collection-menu-one a {
+  text-decoration: none;
   color: #f58f5d;
 }
-.collection-menu-one:not(.active) span i {
-  display: none;
+.collection-menu-one.active span i {
   opacity: 0;
-  transition: opacity 0.5s ease-in;
 }
-.collection-menu-one:not(.active) h3 {
+.collection-menu-one h3 a {
   color: #454545;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin-left: 10px;
 }
+.collection-menu-one.active:first-child h3 a {
+  color: #fb923c;
+}
+.collection-menu-one h3 a:hover {
+  color: #fb923c;
+}
+.collection-menu-one.active:hover span i {
+  opacity: 1;
+  color: #fb923c;
+}
+
 .collection-menu-one h3:hover {
   color: #f58f5d;
   cursor: pointer;
 }
-.collection-menu-one:not(.active):hover span i {
-  display: block;
-  opacity: 1;
-}
-.collection-menu-one:last-child h3 {
+.collection-menu-one:last-child h3 a {
   color: #c5c5c5;
+}
+.collection-menu-one:last-child {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
 .collection-menu-one:last-child span i {
   color: #c5c5c5;
 }
-.collection-menu-one:last-child:hover h3 {
+.collection-menu-one:last-child:hover h3 a {
   color: #f58f5d;
 }
 .collection-menu-one:last-child:hover span i {
@@ -482,6 +500,7 @@ header {
 }
 .product-item-img {
   overflow: hidden;
+  border-radius: 10px;
 }
 .product-item-img img {
   width: 320px;
@@ -507,9 +526,12 @@ header {
 .product-item-title h3 {
   max-width: 300px;
   word-wrap: break-word;
-  white-space: normal;
   color: #454545;
   margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
 }
 .product-item-price {
   background-color: #55d5d2;
@@ -988,9 +1010,10 @@ header {
 /* css chartity từ thiện */
 .charity {
   margin-top: 50px;
-  background-image: url("/public/img/bg-dự\ án.jpeg");
+  background-image: url("../img/bg-dự án.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
+  /* background-color: #0e1111; */
   height: 700px;
 }
 .charity-blog {
