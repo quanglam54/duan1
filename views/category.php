@@ -278,7 +278,7 @@
                               <?php foreach ($sanPhamNews as $spNew): ?>
                                    <div class="news-container">
                                         <div class="item-slider">
-                                             <a href="#"><img src="uploads/<?= $spNew['hinh_anh'] ?>" alt=""></a>
+                                             <a href="#"><img src="<?= $spNew['hinh_anh'] ?>" alt=""></a>
                                         </div>
                                         <div class="item-box-text">
                                              <div class="item-box">

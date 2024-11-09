@@ -15,6 +15,7 @@ match ($act) {
      '/' => (new ClientSanphamController)->allSanPham(),
      'allCategory' => (new ClientSanPhamController)->allCategory(),
      'category' => (new ClientSanPhamController)->allSanPham(),
+     'detail' => (new ClientSanPhamController)->getProductDetail(),
 }
 
      ?>

@@ -43,5 +43,12 @@ class ClientSanphamModel
           $stmt = $this->conn->query($sql);
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
+     //
+     public function getSanPhamById($product_id)
+     {
+          $sql = 'SELECT * FROM san_phams WHERE id=' . $product_id;
+          $stmt = $this->conn->query($sql);
+          return $stmt->fetch(PDO::FETCH_ASSOC);
+     }
 }
 ?>

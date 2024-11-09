@@ -82,7 +82,7 @@ class AdminSanPhamConTroller
             $_SESSION['errors'] = $errors;
 
             // Lưu dữ liệu đã nhập vào SESSION
-            $_SESSION['old_data']  = array(
+            $_SESSION['old_data'] = array(
                 'ten_san_pham' => $_POST['ten_san_pham'],
                 'gia_san_pham' => $_POST['gia_san_pham'],
                 'gia_khuyen_mai' => $_POST['gia_khuyen_mai'],
@@ -106,7 +106,7 @@ class AdminSanPhamConTroller
                             'error' => $img_array['error'][$key],
                             'size' => $img_array['size'][$key]
                         ];
-                        $link_hinh_anh = uploadFile($file, '../uploads/');
+                        $link_hinh_anh = uploadFile($file, 'uploads/');
                         $album = $this->modelSanPham->insertAlbumAnhSanPham($san_pham_id, $link_hinh_anh);
                     }
                 }
@@ -154,7 +154,7 @@ class AdminSanPhamConTroller
             $so_luong = $_POST['so_luong'] ?? '';
             $ngay_nhap = $_POST['ngay_nhap'] ?? '';
             // Đặt giá trị mặc định cho các trường
-            $danh_muc_id =  $_POST['danh_muc_id'] ?? '';
+            $danh_muc_id = $_POST['danh_muc_id'] ?? '';
             $trang_thai = $_POST['trang_thai'] ?? '';
 
             $mo_ta = $_POST['mo_ta'];
@@ -255,7 +255,7 @@ class AdminSanPhamConTroller
                     deleteFile($anhSP['link_hinh_anh']);
                 }
             }
-            
+
             header("Location:" . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $san_pham_id);
             exit();
         }
@@ -291,7 +291,7 @@ class AdminSanPhamConTroller
         $id = $_GET['id_san_pham'];
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
-        $listBinhLuan  = $this->modelSanPham->getBinhLuanFromSanPham($id);
+        $listBinhLuan = $this->modelSanPham->getBinhLuanFromSanPham($id);
         // var_dump($listBinhLuan);die();
         if (isset($sanPham)) {
             require_once './views/sanpham/detailSanPham.php';

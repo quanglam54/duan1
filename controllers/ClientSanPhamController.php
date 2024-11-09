@@ -37,5 +37,15 @@ class ClientSanPhamController
           // die;
           require_once './views/category.php';
      }
+     //
+
+     public function getProductDetail()
+     {
+          $product_id = $_GET['id'];
+          $productDetail = $this->modelSanPham->getSanPhamById($product_id);
+          // var_dump($productDetail);
+          // die;
+          require_once './views/detail.php';
+     }
 }
 ?>
