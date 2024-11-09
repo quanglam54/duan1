@@ -26,12 +26,6 @@
       <div class="row">
         
         <div class="col-md-8">
-        <?php if (isset($_SESSION['messInfo'])) { ?>
-                                    <div class="alert alert-success">
-                                        <?= $_SESSION['messInfo'] ?>
-                                        <?php unset($_SESSION['messInfo']); ?> <!--Xóa thông báo sau khi hiển thị-->
-                                    </div>
-                                <?php } ?>
           <div class="card card-success">
             <div class="card-header">
               <h3 class="card-title">Sửa sản phẩm</h3>
@@ -137,12 +131,6 @@
           </div>
         </div>
         <div class="col-md-4">
-        <?php if (isset($_SESSION['messAlbum'])) { ?>
-                                    <div class="alert alert-info">
-                                        <?= $_SESSION['messAlbum'] ?>
-                                        <?php unset($_SESSION['messAlbum']); ?> <!--Xóa thông báo sau khi hiển thị-->
-                                    </div>
-                                <?php } ?>
         <div class="card card-info">
           <div class="card-header">
             <h3 class="card-title">Album ảnh sản phẩm</h3>

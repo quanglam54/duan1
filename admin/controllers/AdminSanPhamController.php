@@ -199,8 +199,8 @@ class AdminSanPhamConTroller
             if (empty($errors)) {
                 $this->modelSanPham->updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $new_file);
                 // Tạo thông báo xóa thành công
-                $_SESSION['messInfo'] = 'Sửa sản phẩm thành công!';
-                header("Location: " . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $san_pham_id);
+                // $_SESSION['messInfo'] = 'Sửa sản phẩm thành công!';
+                header("Location: " . BASE_URL_ADMIN . '?act=san-pham');
                 exit();
             } else {
                 // trả lỗi
@@ -255,8 +255,7 @@ class AdminSanPhamConTroller
                     deleteFile($anhSP['link_hinh_anh']);
                 }
             }
-              // Tạo thông báo thành công
-            $_SESSION['messAlbum'] = 'Sửa album ảnh sản phẩm thành công!';
+            
             header("Location:" . BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $san_pham_id);
             exit();
         }
