@@ -152,12 +152,14 @@ include 'views/layout/header.php';
                     <?php foreach ($danhMucs as $danhmuc): ?>
                          <div class="collection-menu-one active">
                               <span><i class="fa-solid fa-arrow-right"></i></span>
-                              <h3><a href="#"><?= $danhmuc['ten_danh_muc'] ?></a></h3>
+                              <h3><a
+                                        href="<?= BASE_URL . '?act=category&id=' . $danhmuc['id'] ?>"><?= $danhmuc['ten_danh_muc'] ?></a>
+                              </h3>
                          </div>
                     <?php endforeach; ?>
                     <div class="collection-menu-one">
                          <span><i class="fa-solid fa-arrow-right"></i></span>
-                         <h3><a href="<?= BASE_URL . '?act=category' ?>">Xem tất cả</a></h3>
+                         <h3><a href="<?= BASE_URL . '?act=allCategory' ?>">Xem tất cả</a></h3>
                     </div>
                </div>
           </div>
@@ -168,21 +170,26 @@ include 'views/layout/header.php';
      <div class="container">
 
           <div class="block-products ">
-               <?php foreach ($listSanPhams as $sanPham): ?>
-                    <div class="product-item">
-                         <div class="product-item-img">
-                              <img src="./uploads/<?= $sanPham['hinh_anh'] ?>" alt="" />
-                         </div>
-                         <div class="product-item-title">
-                              <h3><?= $sanPham['ten_san_pham'] ?></h3>
-                              <div class="product-item-price">
-                                   <p><?= number_format($sanPham['gia_san_pham']) ?>đ</p>
-                                   <span><i class="fa-solid fa-arrow-right"></i> </span>
+               <?php if (!empty($listSanPhams)): ?>
+                    <?php foreach ($listSanPhams as $sanPham): ?>
+                         <div class="product-item">
+                              <div class="product-item-img">
+                                   <img src="./uploads/<?= $sanPham['hinh_anh'] ?>" alt="" />
+                              </div>
+                              <div class="product-item-title">
+                                   <h3><?= $sanPham['ten_san_pham'] ?></h3>
+                                   <div class="product-item-price">
+                                        <p><?= number_format($sanPham['gia_san_pham']) ?>đ</p>
+                                        <span><i class="fa-solid fa-arrow-right"></i> </span>
+                                   </div>
                               </div>
                          </div>
-                    </div>
-                    <!--  -->
-               <?php endforeach; ?>
+                         <!--  -->
+                    <?php endforeach; ?>
+               <?php else: ?>
+                    <p>Không có sản phẩm nào trong danh mục này</p>
+               <?php endif; ?>
+
           </div>
 
           <button>Xem thêm gọng kính +</button>

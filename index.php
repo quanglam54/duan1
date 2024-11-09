@@ -13,7 +13,8 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
      '/' => (new ClientSanphamController)->allSanPham(),
-     'category' => (new ClientSanPhamController)->allCategory(),
+     'allCategory' => (new ClientSanPhamController)->allCategory(),
+     'category' => (new ClientSanPhamController)->allSanPham(),
 }
 
      ?>

@@ -11,9 +11,19 @@ class ClientSanPhamController
      }
      public function allSanPham()
      {
+          $category_id = $_GET['id'] ?? null;
+          // var_dump($category_id);
+          // die;
+          //$category_id sẽ lấy theo getid truyền thẻ a bên link home
+          if ($category_id) {
+               $listSanPhams = $this->modelSanPham->getCategoryId($category_id);
+               // var_dump($listSanPhams);
+               // die;
+          } else {
+               $listSanPhams = $this->modelSanPham->getAllSanPham();
+          }
           $sanPhamBestSeller = $this->modelSanPham->getSanPhamBestSeller();
           $danhMucs = $this->modelSanPham->getAllDanhMuc();
-          $listSanPhams = $this->modelSanPham->getAllSanPham();
           // var_dump($danhMuc);
           // die;
           require_once './views/home.php';

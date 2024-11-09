@@ -35,5 +35,13 @@ class ClientSanphamModel
           $stmt = $this->conn->query($sql);
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
+     //
+     public function getCategoryId($category_id)
+     {
+          $category_id = (int) $category_id;
+          $sql = 'SELECT * FROM san_phams where danh_muc_id=' . $category_id;
+          $stmt = $this->conn->query($sql);
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
 }
 ?>
