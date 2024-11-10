@@ -60,10 +60,11 @@ include 'views/layout/header.php';
                               <li><a href="#">Xem thêm
                                         <span><i class="fa-solid fa-chevron-down"></i></span>
                                    </a></li>
-                              <li><a href="#">Giỏ hàng
+                              <li><a href="#">
+                                        Giỏ hàng
                                         <span> <i class="fa-solid fa-cart-shopping"></i></span>
                                    </a></li>
-                              <li><a href="#">Tài khoản
+                              <li><a href="<?= BASE_URL . '?act=register' ?>">Tài khoản
                                         <span><i class="fa-solid fa-user"></i></i></span>
                                    </a></li>
                          </ul>
@@ -110,7 +111,7 @@ include 'views/layout/header.php';
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
                                              <a href="<?= BASE_URL . '?act=detail&id=' . $sanPhamBest['id'] ?>"> <img
-                                                       src="<?= $sanPhamBest['hinh_anh'] ?>" alt="" /></a>
+                                                       src="<?= "./uploads/" . $sanPhamBest['hinh_anh'] ?>" alt="" /></a>
                                         </div>
                                         <div class="item-title">
                                              <p><?= $sanPhamBest['mo_ta'] ?></p>

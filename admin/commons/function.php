@@ -24,8 +24,21 @@ function connectDB()
 // THêm file ảnh
 function uploadFile($file, $folderUpload)
 {
-    $pathStorage = $folderUpload .  time() . $file['name'];
+    $pathStorage = $folderUpload . time() . $file['name'];
     $from = $file['tmp_name'];
+    $to = PATH_ROOT . $pathStorage;
+
+    if (move_uploaded_file($from, $to)) {
+        return time() . $file['name'];
+    }
+    return null;
+}
+
+function uploadFileAlbum($file, $folderUpload, $key)
+{
+    $pathStorage = $folderUpload . time() . $file['name'][$key];
+
+    $from = $file['tmp_name'][$key];
     $to = PATH_ROOT . $pathStorage;
 
     if (move_uploaded_file($from, $to)) {
@@ -34,28 +47,18 @@ function uploadFile($file, $folderUpload)
     return null;
 }
 
-function uploadFileAlbum($file,$folderUpload,$key){
-    $pathStorage = $folderUpload . time() . $file['name'][$key];
-
-    $from = $file['tmp_name'][$key];
-    $to = PATH_ROOT . $pathStorage;
-
-    if(move_uploaded_file($from,$to)){
-        return $pathStorage;
-    }
-    return null;
-}
-
 // Xóa session sau khi load trang
-function deleteSession(){
-    if(isset($_SESSION['flash'])){
+function deleteSession()
+{
+    if (isset($_SESSION['flash'])) {
         unset($_SESSION['errors']);
         unset($_SESSION['old_data']);
     }
 }
-function deleteFile($file){
-    $pathDelete = PATH_ROOT .$file;
-    if(file_exists($pathDelete)){
+function deleteFile($file)
+{
+    $pathDelete = PATH_ROOT . $file;
+    if (file_exists($pathDelete)) {
         unset($pathDelete);
     }
 }

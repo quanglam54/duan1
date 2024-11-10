@@ -106,7 +106,7 @@ class AdminSanPhamConTroller
                             'error' => $img_array['error'][$key],
                             'size' => $img_array['size'][$key]
                         ];
-                        $link_hinh_anh = uploadFile($file, 'uploads/');
+                        $link_hinh_anh = uploadFile($file, '../uploads/');
                         $album = $this->modelSanPham->insertAlbumAnhSanPham($san_pham_id, $link_hinh_anh);
                     }
                 }

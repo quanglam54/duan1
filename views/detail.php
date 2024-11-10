@@ -342,7 +342,7 @@
                               <div class="products-bestseller">
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
-                                             <img src="../public/img/sp-1.jpg" alt="" />
+                                             <img src="./public/img/sp-1.jpg" alt="" />
                                         </div>
                                         <div class="item-title">
                                              <p>GK.M Gọng nhựa LML221393</p>
@@ -355,7 +355,7 @@
                                    <!--  -->
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
-                                             <img src="../public/img/sp-2.jpg" alt="" />
+                                             <img src="./public/img/sp-2.jpg" alt="" />
                                         </div>
                                         <div class="item-title">
                                              <p>GK.M Gọng nhựa LML221393</p>
@@ -368,7 +368,7 @@
                                    <!--  -->
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
-                                             <img src="../public/img/sp-3.jpg" alt="" />
+                                             <img src="./public/img/sp-3.jpg" alt="" />
                                         </div>
                                         <div class="item-title">
                                              <p>GK.M Gọng nhựa LML221393</p>
@@ -381,7 +381,7 @@
                                    <!--  -->
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
-                                             <img src="../public/img/sp-14.jpg" alt="" />
+                                             <img src="./public/img/sp-14.jpg" alt="" />
                                         </div>
                                         <div class="item-title">
                                              <p>GK.M Gọng nhựa LML221393</p>
@@ -394,7 +394,7 @@
                                    <!--  -->
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
-                                             <img src="../public/img/sp-14.jpg" alt="" />
+                                             <img src="./public/img/sp-14.jpg" alt="" />
                                         </div>
                                         <div class="item-title">
                                              <p>GK.M Gọng nhựa LML221393</p>
@@ -407,7 +407,7 @@
                                    <!--  -->
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
-                                             <img src="../public/img/sp-14.jpg" alt="" />
+                                             <img src="./public/img/sp-14.jpg" alt="" />
                                         </div>
                                         <div class="item-title">
                                              <p>GK.M Gọng nhựa LML221393</p>
@@ -420,7 +420,7 @@
                                    <!--  -->
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
-                                             <img src="../public/img/sp-14.jpg" alt="" />
+                                             <img src="./public/img/sp-14.jpg" alt="" />
                                         </div>
                                         <div class="item-title">
                                              <p>GK.M Gọng nhựa LML221393</p>
@@ -447,7 +447,7 @@
           <div class="container">
                <div class="footer-block">
                     <div class="footer-left">
-                         <img src="../public/img/ảnh logo.svg" alt="" />
+                         <img src="./public/img/ảnh logo.svg" alt="" />
                          <p>Đăng ký nhận tin sớm nhất</p>
                          <div class="footer-input">
                               <input type="text" placeholder="Để lại email của bạn" />
@@ -502,7 +502,7 @@
                </div>
           </div>
      </footer>
-     <script src="../public/js/slide.js"></script>
+     <script src="./public/js/slide.js"></script>
 </body>
 
 </html>

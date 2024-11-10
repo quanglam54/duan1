@@ -2,9 +2,9 @@
 <?php include './views/layout/navbar.php' ?>
 <?php include './views/layout/sidebar.php' ?>
 <style>
-    .btn-group{
+    .btn-group {
         display: flex;
-        gap:5px;
+        gap: 5px;
     }
 </style>
 
@@ -18,12 +18,14 @@
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row mb-3">
                     <div class="col-sm-6">
-                        <a href="<?= BASE_URL_ADMIN . '?act=form-them-san-pham' ?>"><button class="btn btn-success">Thêm mới</button></a>
+                        <a href="<?= BASE_URL_ADMIN . '?act=form-them-san-pham' ?>"><button class="btn btn-success">Thêm
+                                mới</button></a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info">
+                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
+                            aria-describedby="example1_info">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>STT</th>
@@ -40,7 +42,8 @@
                                 <?php if (isset($_SESSION['mess'])) { ?>
                                     <div class="alert alert-success">
                                         <?= $_SESSION['mess'] ?>
-                                        <?php unset($_SESSION['mess']); ?> <!--Xóa thông báo sau khi hiển thị-->
+                                        <?php unset($_SESSION['mess']); ?>
+                                        <!--Xóa thông báo sau khi hiển thị-->
                                     </div>
                                 <?php } ?>
 
@@ -49,21 +52,29 @@
                                         <td><?= $key + 1 ?></td>
                                         <td><?= $sanPham['ten_san_pham'] ?></td>
                                         <td>
-                                            <img src="<?= BASE_URL_ADMIN . $sanPham['hinh_anh'] ?>" alt="" style="width: 100%; max-height:100px" onerror="this.onerror=null;this src = 'https://pethouse.com.vn/wp-content/uploads/2022/12/anh-meo-anh-long-ngan-9988838880.jpg'">
+                                            <img src="<?= BASE_URL_ADMIN . '../uploads/' . $sanPham['hinh_anh'] ?>" alt=""
+                                                style="width: 100%; max-height:100px">
 
                                         </td>
                                         <td><?= $sanPham['gia_san_pham'] ?></td>
                                         <td><?= $sanPham['so_luong'] ?></td>
                                         <td><?= $sanPham['ten_danh_muc'] ?></td>
                                         <td><?= $sanPham['trang_thai'] == 1 ? 'Còn bán' : 'Dừng bán' ?></td>
-                                       <td>
-                                          <div class="d-flex gap-5">
-                                          <a href="<?= BASE_URL_ADMIN . '?act=xem-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button class="btn btn-primary btn-sm">Xem</button></a>
-                                            <a href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button class="btn btn-warning btn-sm">Sửa</button></a>
-                                            <a href="<?= BASE_URL_ADMIN . '?act=xoa-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button class="btn btn-danger btn-sm" onclick=" return confirm('Bạn có muốn xóa không?')">Xóa</button></a>
-                                          </div>
+                                        <td>
+                                            <div class="d-flex gap-5">
+                                                <a
+                                                    href="<?= BASE_URL_ADMIN . '?act=xem-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button
+                                                        class="btn btn-primary btn-sm">Xem</button></a>
+                                                <a
+                                                    href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button
+                                                        class="btn btn-warning btn-sm">Sửa</button></a>
+                                                <a
+                                                    href="<?= BASE_URL_ADMIN . '?act=xoa-san-pham&id_san_pham=' . $sanPham['id'] ?>"><button
+                                                        class="btn btn-danger btn-sm"
+                                                        onclick=" return confirm('Bạn có muốn xóa không?')">Xóa</button></a>
+                                            </div>
                                         </td>
-                                       
+
                                     </tr>
                                 <?php } ?>
 
@@ -84,7 +95,7 @@
 <script src="./asset/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 
 <script>
-    $(function() {
+    $(function () {
         $("#example1").DataTable({
             responsive: true,
             lengthChange: false,
