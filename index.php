@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 require_once 'admin/commons/env.php';
 require_once 'admin/commons/function.php';
 
@@ -19,7 +21,10 @@ match ($act) {
      'category' => (new ClientSanPhamController)->allSanPham(),
      'detail' => (new ClientSanPhamController)->getProductDetail(),
      'register' => (new UserController)->register(),
-
+     'postRegis' => (new UserController)->postRegister(),
+     'login' => (new UserController)->login(),
+     'postlogin' => (new UserController)->postLogin(),
+     'logout' => (new UserController)->logout(),
 }
 
      ?>

@@ -21,7 +21,7 @@
                <div class="container">
                     <div class="header-main">
                          <div class="header-left">
-                              <img src="../public/img/ảnh logo.svg" alt="" />
+                              <img src="./public/img/ảnh logo.svg" alt="" />
                               <ul class="header-nav">
                                    <li>
                                         <a href="#">Sản phẩm
@@ -92,23 +92,32 @@
           <div class="container">
                <div class="login-center">
                     <div class="login-item-left">
-                         <img src="../public/img/img-register.jpeg" alt="ảnh login" />
+                         <img src="./public/img/img-register.jpeg" alt="ảnh login" />
                     </div>
                     <div class="login-item-right">
                          <h5>Đăng ký</h5>
                          <p>Hãy đăng ký để được hưởng đặc quyền riêng dành cho bạn</p>
-                         <form action="">
+                         <form action="<?= BASE_URL . '?act=postRegis' ?>" method="post">
                               <div class="form-control">
                                    <label for="tài khoản">Tài khoản<i class="fa-solid fa-star-of-life"></i></label>
-                                   <input type="text" placeholder="Nhập tài khoản" />
+                                   <input type="text" name="username" placeholder="Nhập tài khoản" />
+                                   <?php if (isset($err['username'])): ?>
+                                        <p style="color: red;"><?= $err['username'] ?></p>
+                                   <?php endif; ?>
                               </div>
                               <div class="form-control">
                                    <label for="email">Email<i class="fa-solid fa-star-of-life"></i></label>
-                                   <input type="email" placeholder="Nhập email" />
+                                   <input type="email" name="email" placeholder="Nhập email" />
+                                   <?php if (isset($err['email'])): ?>
+                                        <p style="color: red;"><?= $err['email'] ?></p>
+                                   <?php endif; ?>
                               </div>
                               <div class="form-control">
                                    <label for="mật khẩu">Mật khẩu<i class="fa-solid fa-star-of-life"></i></label>
-                                   <input type="text" placeholder="Nhập mật khẩu" />
+                                   <input type="password" name="password" placeholder="Nhập mật khẩu" />
+                                   <?php if (isset($err['password'])): ?>
+                                        <p style="color: red;"><?= $err['password'] ?></p>
+                                   <?php endif; ?>
                               </div>
                               <div class="form-security">
                                    <p>
@@ -117,18 +126,18 @@
                                    </p>
                               </div>
                               <div class="form-control">
-                                   <button>Đăng ký ngay</button>
+                                   <button type="submit">Đăng ký ngay</button>
                               </div>
                          </form>
                          <div class="form-control or">
                               <p>Hoặc</p>
                          </div>
                          <div class="form-google">
-                              <img src="../public/img/logo-google.jpg" alt="" />
+                              <img src="./public/img/logo-google.jpg" alt="" />
                               <a href="#">Đăng nhập bằng <b>Google</b></a>
                          </div>
                          <h6>Bạn chưa có tài khoản LML ?</h6>
-                         <a href="#" class="regis-click">Đăng nhập ngay</a>
+                         <a href="<?= BASE_URL . '?act=login' ?>" class="regis-click">Đăng nhập ngay</a>
                     </div>
                </div>
           </div>

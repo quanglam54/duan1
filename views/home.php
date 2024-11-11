@@ -64,9 +64,17 @@ include 'views/layout/header.php';
                                         Giỏ hàng
                                         <span> <i class="fa-solid fa-cart-shopping"></i></span>
                                    </a></li>
-                              <li><a href="<?= BASE_URL . '?act=register' ?>">Tài khoản
-                                        <span><i class="fa-solid fa-user"></i></i></span>
-                                   </a></li>
+                              <?php if (isset($_SESSION['ho_ten'])): ?>
+                                   <li><a href="<?= BASE_URL . '?act=register' ?>">Xin Chào:<?= $_SESSION['ho_ten'] ?>
+                                             <span><i class="fa-solid fa-user"></i></i></span>
+                                             <a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a>
+                                        </a></li>
+                              <?php else: ?>
+                                   <li><a href="<?= BASE_URL . '?act=register' ?>">Tài khoản
+                                             <span><i class="fa-solid fa-user"></i></i></span>
+                                        </a></li>
+                              <?php endif; ?>
+
                          </ul>
                     </div>
                </div>
@@ -102,7 +110,7 @@ include 'views/layout/header.php';
 <!-- hết section banner -->
 <section class="bestseller">
      <div class="container">
-          <div class="blog-bestseller">
+          <div class="blog-bestseller" id="blog-bestseller">
                <h1>BÁN CHẠY NHẤT</h1>
                <div class="bestseller-wrap">
                     <div class="products-bestseller-container">
@@ -110,8 +118,8 @@ include 'views/layout/header.php';
                               <?php foreach ($sanPhamBestSeller as $sanPhamBest): ?>
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
-                                             <a href="<?= BASE_URL . '?act=detail&id=' . $sanPhamBest['id'] ?>"> <img
-                                                       src="<?= "uploads/" . $sanPhamBest['hinh_anh'] ?>" alt="" /></a>
+                                             <a href="<?= BASE_URL . '?act=detail&id=' . $sanPhamBest['id'] ?> ">
+                                                  <img src="<?= "uploads/" . $sanPhamBest['hinh_anh'] ?>" alt="" /></a>
                                         </div>
                                         <div class="item-title">
                                              <p><?= $sanPhamBest['mo_ta'] ?></p>
@@ -155,7 +163,7 @@ include 'views/layout/header.php';
                          <div class="collection-menu-one active">
                               <span><i class="fa-solid fa-arrow-right"></i></span>
                               <h3><a
-                                        href="<?= BASE_URL . '?act=category&id=' . $danhmuc['id'] ?>"><?= $danhmuc['ten_danh_muc'] ?></a>
+                                        href="<?= BASE_URL . '?act=category&id=' . $danhmuc['id'] ?> #products"><?= $danhmuc['ten_danh_muc'] ?></a>
                               </h3>
                          </div>
                     <?php endforeach; ?>
@@ -171,7 +179,7 @@ include 'views/layout/header.php';
 <section class="main-block">
      <div class="container">
 
-          <div class="block-products ">
+          <div class="block-products " id="products">
                <?php if (!empty($listSanPhams)): ?>
                     <?php foreach ($listSanPhams as $sanPham): ?>
                          <div class="product-item">

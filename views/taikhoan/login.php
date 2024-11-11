@@ -5,7 +5,7 @@
      <meta charset="UTF-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <title>Tài khoản - Kính mắt LML</title>
-     <link rel="stylesheet" href="/public/css/login.css" />
+     <link rel="stylesheet" href="./public/css/login.css" />
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,7 +21,7 @@
                <div class="container">
                     <div class="header-main">
                          <div class="header-left">
-                              <img src="../public/img/ảnh logo.svg" alt="" />
+                              <img src="./public/img/ảnh logo.svg" alt="" />
                               <ul class="header-nav">
                                    <li>
                                         <a href="#">Sản phẩm
@@ -92,19 +92,25 @@
           <div class="container">
                <div class="login-center">
                     <div class="login-item-left">
-                         <img src="../public/img/img-login.jpeg" alt="ảnh login" />
+                         <img src="./public/img/img-login.jpeg" alt="ảnh login" />
                     </div>
                     <div class="login-item-right">
                          <h5>Đăng nhập</h5>
                          <p>Hãy đăng nhập để được hưởng đặc quyền riêng dành cho bạn</p>
-                         <form action="">
+                         <form action="<?= BASE_URL . '?act=postlogin' ?>" method="post">
                               <div class="form-control">
-                                   <label for="tài khoản">Tài khoản<i class="fa-solid fa-star-of-life"></i></label>
-                                   <input type="text" placeholder="Nhập tài khoản" />
+                                   <label for="email">Email<i class="fa-solid fa-star-of-life"></i></label>
+                                   <input type="email" name="email" placeholder="Nhập email" />
+                                   <?php if (isset($_SESSION['err']['email'])): ?>
+                                        <p style="color: red;"><?= $_SESSION['err']['email'] ?></p>
+                                   <?php endif; ?>
                               </div>
                               <div class="form-control">
                                    <label for="mật khẩu">Mật khẩu<i class="fa-solid fa-star-of-life"></i></label>
-                                   <input type="text" placeholder="Nhập mật khẩu" />
+                                   <input type="password" name="password" placeholder="Nhập mật khẩu" />
+                                   <?php if (isset($_SESSION['err']['password'])): ?>
+                                        <p style="color: red;"><?= $_SESSION['err']['password'] ?></p>
+                                   <?php endif; ?>
                               </div>
                               <div class="form-checkbox">
                                    <input type="checkbox" />
@@ -118,11 +124,11 @@
                               <a href="#">Quên mật khẩu?</a>
                          </div>
                          <div class="form-google">
-                              <img src="../public/img/logo-google.jpg" alt="" />
+                              <img src="./public/img/logo-google.jpg" alt="" />
                               <a href="#">Đăng nhập bằng <b>Google</b></a>
                          </div>
                          <h6>Bạn chưa có tài khoản LML ?</h6>
-                         <a href="#" class="regis-click">Đăng ký ngay</a>
+                         <a href="<?= BASE_URL . '?act=register' ?>" class="regis-click">Đăng ký ngay</a>
                     </div>
                </div>
           </div>
@@ -155,7 +161,7 @@
           <div class="container">
                <div class="footer-block">
                     <div class="footer-left">
-                         <img src="../public/img/ảnh logo.svg" alt="" />
+                         <img src="./public/img/ảnh logo.svg" alt="" />
                          <p>Đăng ký nhận tin sớm nhất</p>
                          <div class="footer-input">
                               <input type="text" placeholder="Để lại email của bạn" />

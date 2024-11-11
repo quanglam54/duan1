@@ -43,8 +43,12 @@ class ClientSanPhamController
      public function getProductDetail()
      {
           $product_id = $_GET['id'];
+
           $productDetail = $this->modelSanPham->getSanPhamById($product_id);
           $cate_id = $productDetail['danh_muc_id'];
+          // lấy int danh_muc_id để lấy ra sp #id nhưng cùng danh mục
+          // var_dump($cate_id);
+          // die;
           $productOther = $this->modelSanPham->getSanPhamOtherId($product_id, $cate_id);
 
           // var_dump($productDetail);
