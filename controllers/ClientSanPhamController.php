@@ -33,6 +33,7 @@ class ClientSanPhamController
      public function allCategory()
      {
           $sanPhamNews = $this->modelSanPham->getSanPhamNew();
+          $allSanPhams = $this->modelSanPham->getAllSanPham();
           // var_dump($sanPhamNews);
           // die;
           require_once './views/category.php';
@@ -43,6 +44,9 @@ class ClientSanPhamController
      {
           $product_id = $_GET['id'];
           $productDetail = $this->modelSanPham->getSanPhamById($product_id);
+          $cate_id = $productDetail['danh_muc_id'];
+          $productOther = $this->modelSanPham->getSanPhamOtherId($product_id, $cate_id);
+
           // var_dump($productDetail);
           // die;
           require_once './views/detail.php';

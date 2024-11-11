@@ -111,7 +111,7 @@ include 'views/layout/header.php';
                                    <div class="item-bestseller">
                                         <div class="item-bestseller-img">
                                              <a href="<?= BASE_URL . '?act=detail&id=' . $sanPhamBest['id'] ?>"> <img
-                                                       src="<?= "./uploads/" . $sanPhamBest['hinh_anh'] ?>" alt="" /></a>
+                                                       src="<?= "uploads/" . $sanPhamBest['hinh_anh'] ?>" alt="" /></a>
                                         </div>
                                         <div class="item-title">
                                              <p><?= $sanPhamBest['mo_ta'] ?></p>
@@ -176,7 +176,8 @@ include 'views/layout/header.php';
                     <?php foreach ($listSanPhams as $sanPham): ?>
                          <div class="product-item">
                               <div class="product-item-img">
-                                   <img src="<?= $sanPham['hinh_anh'] ?>" alt="" />
+                                   <a href="<?= BASE_URL . '?act=detail&id=' . $sanPham['id'] ?>"><img
+                                             src="<?= "uploads/" . $sanPham['hinh_anh'] ?>" alt="" /></a>
                               </div>
                               <div class="product-item-title">
                                    <h3><?= $sanPham['ten_san_pham'] ?></h3>

@@ -101,7 +101,7 @@
                     <!--  -->
 
                     <div class="detail-item-bn">
-                         <img src="<?= $productDetail['hinh_anh'] ?>" alt="" />
+                         <img src="<?= "./uploads/" . $productDetail['hinh_anh'] ?>" alt="" />
                     </div>
 
                     <div class="detail-item-des">
@@ -340,97 +340,21 @@
                     <div class="bestseller-wrap">
                          <div class="products-bestseller-container">
                               <div class="products-bestseller">
-                                   <div class="item-bestseller">
-                                        <div class="item-bestseller-img">
-                                             <img src="./public/img/sp-1.jpg" alt="" />
-                                        </div>
-                                        <div class="item-title">
-                                             <p>GK.M Gọng nhựa LML221393</p>
-                                             <div class="item-icon">
-                                                  <h5>350.000đ</h5>
-                                                  <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                                   <?php foreach ($productOther as $other): ?>
+                                        <div class="item-bestseller">
+                                             <div class="item-bestseller-img">
+                                                  <a href="<?= BASE_URL . '?act=detail&id=' . $other['id'] ?>"><img
+                                                            src="<?= "uploads/" . $other['hinh_anh'] ?>" alt="" /></a>
+                                             </div>
+                                             <div class="item-title">
+                                                  <p>GK.M Gọng nhựa LML221393</p>
+                                                  <div class="item-icon">
+                                                       <h5>350.000đ</h5>
+                                                       <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                                                  </div>
                                              </div>
                                         </div>
-                                   </div>
-                                   <!--  -->
-                                   <div class="item-bestseller">
-                                        <div class="item-bestseller-img">
-                                             <img src="./public/img/sp-2.jpg" alt="" />
-                                        </div>
-                                        <div class="item-title">
-                                             <p>GK.M Gọng nhựa LML221393</p>
-                                             <div class="item-icon">
-                                                  <h5>350.000đ</h5>
-                                                  <a href=""><i class="fa-solid fa-arrow-right"></i></a>
-                                             </div>
-                                        </div>
-                                   </div>
-                                   <!--  -->
-                                   <div class="item-bestseller">
-                                        <div class="item-bestseller-img">
-                                             <img src="./public/img/sp-3.jpg" alt="" />
-                                        </div>
-                                        <div class="item-title">
-                                             <p>GK.M Gọng nhựa LML221393</p>
-                                             <div class="item-icon">
-                                                  <h5>350.000đ</h5>
-                                                  <a href=""><i class="fa-solid fa-arrow-right"></i></a>
-                                             </div>
-                                        </div>
-                                   </div>
-                                   <!--  -->
-                                   <div class="item-bestseller">
-                                        <div class="item-bestseller-img">
-                                             <img src="./public/img/sp-14.jpg" alt="" />
-                                        </div>
-                                        <div class="item-title">
-                                             <p>GK.M Gọng nhựa LML221393</p>
-                                             <div class="item-icon">
-                                                  <h5>350.000đ</h5>
-                                                  <a href=""><i class="fa-solid fa-arrow-right"></i></a>
-                                             </div>
-                                        </div>
-                                   </div>
-                                   <!--  -->
-                                   <div class="item-bestseller">
-                                        <div class="item-bestseller-img">
-                                             <img src="./public/img/sp-14.jpg" alt="" />
-                                        </div>
-                                        <div class="item-title">
-                                             <p>GK.M Gọng nhựa LML221393</p>
-                                             <div class="item-icon">
-                                                  <h5>350.000đ</h5>
-                                                  <a href=""><i class="fa-solid fa-arrow-right"></i></a>
-                                             </div>
-                                        </div>
-                                   </div>
-                                   <!--  -->
-                                   <div class="item-bestseller">
-                                        <div class="item-bestseller-img">
-                                             <img src="./public/img/sp-14.jpg" alt="" />
-                                        </div>
-                                        <div class="item-title">
-                                             <p>GK.M Gọng nhựa LML221393</p>
-                                             <div class="item-icon">
-                                                  <h5>350.000đ</h5>
-                                                  <a href=""><i class="fa-solid fa-arrow-right"></i></a>
-                                             </div>
-                                        </div>
-                                   </div>
-                                   <!--  -->
-                                   <div class="item-bestseller">
-                                        <div class="item-bestseller-img">
-                                             <img src="./public/img/sp-14.jpg" alt="" />
-                                        </div>
-                                        <div class="item-title">
-                                             <p>GK.M Gọng nhựa LML221393</p>
-                                             <div class="item-icon">
-                                                  <h5>350.000đ</h5>
-                                                  <a href=""><i class="fa-solid fa-arrow-right"></i></a>
-                                             </div>
-                                        </div>
-                                   </div>
-                                   <!--  -->
+                                   <?php endforeach; ?>
                               </div>
                          </div>
                          <div class="buttons-seller">

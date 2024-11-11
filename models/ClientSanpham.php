@@ -50,5 +50,24 @@ class ClientSanphamModel
           $stmt = $this->conn->query($sql);
           return $stmt->fetch(PDO::FETCH_ASSOC);
      }
+     //
+     // public function getSanPhamOtherId($product_id)
+     // {
+     //      $sql = 'SELECT * FROM san_phams where id <>' . $product_id;
+     //      $stmt = $this->conn->query($sql);
+     //      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     // }
+     public function getSanPhamOtherId($product_id, $cate_id)
+     {
+          $sql = 'SELECT * FROM san_phams WHERE id <> :product_id AND danh_muc_id=:cate_id';
+          // truy vấn các sản phẩm khác id kh dc trùng
+          $stmt = $this->conn->prepare($sql);
+          $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+          $stmt->bindParam(':cate_id', $cate_id, PDO::PARAM_INT);
+          $stmt->execute();
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
+
+
 }
 ?>

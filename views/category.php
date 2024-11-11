@@ -137,129 +137,19 @@
                     </aside>
 
                     <section class="product-list">
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
+                         <?php foreach ($allSanPhams as $sp): ?>
+                              <div class="product-card">
+                                   <div class="product-card-img">
+                                        <a href="<?= BASE_URL . '?act=detail&id=' . $sp['id'] ?>"> <img
+                                                  src="<?= "uploads/" . $sp['hinh_anh'] ?>" alt="Sản phẩm 1" /></a>
+                                   </div>
+                                   <div class="product-cart-title">
+                                        <h4><?= $sp['ten_san_pham'] ?></h4>
+                                        <span><i class="fa-solid fa-arrow-right"></i></span>
+                                   </div>
                               </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-                         </div>
-                         <!-- Thêm các sản phẩm khác -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-
-                         </div>
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-
-                         </div>
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-
-                         </div>
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-                         </div>
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-                         </div>
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-                         </div>
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-                         </div>
-                         <!--  -->
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-                         </div>
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-                         </div>
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-                         </div>
-                         <!--  -->
-                         <div class="product-card">
-                              <div class="product-card-img">
-                                   <img src="./public/img/sp-1.jpg" alt="Sản phẩm 1" />
-                              </div>
-                              <div class="product-cart-title">
-                                   <h4>Kính mắt Gọng Nhựa Titan</h4>
-                                   <span><i class="fa-solid fa-arrow-right"></i></span>
-                              </div>
-                         </div>
+                         <?php endforeach; ?>
+                         <!-- -->
                     </section>
                </div>
           </div>
@@ -278,7 +168,8 @@
                               <?php foreach ($sanPhamNews as $spNew): ?>
                                    <div class="news-container">
                                         <div class="item-slider">
-                                             <a href="#"><img src="<?= $spNew['hinh_anh'] ?>" alt=""></a>
+                                             <a href="<?= BASE_URL . '?act=detail&id=' . $spNew['id'] ?>"><img
+                                                       src="<?= "./uploads/" . $spNew['hinh_anh'] ?>" alt=""></a>
                                         </div>
                                         <div class="item-box-text">
                                              <div class="item-box">

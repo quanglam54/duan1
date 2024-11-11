@@ -252,6 +252,10 @@ main {
 .product-cart-title h4 {
   font-size: 15px;
   margin-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 .product-cart-title span i {
   rotate: -30deg;

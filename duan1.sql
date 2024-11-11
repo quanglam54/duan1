@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 08, 2024 at 03:47 AM
+-- Generation Time: Nov 11, 2024 at 02:30 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -41,9 +41,7 @@ CREATE TABLE `binh_luans` (
 --
 
 INSERT INTO `binh_luans` (`id`, `san_pham_id`, `tai_khoan_id`, `noi_dung`, `ngay_dang`, `trang_thai`) VALUES
-(28, 23, 31, 'Đẹp', '2024-11-12', 1),
 (29, 27, 32, 'Xấu', '2024-11-03', 1),
-(30, 23, 32, 'Đẹp quáaaa', '2024-11-19', 1),
 (31, 25, 31, 'woww', '2024-11-19', 1),
 (32, 25, 32, 'Được', '2024-11-10', 1);
 
@@ -172,9 +170,6 @@ INSERT INTO `hinh_anh_san_phams` (`id`, `san_pham_id`, `link_hinh_anh`) VALUES
 (49, 21, '../uploads/1730992687gong3 (1) (1).jpeg'),
 (50, 21, '../uploads/1730992751gong3_2 (1).jpeg'),
 (51, 21, '../uploads/1730992803gong3_3 (1).jpeg'),
-(52, 23, '../uploads/17309953871730558550tre1.png'),
-(53, 23, '../uploads/17309958731730801808tre1_2.png'),
-(54, 23, '../uploads/17309962301730801808tre1_3.png'),
 (55, 24, '../uploads/17309964801730801889tr2_2.png'),
 (56, 24, '../uploads/17309965221730801924tre2.png'),
 (57, 24, '../uploads/17309967821730801924tre2_3.png'),
@@ -235,17 +230,15 @@ CREATE TABLE `san_phams` (
 --
 
 INSERT INTO `san_phams` (`id`, `ten_san_pham`, `gia_san_pham`, `gia_khuyen_mai`, `hinh_anh`, `so_luong`, `luot_xem`, `ngay_nhap`, `mo_ta`, `danh_muc_id`, `trang_thai`) VALUES
-(17, 'Tròng kính Chemi U2 Chiết suất 1.67', '1200000.00', '0.00', '../uploads/1730558478trongkinh1.jpeg', 50, 30, '2024-11-11', 'Tròng Kính Chemi U2 Chiết Suất 1.67 là lựa chọn tuyệt vời cho những ai muốn có một sản phẩm kính nhẹ và bền bỉ. Với chỉ số chiết suất 1.67, tròng kính này mỏng hơn so với các loại kính có chỉ số thấp hơn, giúp giảm trọng lượng và tạo cảm giác thoải mái khi đeo. Sản phẩm được trang bị công nghệ chống trầy xước, bảo vệ bề mặt kính và giảm thiểu hiện tượng phản chiếu, mang lại tầm nhìn rõ nét trong mọi điều kiện ánh sáng. Ngoài ra, tròng kính Chemi U2 còn có khả năng chống tia UV, bảo vệ sức khỏe đôi mắt của bạn. Với thiết kế hiện đại, tròng kính Chemi U2 không chỉ nâng cao phong cách mà còn mang lại sự tự tin cho người sử dụng trong mọi hoàn cảnh.', 19, 2),
-(19, 'KR. KÍNH RÂM THỜI TRANG AN229080 (50.18.146)', '3000000.00', '200000.00', '../uploads/17309949741730994696kinhram1.jpg', 4, 0, '2024-11-07', 'Kính Râm Thời Trang AN229080 (50.18.146) là sự kết hợp hoàn hảo giữa phong cách và chức năng. Với thiết kế hiện đại và thanh lịch, sản phẩm này không chỉ là phụ kiện thời trang mà còn bảo vệ đôi mắt khỏi tia UV. Khung kính chắc chắn và nhẹ tạo cảm giác thoải mái khi đeo, phù hợp cho mọi hoạt động ngoài trời. Màu sắc tinh tế và kiểu dáng thời thượng giúp bạn nổi bật trong mọi dịp. Chọn Kính Râm AN229080 để thể hiện phong cách cá nhân và bảo vệ sức khỏe đôi mắt một cách hiệu quả!', 15, 2),
-(20, 'GK. GỌNG NHỰA CẦU KIM LOẠI TITAN CAO CẤP NA240235 (48.21.148)', '16000000.00', '0.00', '../uploads/1730991939DeWatermark.ai_1730991828080.png', 4, 0, '2024-11-09', 'Gọng Nhựa Cầu Kim Loại Titan Cao Cấp NA240235 (48.21.148) mang đến sự kết hợp hoàn hảo giữa phong cách sang trọng và tính năng bền bỉ. Với thiết kế cầu kim loại tinh tế và khung nhựa titan nhẹ, sản phẩm này không chỉ tạo cảm giác thoải mái khi đeo mà còn đảm bảo độ bền cao. Gọng kính có khả năng chống va đập, giúp bảo vệ kính khỏi hư hại trong quá trình sử dụng. Màu sắc thanh lịch và kiểu dáng hiện đại sẽ dễ dàng phù hợp với nhiều phong cách thời trang, từ công sở đến dạo phố. Gọng Nhựa Cầu Kim Loại NA240235 là lựa chọn lý tưởng cho những ai muốn thể hiện phong cách cá nhân một cách tinh tế và đẳng cấp.', 20, 2),
-(21, 'GK. GỌNG NHỰA CẦU KIM LOẠI TITAN CAO CẤP NA240237 (48.21.148)', '160000.00', '2000.00', '../uploads/1730992678gong3 (1) (1).jpeg', 4, 0, '2024-10-29', 'Gọng Nhựa Cầu Kim Loại Titan Cao Cấp NA240237 (48.21.148) là sự lựa chọn hoàn hảo cho những ai yêu thích phong cách hiện đại và sang trọng. Với thiết kế cầu kim loại tinh tế kết hợp với khung nhựa titan nhẹ, sản phẩm này mang lại cảm giác thoải mái và bền bỉ khi sử dụng. Gọng kính có khả năng chống va đập, bảo vệ kính khỏi hư hại và giữ cho sản phẩm luôn mới. Màu sắc trang nhã và kiểu dáng thanh lịch giúp dễ dàng phối hợp với nhiều trang phục, từ công sở đến dạo phố. Gọng Nhựa Cầu Kim Loại NA240237 không chỉ nâng tầm phong cách mà còn là biểu tượng của sự đẳng cấp và tinh tế.', 20, 1),
-(23, 'KR. KÍNH RÂM TRẺ EM 7-138 (46.20.133)', '12.00', '30000.00', '../uploads/17309953771730558550tre1.png', 30, 0, '2024-11-14', 'Kính Râm Trẻ Em 7-138 (46.20.133) là lựa chọn hoàn hảo cho các bé yêu thích khám phá thế giới xung quanh. Với thiết kế dễ thương và màu sắc bắt mắt, sản phẩm không chỉ thu hút sự chú ý mà còn bảo vệ đôi mắt trẻ khỏi tác hại của tia UV. Khung kính nhẹ và chắc chắn mang lại sự thoải mái, giúp các bé có thể đeo trong thời gian dài mà không cảm thấy khó chịu. Kính râm 7-138 cũng rất phù hợp cho các hoạt động ngoài trời, từ đi biển đến dã ngoại. Lựa chọn Kính Râm Trẻ Em 7-138 để giúp các bé vừa phong cách vừa được bảo vệ an toàn!', 21, 2),
-(24, 'KR. KÍNH RÂM TRẺ EM 7-136 (46.20.138)', '200000.00', NULL, '../uploads/17309964741730801889tr2_2.png', 30, 0, '2024-10-30', 'Kính Râm Trẻ Em 7-136 (46.20.138) là sự lựa chọn hoàn hảo cho các bé yêu thích hoạt động ngoài trời. Với thiết kế ngộ nghĩnh và màu sắc tươi sáng, sản phẩm không chỉ tạo điểm nhấn thú vị mà còn bảo vệ đôi mắt của trẻ khỏi tia UV có hại. Khung kính nhẹ và bền, giúp trẻ dễ dàng đeo trong suốt cả ngày mà không cảm thấy khó chịu. Kính râm 7-136 rất phù hợp cho các hoạt động như đi biển, dã ngoại hay chơi thể thao. Lựa chọn Kính Râm Trẻ Em 7-136 để giúp các bé vừa phong cách vừa được bảo vệ an toàn khi vui chơi!', 21, 1),
-(25, 'Tròng kính Sky Lens Chiết suất 1.56', '200000.00', NULL, '../uploads/1730997250trong2.jpeg', 30, 0, '2024-10-30', 'Tròng Kính Sky Lens Chiết Suất 1.56 là lựa chọn hoàn hảo cho sự thoải mái và thẩm mỹ. Với chỉ số chiết suất 1.56, tròng kính này mỏng nhẹ, tạo cảm giác dễ chịu khi đeo. Công nghệ chống trầy xước và phản chiếu giúp tầm nhìn luôn rõ nét, trong khi khả năng chống tia UV bảo vệ mắt khỏi ánh nắng. Thiết kế hiện đại của Sky Lens không chỉ nâng cao phong cách mà còn mang lại sự tự tin cho người sử dụng.', 14, 1),
-(26, 'Tròng kính Crizal Rock Chiết suất 1.56', '200000.00', '100000.00', '../uploads/1730558442trong3.jpeg', 6, 0, '2024-11-08', 'Tròng Kính Crizal Rock Chiết Suất 1.56 là lựa chọn hoàn hảo cho những ai tìm kiếm sự kết hợp giữa hiệu suất quang học và tính thẩm mỹ. Với chỉ số chiết suất 1.56, tròng kính này mỏng nhẹ hơn, giúp giảm trọng lượng và độ dày, mang lại cảm giác thoải mái khi đeo.\r\n\r\nĐược trang bị công nghệ Crizal tiên tiến, sản phẩm không chỉ chống trầy xước mà còn giảm thiểu hiện tượng phản chiếu, cải thiện tầm nhìn rõ nét hơn trong mọi điều kiện ánh sáng. Đặc biệt, tròng kính này còn bảo vệ đôi mắt khỏi tia UV, giúp bảo vệ sức khỏe mắt một cách hiệu quả.', 14, 1),
-(27, 'KR. KÍNH RÂM VUÔNG AN28004 (56.17.148)', '300000.00', NULL, '../uploads/1730992908ram2_@ (1).jpeg', 35, 0, '2024-09-05', 'Kính Râm Vuông AN28004 (56.17.148) mang đến phong cách thời thượng và sự bảo vệ tối ưu cho đôi mắt. Với thiết kế vuông hiện đại, sản phẩm này không chỉ tạo nên điểm nhấn cá tính mà còn giúp bạn tự tin trong mọi hoạt động ngoài trời. Khung kính chắc chắn nhưng nhẹ, tạo cảm giác thoải mái khi đeo. Chất liệu cao cấp và khả năng chống tia UV hiệu quả giúp bảo vệ sức khỏe đôi mắt, đồng thời tôn vinh vẻ đẹp của bạn. Lựa chọn Kính Râm AN28004 để khẳng định phong cách và sự sang trọng!', 15, 1),
-(28, 'KR. KÍNH RÂM THỜI TRANG AN22P9217 (51.23.149)', '300000.00', NULL, '../uploads/17309969541730558469ram3.jpg', 35, 0, '2024-09-05', 'Kính Râm Thời Trang AN22P9217 (51.23.149) là sự lựa chọn hoàn hảo cho những tín đồ yêu thích phong cách hiện đại và sang trọng. Với thiết kế tinh tế và kiểu dáng hợp thời, sản phẩm không chỉ giúp bạn nổi bật mà còn bảo vệ đôi mắt khỏi tác hại của tia UV. Khung kính nhẹ và bền bỉ mang lại sự thoải mái khi đeo suốt cả ngày. Kính Râm AN22P9217 sẽ là phụ kiện lý tưởng cho mọi hoạt động ngoài trời, giúp bạn thể hiện cá tính và phong cách thời trang riêng biệt!', 15, 1),
-(40, 'GK. GỌNG KÍNH S7198 (48.18.144)', '500000.00', NULL, '../uploads/17309934171730803732gong4.jpg', 32, 0, '2024-09-06', 'Gọng kính S7198 (48.18.144) là một mẫu gọng kính thời trang, được thiết kế với kiểu dáng hiện đại và tinh tế. Với kích thước 48mm cho độ rộng tròng, 18mm cho khoảng cách giữa hai tròng và 144mm cho chiều dài gọng, sản phẩm này phù hợp với nhiều khuôn mặt khác nhau. Chất liệu gọng kính nhẹ và bền, mang lại cảm giác thoải mái khi đeo trong thời gian dài. Màu sắc đa dạng và phong phú, giúp dễ dàng phối hợp với nhiều trang phục. Gọng kính S7198 không chỉ giúp bảo vệ mắt mà còn nâng cao phong cách cá nhân của người sử dụng. Đây là lựa chọn lý tưởng cho những ai yêu thích sự trẻ trung và năng động.', 20, 1);
+(19, 'KR. KÍNH RÂM THỜI TRANG AN229080 (50.18.146)', '3000000.00', '200000.00', '17309949741730994696kinhram1.jpg', 4, 20, '2024-11-07', 'Kính Râm Thời Trang AN229080 (50.18.146) là sự kết hợp hoàn hảo giữa phong cách và chức năng. Với thiết kế hiện đại và thanh lịch, sản phẩm này không chỉ là phụ kiện thời trang mà còn bảo vệ đôi mắt khỏi tia UV. Khung kính chắc chắn và nhẹ tạo cảm giác thoải mái khi đeo, phù hợp cho mọi hoạt động ngoài trời. Màu sắc tinh tế và kiểu dáng thời thượng giúp bạn nổi bật trong mọi dịp. Chọn Kính Râm AN229080 để thể hiện phong cách cá nhân và bảo vệ sức khỏe đôi mắt một cách hiệu quả!', 15, 2),
+(20, 'GK. GỌNG NHỰA CẦU KIM LOẠI TITAN CAO CẤP NA240235 (48.21.148)', '16000000.00', '0.00', '1730991939DeWatermark.ai_1730991828080.png', 4, 30, '2024-11-09', 'Gọng Nhựa Cầu Kim Loại Titan Cao Cấp NA240235 (48.21.148) mang đến sự kết hợp hoàn hảo giữa phong cách sang trọng và tính năng bền bỉ. Với thiết kế cầu kim loại tinh tế và khung nhựa titan nhẹ, sản phẩm này không chỉ tạo cảm giác thoải mái khi đeo mà còn đảm bảo độ bền cao. Gọng kính có khả năng chống va đập, giúp bảo vệ kính khỏi hư hại trong quá trình sử dụng. Màu sắc thanh lịch và kiểu dáng hiện đại sẽ dễ dàng phù hợp với nhiều phong cách thời trang, từ công sở đến dạo phố. Gọng Nhựa Cầu Kim Loại NA240235 là lựa chọn lý tưởng cho những ai muốn thể hiện phong cách cá nhân một cách tinh tế và đẳng cấp.', 20, 2),
+(21, 'GK. GỌNG NHỰA CẦU KIM LOẠI TITAN CAO CẤP NA240237 (48.21.148)', '160000.00', '2000.00', '1730992678gong3 (1) (1).jpeg', 4, 40, '2024-10-29', 'Gọng Nhựa Cầu Kim Loại Titan Cao Cấp NA240237 (48.21.148) là sự lựa chọn hoàn hảo cho những ai yêu thích phong cách hiện đại và sang trọng. Với thiết kế cầu kim loại tinh tế kết hợp với khung nhựa titan nhẹ, sản phẩm này mang lại cảm giác thoải mái và bền bỉ khi sử dụng. Gọng kính có khả năng chống va đập, bảo vệ kính khỏi hư hại và giữ cho sản phẩm luôn mới. Màu sắc trang nhã và kiểu dáng thanh lịch giúp dễ dàng phối hợp với nhiều trang phục, từ công sở đến dạo phố. Gọng Nhựa Cầu Kim Loại NA240237 không chỉ nâng tầm phong cách mà còn là biểu tượng của sự đẳng cấp và tinh tế.', 20, 1),
+(24, 'KR. KÍNH RÂM TRẺ EM 7-136 (46.20.138)', '200000.00', NULL, '17309964741730801889tr2_2.png', 30, 15, '2024-10-30', 'Kính Râm Trẻ Em 7-136 (46.20.138) là sự lựa chọn hoàn hảo cho các bé yêu thích hoạt động ngoài trời. Với thiết kế ngộ nghĩnh và màu sắc tươi sáng, sản phẩm không chỉ tạo điểm nhấn thú vị mà còn bảo vệ đôi mắt của trẻ khỏi tia UV có hại. Khung kính nhẹ và bền, giúp trẻ dễ dàng đeo trong suốt cả ngày mà không cảm thấy khó chịu. Kính râm 7-136 rất phù hợp cho các hoạt động như đi biển, dã ngoại hay chơi thể thao. Lựa chọn Kính Râm Trẻ Em 7-136 để giúp các bé vừa phong cách vừa được bảo vệ an toàn khi vui chơi!', 21, 1),
+(25, 'Tròng kính Sky Lens Chiết suất 1.56', '200000.00', NULL, '1730997250trong2.jpeg', 30, 10, '2024-10-30', 'Tròng Kính Sky Lens Chiết Suất 1.56 là lựa chọn hoàn hảo cho sự thoải mái và thẩm mỹ. Với chỉ số chiết suất 1.56, tròng kính này mỏng nhẹ, tạo cảm giác dễ chịu khi đeo. Công nghệ chống trầy xước và phản chiếu giúp tầm nhìn luôn rõ nét, trong khi khả năng chống tia UV bảo vệ mắt khỏi ánh nắng. Thiết kế hiện đại của Sky Lens không chỉ nâng cao phong cách mà còn mang lại sự tự tin cho người sử dụng.', 14, 1),
+(26, 'Tròng kính Crizal Rock Chiết suất 1.56', '200000.00', '100000.00', '1730558442trong3.jpeg', 6, 5, '2024-11-08', 'Tròng Kính Crizal Rock Chiết Suất 1.56 là lựa chọn hoàn hảo cho những ai tìm kiếm sự kết hợp giữa hiệu suất quang học và tính thẩm mỹ. Với chỉ số chiết suất 1.56, tròng kính này mỏng nhẹ hơn, giúp giảm trọng lượng và độ dày, mang lại cảm giác thoải mái khi đeo.\r\n\r\nĐược trang bị công nghệ Crizal tiên tiến, sản phẩm không chỉ chống trầy xước mà còn giảm thiểu hiện tượng phản chiếu, cải thiện tầm nhìn rõ nét hơn trong mọi điều kiện ánh sáng. Đặc biệt, tròng kính này còn bảo vệ đôi mắt khỏi tia UV, giúp bảo vệ sức khỏe mắt một cách hiệu quả.', 14, 1),
+(27, 'KR. KÍNH RÂM VUÔNG AN28004 (56.17.148)', '300000.00', NULL, '1730992908ram2_@ (1).jpeg', 35, 50, '2024-09-05', 'Kính Râm Vuông AN28004 (56.17.148) mang đến phong cách thời thượng và sự bảo vệ tối ưu cho đôi mắt. Với thiết kế vuông hiện đại, sản phẩm này không chỉ tạo nên điểm nhấn cá tính mà còn giúp bạn tự tin trong mọi hoạt động ngoài trời. Khung kính chắc chắn nhưng nhẹ, tạo cảm giác thoải mái khi đeo. Chất liệu cao cấp và khả năng chống tia UV hiệu quả giúp bảo vệ sức khỏe đôi mắt, đồng thời tôn vinh vẻ đẹp của bạn. Lựa chọn Kính Râm AN28004 để khẳng định phong cách và sự sang trọng!', 15, 1),
+(28, 'KR. KÍNH RÂM THỜI TRANG AN22P9217 (51.23.149)', '300000.00', NULL, '17309969541730558469ram3.jpg', 35, 15, '2024-09-05', 'Kính Râm Thời Trang AN22P9217 (51.23.149) là sự lựa chọn hoàn hảo cho những tín đồ yêu thích phong cách hiện đại và sang trọng. Với thiết kế tinh tế và kiểu dáng hợp thời, sản phẩm không chỉ giúp bạn nổi bật mà còn bảo vệ đôi mắt khỏi tác hại của tia UV. Khung kính nhẹ và bền bỉ mang lại sự thoải mái khi đeo suốt cả ngày. Kính Râm AN22P9217 sẽ là phụ kiện lý tưởng cho mọi hoạt động ngoài trời, giúp bạn thể hiện cá tính và phong cách thời trang riêng biệt!', 15, 1),
+(40, 'GK. GỌNG KÍNH S7198 (48.18.144)', '500000.00', NULL, '17309934171730803732gong4.jpg', 32, 30, '2024-09-06', 'Gọng kính S7198 (48.18.144) là một mẫu gọng kính thời trang, được thiết kế với kiểu dáng hiện đại và tinh tế. Với kích thước 48mm cho độ rộng tròng, 18mm cho khoảng cách giữa hai tròng và 144mm cho chiều dài gọng, sản phẩm này phù hợp với nhiều khuôn mặt khác nhau. Chất liệu gọng kính nhẹ và bền, mang lại cảm giác thoải mái khi đeo trong thời gian dài. Màu sắc đa dạng và phong phú, giúp dễ dàng phối hợp với nhiều trang phục. Gọng kính S7198 không chỉ giúp bảo vệ mắt mà còn nâng cao phong cách cá nhân của người sử dụng. Đây là lựa chọn lý tưởng cho những ai yêu thích sự trẻ trung và năng động.', 20, 1);
 
 -- --------------------------------------------------------
 
@@ -455,7 +448,7 @@ ALTER TABLE `phuong_thuc_thanh_toans`
 -- AUTO_INCREMENT for table `san_phams`
 --
 ALTER TABLE `san_phams`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tai_khoans`
@@ -477,8 +470,8 @@ ALTER TABLE `trang_thai_don_hangs`
 -- Constraints for table `binh_luans`
 --
 ALTER TABLE `binh_luans`
-  ADD CONSTRAINT `binh_luans_ibfk_1` FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams` (`id`),
-  ADD CONSTRAINT `binh_luans_ibfk_2` FOREIGN KEY (`tai_khoan_id`) REFERENCES `tai_khoans` (`id`);
+  ADD CONSTRAINT `binh_luans_ibfk_1` FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `binh_luans_ibfk_2` FOREIGN KEY (`tai_khoan_id`) REFERENCES `tai_khoans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `chi_tiet_don_hangs`
@@ -512,7 +505,7 @@ ALTER TABLE `gio_hangs`
 -- Constraints for table `hinh_anh_san_phams`
 --
 ALTER TABLE `hinh_anh_san_phams`
-  ADD CONSTRAINT `hinh_anh_san_phams_ibfk_1` FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams` (`id`);
+  ADD CONSTRAINT `hinh_anh_san_phams_ibfk_1` FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `san_phams`

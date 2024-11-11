@@ -29,7 +29,7 @@ function uploadFile($file, $folderUpload)
     $to = PATH_ROOT . $pathStorage;
 
     if (move_uploaded_file($from, $to)) {
-        return time() . $file['name'];
+        return time() . $file['name']; // chỉ lưu tên ảnh vào db
     }
     return null;
 }
