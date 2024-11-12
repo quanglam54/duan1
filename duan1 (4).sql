@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 12, 2024 at 08:53 AM
+-- Generation Time: Nov 12, 2024 at 02:42 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -289,9 +289,9 @@ CREATE TABLE `tai_khoans` (
 INSERT INTO `tai_khoans` (`id`, `ho_ten`, `anh_dai_dien`, `ngay_sinh`, `email`, `so_dien_thoai`, `gioi_tinh`, `dia_chi`, `mat_khau`, `chuc_vu_id`, `trang_thai`) VALUES
 (31, 'Lê Thị Lan Anh', NULL, '2015-11-03', 'anh@gmail.com', '0949607556', 2, 'Trịnh Văn Bô', '$2y$10$nlJmcubSBkMsg5eIS1ayKuKxE5wr8lImSkJgN7ANIrUvtnpszM4Km', 2, 2),
 (32, 'Lê Văn Long', NULL, '2014-11-17', 'long@gmail.com', '0369562321', 1, 'Cầu Diễn', '$2y$10$bjw40QoRUaFDa3HJIq6TteRlyNOjUA8WvJ5n.dOxkrq2U1xEtXS0C', 2, 1),
-(33, 'Lê Văn Minh', NULL, '2024-11-12', 'admin@gmail.com', '0335323863', 1, 'Trịnh Văn Bô', '$2y$10$Ebg.a2148uuWcXu/X6v.DuOV6JKJ3M.PqOVA1ZfL.4Fq94yp6VcZW', 1, 2),
+(33, 'Lê Văn Minh', '1731421751avatar5.png', '2024-11-12', 'admin@gmail.com', '0335323863', 1, 'Trịnh Văn Bô', '$2y$10$l/9HgyCrUZzufHnNtK.p2.lnansHQ6RWuSZY.12JYkEd5rEs2HAZ.', 1, 1),
 (34, 'Nguyễn Thùy Chi', NULL, '2024-11-13', 'chi@gmail.com', '0998224551', 2, 'Cầu Diễn', '123@123ab', 1, 1),
-(35, 'Trần Thanh Nga', NULL, NULL, 'nga@gmail.com', NULL, 1, NULL, '$2y$10$4P5qrP0UYRF4luA90zrrLuEcpQvrK/SUdQO82d3wrg7o2IEkUOZ5.', 1, 1);
+(35, 'Trần Thanh Nga', '1731419461avatar3.png', NULL, 'nga@gmail.com', '0949698332', 1, 'Nam Định', '$2y$10$CxhIMy/g7UbLcBC/8oQFluNb6OzhdYunC90k9hICNkJdhkMMezEgK', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -425,7 +425,7 @@ ALTER TABLE `binh_luans`
 -- AUTO_INCREMENT for table `chi_tiet_don_hangs`
 --
 ALTER TABLE `chi_tiet_don_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=320;
 
 --
 -- AUTO_INCREMENT for table `chi_tiet_gio_hangs`
