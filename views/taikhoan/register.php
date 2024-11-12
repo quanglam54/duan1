@@ -138,6 +138,7 @@
                          </div>
                          <h6>Bạn chưa có tài khoản LML ?</h6>
                          <a href="<?= BASE_URL . '?act=login' ?>" class="regis-click">Đăng nhập ngay</a>
+                         <a href="<?= BASE_URL_ADMIN . '?act=form-login-admin' ?>" class="regis-click">Đăng nhập Admin</a>
                     </div>
                </div>
           </div>

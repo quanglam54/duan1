@@ -62,3 +62,10 @@ function deleteFile($file)
         unset($pathDelete);
     }
 }
+
+function checkLoginAdmin(){
+    if(!isset($_SESSION['user_admin'])){
+        require_once './views/auth/formLogin.php';
+        exit();
+    }
+}

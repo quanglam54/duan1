@@ -12,18 +12,20 @@
                 <div class="card-body">
                     <div class="row">
 
-                        <div class="col-12 col-sm-6">
-                            <div class="col-12">
-                                <img src="<?= BASE_URL_ADMIN . $sanPham['hinh_anh'] ?>" class="product-image" alt="Product Image" style="width: 500px; height: 500px;">
-                            </div>
-                            <div class="col-12 product-image-thumbs">
-                                <?php foreach($listAnhSanPham as $key=>$anhSP) {?>
-                                    <div class="product-image-thumb <?= $anhSP[$key] == 0 ? 'active' : '' ?>">
-                                        <img src="<?=BASE_URL_ADMIN . $anhSP['link_hinh_anh']?>" alt="">
-                                    </div>
-                                <?php }?>
-                            </div>
-                        </div>
+                    <div class="col-12 col-sm-6">
+    <div class="col-12">
+        <img src="<?= BASE_URL_ADMIN . $sanPham['hinh_anh'] ?>" class="product-image" alt="Product Image" style="width: 500px; height: 500px;">
+    </div>
+    <div class="col-12 product-image-thumbs">
+        <?php foreach($listAnhSanPham as $key => $anhSP) {
+            $activeClass = ($key === 0) ? 'active' : ''; // Đánh dấu hình thu nhỏ đầu tiên là active
+        ?>
+            <div class="product-image-thumb <?= $activeClass ?>">
+                <img src="<?= BASE_URL_ADMIN . $anhSP['link_hinh_anh'] ?>" alt="Product Image">
+            </div>
+        <?php } ?>
+    </div>
+</div>
                         <div class="col-12 col-sm-6">
                             <h3 class="my-3"> Tên sản phẩm: <b><?= $sanPham['ten_san_pham'] ?></b></h3>
                             <hr>
@@ -86,24 +88,26 @@
 <script src="./asset/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            responsive: true,
-            lengthChange: false,
-            autoWidth: false,
-            paging: true,
-            searching: true
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
+   $(document).ready(function() {
+    var $productImage = $('.product-image');
+    var $thumbs = $('.product-image-thumb img');
 
-    $(document).ready(function() {
-        $('.product-image-thumb').on('click', function() {
-            var $image_element = $(this).find('img');
-            $('.product-image').prop('src', $image_element.attr('src'));
-            $('.product-image-thumb.active').removeClass('active');
-            $(this).addClass('active');
-        });
+    // Nếu có hình thu nhỏ, thiết lập hình ảnh chính từ hình đầu tiên
+    if ($thumbs.length > 0) {
+        $productImage.attr('src', $thumbs.first().attr('src'));
+    } else {
+        // Nếu không có hình thu nhỏ, thiết lập hình ảnh chính từ ảnh sản phẩm
+        $productImage.attr('src', '<?= BASE_URL_ADMIN . $sanPham['hinh_anh'] ?>');
+    }
+
+    // Chức năng cho hình thu nhỏ
+    $('.product-image-thumb').on('click', function() {
+        var $image_element = $(this).find('img');
+        $productImage.prop('src', $image_element.attr('src'));
+        $('.product-image-thumb.active').removeClass('active');
+        $(this).addClass('active');
     });
+});
 </script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once 'admin/commons/env.php';
-require_once 'admin/commons/function.php';
+require_once './commons/env.php';
+require_once './commons/function.php';
 
 
 require_once './controllers/ClientDanhmucController.php';

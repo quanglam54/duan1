@@ -1,22 +1,30 @@
 <?php
 session_start();
 // Require file common
-require_once './commons/env.php'; // Khai báo biến môi trường
-require_once './commons/function.php'; // Khai báo hàm hỗ trợ
+require_once '../commons/env.php'; // Khai báo biến môi trường
+require_once '../commons/function.php'; // Khai báo hàm hỗ trợ
 
 // Require toàn bộ file controller
 require_once './controllers/AdminHomeController.php';
 require_once './controllers/AdminDanhMucController.php';
 require_once './controllers/AdminSanPhamController.php';
+require_once './controllers/AdminTaiKhoanController.php';
+
 
 
 // Require toàn bộ file model
 
 require_once './model/AdminDanhMuc.php';
 require_once './model/AdminSanPham.php';
+require_once './model/AdminTaiKhoan.php';
+require_once './model/AdminDonHang.php';
 
 
 $act = $_GET['act'] ?? '/';
+
+if ($act !== 'form-login-admin' && $act !== 'check-login-admin') {
+    checkLoginAdmin();
+}
 match($act){
     '/' => (new AdminHomeController)->home(),
 
@@ -35,6 +43,31 @@ match($act){
     'xoa-san-pham' => (new AdminSanPhamController)->deleteSanPham(),
     'xem-san-pham' => (new AdminSanPhamController)->detailSanPham(),
     'edit-album-anh-san-pham' => (new AdminSanPhamController)->editAlbumAnhSanPham(),
+
+    'list-tai-khoan-admin' =>(new AdminTaiKhoanController)-> listTaiKhoanAdmin(),
+    'form-them-admin' =>(new AdminTaiKhoanController)-> formThemAdmin(),
+    'them-admin' =>(new AdminTaiKhoanController)-> addAdmin(),
+    'sua-trang-thai-admin' =>(new AdminTaiKhoanController)-> editTrangThaiAdmin(),
+    'reset-password' =>(new AdminTaiKhoanController)-> resetPassword(),
+
+    'list-tai-khoan-khach-hang' =>(new AdminTaiKhoanController)-> listTaiKhoanKhachHang(),
+    'chi-tiet-khach-hang' =>(new AdminTaiKhoanController)-> detailKhachHang(),
+
+    'tai-khoan-ca-nhan' =>(new AdminTaiKhoanController)-> taiKhoanCaNhan(),
+    // 'sua-anh-dai-dien' =>(new AdminTaiKhoanController)-> suaAnhDaiDienAdmin(),
+
+    
+    // route auth
+    'form-login-admin' =>(new AdminTaiKhoanController)-> formLoginAdmin(),
+    'check-login-admin' =>(new AdminTaiKhoanController)-> login(),
+
+
+
+
+    
+
+
+
 
 
 
