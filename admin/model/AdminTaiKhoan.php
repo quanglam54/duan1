@@ -106,5 +106,58 @@ class AdminTaiKhoan
         }
     }
 
+    public function getTaiKhoanFromEmail($email){
+        try{
+            $sql = "SELECT * FROM tai_khoans WHERE email = :email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':email' => $email
+            ]);
+            return $stmt->fetch();
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
+    public function updateThongTinTaiKhoanAdmin($id,$ho_ten,$email,$so_dien_thoai,$dia_chi){
+        try{
+            $sql = "UPDATE tai_khoans 
+            SET ho_ten = :ho_ten, email = :email, so_dien_thoai = :so_dien_thoai, dia_chi = :dia_chi
+             WHERE id=:id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':ho_ten' => $ho_ten,
+                ':email' => $email,
+                ':so_dien_thoai' => $so_dien_thoai,
+                ':dia_chi' => $dia_chi,
+                ':id' => $id,
+
+            ]);
+            return true;
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
+    public function updateAnhDaiDienAdmin($id,$anh_dai_dien){
+        try{
+            $sql = "UPDATE tai_khoans 
+            SET anh_dai_dien = :anh_dai_dien
+             WHERE id=:id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':anh_dai_dien' => $anh_dai_dien,    
+                ':id' => $id
+
+            ]);
+            return true;
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
+    
+
+
     
 }

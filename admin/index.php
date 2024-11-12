@@ -53,13 +53,19 @@ match($act){
     'list-tai-khoan-khach-hang' =>(new AdminTaiKhoanController)-> listTaiKhoanKhachHang(),
     'chi-tiet-khach-hang' =>(new AdminTaiKhoanController)-> detailKhachHang(),
 
-    'tai-khoan-ca-nhan' =>(new AdminTaiKhoanController)-> taiKhoanCaNhan(),
-    // 'sua-anh-dai-dien' =>(new AdminTaiKhoanController)-> suaAnhDaiDienAdmin(),
+    'form-sua-tai-khoan-ca-nhan-admin' =>(new AdminTaiKhoanController)-> formSuaTaiKhoanCaNhan(),
+    'sua-anh-dai-dien-admin' =>(new AdminTaiKhoanController)-> editAnhDaiDienAdmin(),
+    'sua-thong-tin-tai-khoan-admin' =>(new AdminTaiKhoanController)-> editThongTinTaiKhoanAdmin(),
+    'sua-mat-khau-admin' =>(new AdminTaiKhoanController)-> editMatKhauAdmin(),
+
 
     
     // route auth
     'form-login-admin' =>(new AdminTaiKhoanController)-> formLoginAdmin(),
     'check-login-admin' =>(new AdminTaiKhoanController)-> login(),
+
+    'logout-admin' =>(new AdminTaiKhoanController)-> logout(),
+
 
 
 

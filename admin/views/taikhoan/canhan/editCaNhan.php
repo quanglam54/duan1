@@ -17,21 +17,29 @@
           <h1>Quản lý tài khoản cá nhân</h1>
         </div>
       </div><!-- /.container-fluid -->
-  
+
   </section>
 
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-         <!-- left column -->
-         <div class="col-md-4">
+        <!-- left column -->
+        <div class="col-md-4">
           <div class="text-center">
-            <form action="<?= BASE_URL_ADMIN . '?act=sua-anh-dai-dien' ?>" method="POST" enctype="multipart/form-data">
-            
+          <?php if (isset($_SESSION['messImg'])) { ?>
+              <div class="alert alert-info alert-dismissable">
+                <a href="" class="panel-close close" data-dismiss="alert"></a>
+                <i class="fa fa-coffee"></i>
+                <?= $_SESSION['messImg'] ?>
+                <?php unset($_SESSION['messImg']); ?>
+              </div>
+            <?php } ?>
+            <form action="<?= BASE_URL_ADMIN . '?act=sua-anh-dai-dien-admin' ?>" method="POST" enctype="multipart/form-data">
+
               <input type="text" name="tai_khoan_id" id="" value="<?= $thongTin['id'] ?>" hidden>
 
-              <img src=".<?= $thongTin['anh_dai_dien'] ?>" style="width:100px" class="avatar img-circle" alt="avatar">
+              <img src="<?= BASE_URL_ADMIN.'../uploads/'.$thongTin['anh_dai_dien'] ?>" style="width:100px" class="avatar img-circle" alt="avatar">
               <input type="file" name="anh_dai_dien">
 
               <div class="form-group">
@@ -42,19 +50,19 @@
               </div>
               <hr>
 
-
             </form>
           </div>
         </div>
         <!-- edit form column -->
 
         <div class="col-md-8 personal-info">
-          <form action="<?= BASE_URL_ADMIN . '?act=sua-thong-tin-ca-nhan-quan-tri' ?>" method="POST">
-            <?php if (isset($_SESSION['successTt'])) { ?>
+          <form action="<?= BASE_URL_ADMIN . '?act=sua-thong-tin-tai-khoan-admin' ?>" method="POST">
+            <?php if (isset($_SESSION['mess'])) { ?>
               <div class="alert alert-info alert-dismissable">
                 <a href="" class="panel-close close" data-dismiss="alert"></a>
                 <i class="fa fa-coffee"></i>
-                <?= $_SESSION['successTt'] ?>
+                <?= $_SESSION['mess'] ?>
+                <?php unset($_SESSION['mess']); ?>
               </div>
             <?php } ?>
             <input type="text" name="tai_khoan_id" id="" value="<?= $thongTin['id'] ?>" hidden>
@@ -83,7 +91,10 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Số điện thoại:</label>
               <div class="col-lg-12">
-                <input class="form-control" type="number" value="<?= $thongTin['so_dien_thoai'] ?>" name="so_dien_thoai">
+                <input class="form-control" type="text" value="<?= $thongTin['so_dien_thoai'] ?>" name="so_dien_thoai">
+                <?php if (isset($_SESSION['errors']['so_dien_thoai'])) { ?>
+                  <p class="text-danger"><?= $_SESSION['errors']['so_dien_thoai'] ?></p>
+                <?php } ?>
               </div>
             </div>
             <div class="form-group">
@@ -99,7 +110,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label"></label>
               <div class="col-md-12">
-                <input type="submit" class="btn btn-primary" value="Save Changes">
+                <input type="submit" class="btn btn-primary" value="Sửa">
               </div>
             </div>
 
@@ -109,14 +120,15 @@
 
 
           <h3>Đổi mật khẩu</h3>
-          <?php if (isset($_SESSION['successMk'])) { ?>
-            <div class="alert alert-info alert-dismissable">
-              <a href="" class="panel-close close" data-dismiss="alert"></a>
-              <i class="fa fa-coffee"></i>
-              <?= $_SESSION['successMk'] ?>
-            </div>
-          <?php } ?>
-          <form action="<?= BASE_URL_ADMIN . '?act=sua-mat-khau-ca-nhan-quan-tri' ?>" method="POST">
+          <?php if (isset($_SESSION['mess2'])) { ?>
+              <div class="alert alert-info alert-dismissable">
+                <a href="" class="panel-close close" data-dismiss="alert"></a>
+                <i class="fa fa-coffee"></i>
+                <?= $_SESSION['mess2'] ?>
+                <?php unset($_SESSION['mess2']); ?>
+              </div>
+            <?php } ?>
+          <form action="<?= BASE_URL_ADMIN . '?act=sua-mat-khau-admin' ?>" method="POST">
             <div class="form-group">
               <label class="col-md-3 control-label">Mật khẩu cũ:</label>
               <div class="col-md-12">
@@ -147,12 +159,12 @@
             <div class="form-group">
               <label class="col-md-3 control-label"></label>
               <div class="col-md-12">
-                <input type="submit" class="btn btn-primary" value="Save Changes">
+                <input type="submit" class="btn btn-primary" value="Sửa">
               </div>
             </div>
           </form>
         </div>
-        
+
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -165,13 +177,13 @@
 <!--footer-->
 <?php include './views/layout/footer.php'; ?>
 <script>
-  var faqs_row = <?=count($listAnhSanPham);?>;
+  var faqs_row = <?= count($listAnhSanPham); ?>;
 
   function addfaqs() {
     html = '<tr id="faqs-row' + faqs_row + '">';
     html += '<td><img src="" alt="" style = "width: 50px; height: 50px"></td>';
     html += '<td><input type="file"name ="img_array[]" class="form-control"></td>';
-    html += '<td class="mt-10"><button type= "button" class="badge badge-danger" onclick="removeRow('+ faqs_row + ', null);' + faqs_row + '\').remove();"><i class="fa fa-trash"></i> Delete</button></td>';
+    html += '<td class="mt-10"><button type= "button" class="badge badge-danger" onclick="removeRow(' + faqs_row + ', null);' + faqs_row + '\').remove();"><i class="fa fa-trash"></i> Delete</button></td>';
 
     html += '</tr>';
 
@@ -179,15 +191,16 @@
 
     faqs_row++;
   }
-  function removeRow(rowId, imgId){
+
+  function removeRow(rowId, imgId) {
     $('#faqs-row-' + rowId).remove()
-    if (imgId !== null){
+    if (imgId !== null) {
       var imgDeleteInput = document.getElementById('img_delete');
       var currentValue = imgDeleteInput.value;
       imgDeleteInput.value = currentValue ? currentValue + ',' + imgId : imgId;
     }
 
-}
+  }
 </script>
 <!-- Control Sidebar -->
 
