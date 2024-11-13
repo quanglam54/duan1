@@ -70,6 +70,8 @@ match($act){
 
 
    'don-hang' =>(new AdminDonHangController())->danhSachDonHang(),
+   'chi-tiet-don-hang' => (new AdminDonHangController())->detailDonHang(),
+
 
 
 
