@@ -51,7 +51,9 @@ class AdminTaiKhoanController
             if (empty($errors)) {
 
                 // Đặt password mặc định
-                $password = password_hash('123@123ab', PASSWORD_BCRYPT);
+                // $password = password_hash('123@123ab', PASSWORD_BCRYPT);
+
+                $password = '123456';
                 $chuc_vu_id = 1;
 
                 $this->modelTaiKhoan->insertTaiKhoan($ho_ten, $email, $password, $chuc_vu_id);
@@ -102,7 +104,8 @@ class AdminTaiKhoanController
         $tai_khoan = $this->modelTaiKhoan->getDetailTaiKhoan($tai_khoan_id);
         // var_dump($tai_khoan);die();
 
-        $password = password_hash('123@123ab', PASSWORD_BCRYPT);
+        // $password = password_hash('123@123ab', PASSWORD_BCRYPT);
+        $password = '123456';
         $status = $this->modelTaiKhoan->resetPassword($tai_khoan_id, $password);
         // var_dump($tai_khoan['chuc_vu_id']);die();
 
@@ -234,7 +237,7 @@ class AdminTaiKhoanController
 
             $user = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
 
-            $checkPass = password_verify($old_pass, $user['mat_khau']);
+            // $checkPass = password_verify($old_pass, $user['mat_khau']);
             // var_dump($user['mat_khau']);die();
 
             if (empty($old_pass)) {
@@ -243,7 +246,7 @@ class AdminTaiKhoanController
             if (empty($new_pass)) {
                 $errors['new_pass'] = 'Mật khẩu mới không được để trống';
             }
-            if (!$checkPass) {
+            if ($old_pass !== $user['mat_khau']) {
                 $errors['old_pass'] = 'Mật khẩu cũ không đúng';
             }
             if ($new_pass !== $confirm_pass) {
@@ -254,8 +257,8 @@ class AdminTaiKhoanController
             }
             $_SESSION['errors'] = $errors;
             if (!$errors) {
-                $hashPass = password_hash($new_pass, PASSWORD_BCRYPT);
-                $status = $this->modelTaiKhoan->resetPassword($user['id'], $hashPass);
+                // $hashPass = password_hash($new_pass, PASSWORD_BCRYPT);
+                $status = $this->modelTaiKhoan->resetPassword($user['id'], $new_pass);
 
                 if ($status) {
                     $_SESSION['mess2'] = 'Đổi mật khẩu thành công';

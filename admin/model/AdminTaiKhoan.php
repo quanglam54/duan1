@@ -89,7 +89,7 @@ class AdminTaiKhoan
                 ':email' => $email
             ]);
             $user = $stmt->fetch();
-            if ($user && password_verify($mat_khau, $user['mat_khau'])) {
+            if ($user && $mat_khau ===$user['mat_khau']) {
                 if ($user['chuc_vu_id'] == 1) { // ADMIN
                     if ($user['trang_thai'] == 1) {
                         return $user['email']; // thành công

@@ -9,6 +9,8 @@ require_once './controllers/AdminHomeController.php';
 require_once './controllers/AdminDanhMucController.php';
 require_once './controllers/AdminSanPhamController.php';
 require_once './controllers/AdminTaiKhoanController.php';
+require_once './controllers/AdminDonHangController.php';
+
 
 
 
@@ -65,6 +67,10 @@ match($act){
     'check-login-admin' =>(new AdminTaiKhoanController)-> login(),
 
     'logout-admin' =>(new AdminTaiKhoanController)-> logout(),
+
+
+   'don-hang' =>(new AdminDonHangController())->danhSachDonHang(),
+
 
 
 
