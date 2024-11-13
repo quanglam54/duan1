@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 12, 2024 at 02:42 PM
+-- Generation Time: Nov 13, 2024 at 03:15 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -32,7 +32,7 @@ CREATE TABLE `binh_luans` (
   `san_pham_id` int NOT NULL,
   `tai_khoan_id` int NOT NULL,
   `noi_dung` text NOT NULL,
-  `ngay_dang` date NOT NULL,
+  `ngay_dang` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `trang_thai` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -41,9 +41,12 @@ CREATE TABLE `binh_luans` (
 --
 
 INSERT INTO `binh_luans` (`id`, `san_pham_id`, `tai_khoan_id`, `noi_dung`, `ngay_dang`, `trang_thai`) VALUES
-(29, 27, 32, 'Xấu', '2024-11-03', 1),
-(31, 25, 31, 'woww', '2024-11-19', 1),
-(32, 25, 32, 'Được', '2024-11-10', 1);
+(31, 25, 31, 'woww', '2024-11-18 17:00:00', 1),
+(32, 25, 32, 'Được', '2024-11-09 17:00:00', 1),
+(33, 19, 38, 'đẹp', '2024-11-12 12:04:38', 1),
+(34, 20, 38, 'đẹp quá', '2024-11-12 12:18:18', 1),
+(35, 27, 38, 'đẹp quá shop ơi', '2024-11-13 02:28:17', 1),
+(36, 27, 38, 'đẹp quá', '2024-11-13 02:29:37', 1);
 
 -- --------------------------------------------------------
 
@@ -78,8 +81,9 @@ CREATE TABLE `chi_tiet_gio_hangs` (
 --
 
 INSERT INTO `chi_tiet_gio_hangs` (`id`, `gio_hang_id`, `san_pham_id`, `so_luong`) VALUES
-(96, 126, 26, 5),
-(97, 126, 27, 5);
+(96, 134, 20, 1),
+(97, 135, 20, 1),
+(98, 136, 40, 1);
 
 -- --------------------------------------------------------
 
@@ -98,7 +102,8 @@ CREATE TABLE `chuc_vus` (
 
 INSERT INTO `chuc_vus` (`id`, `ten_chuc_vu`) VALUES
 (1, 'admin'),
-(2, 'Khách hàng');
+(2, 'Khách hàng'),
+(3, 'Khách hàng');
 
 -- --------------------------------------------------------
 
@@ -144,13 +149,6 @@ CREATE TABLE `don_hangs` (
   `trang_thai_id` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `don_hangs`
---
-
-INSERT INTO `don_hangs` (`id`, `ma_don_hang`, `tai_khoan_id`, `ten_nguoi_nhan`, `email_nguoi_nhan`, `sdt_nguoi_nhan`, `dia_chi_nguoi_nhan`, `ngay_dat`, `tong_tien`, `ghi_chu`, `phuong_thuc_thanh_toan_id`, `trang_thai_id`) VALUES
-(150, 'DH001', 31, 'Lan Anh', 'anh@gmail.com', '0949607556', 'Trịnh Văn Bô', '2024-11-10', '6666000.00', 'abs', 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -167,7 +165,17 @@ CREATE TABLE `gio_hangs` (
 --
 
 INSERT INTO `gio_hangs` (`id`, `tai_khoan_id`) VALUES
-(126, 31);
+(126, 38),
+(127, 38),
+(128, 38),
+(136, 38),
+(129, 40),
+(130, 40),
+(131, 40),
+(132, 40),
+(133, 40),
+(134, 40),
+(135, 40);
 
 -- --------------------------------------------------------
 
@@ -287,11 +295,13 @@ CREATE TABLE `tai_khoans` (
 --
 
 INSERT INTO `tai_khoans` (`id`, `ho_ten`, `anh_dai_dien`, `ngay_sinh`, `email`, `so_dien_thoai`, `gioi_tinh`, `dia_chi`, `mat_khau`, `chuc_vu_id`, `trang_thai`) VALUES
-(31, 'Lê Thị Lan Anh', NULL, '2015-11-03', 'anh@gmail.com', '0949607556', 2, 'Trịnh Văn Bô', '$2y$10$nlJmcubSBkMsg5eIS1ayKuKxE5wr8lImSkJgN7ANIrUvtnpszM4Km', 2, 2),
-(32, 'Lê Văn Long', NULL, '2014-11-17', 'long@gmail.com', '0369562321', 1, 'Cầu Diễn', '$2y$10$bjw40QoRUaFDa3HJIq6TteRlyNOjUA8WvJ5n.dOxkrq2U1xEtXS0C', 2, 1),
-(33, 'Lê Văn Minh', '1731421751avatar5.png', '2024-11-12', 'admin@gmail.com', '0335323863', 1, 'Trịnh Văn Bô', '$2y$10$l/9HgyCrUZzufHnNtK.p2.lnansHQ6RWuSZY.12JYkEd5rEs2HAZ.', 1, 1),
-(34, 'Nguyễn Thùy Chi', NULL, '2024-11-13', 'chi@gmail.com', '0998224551', 2, 'Cầu Diễn', '123@123ab', 1, 1),
-(35, 'Trần Thanh Nga', '1731419461avatar3.png', NULL, 'nga@gmail.com', '0949698332', 1, 'Nam Định', '$2y$10$CxhIMy/g7UbLcBC/8oQFluNb6OzhdYunC90k9hICNkJdhkMMezEgK', 1, 1);
+(31, 'Lê Thị Lan Anh', NULL, '2015-11-03', 'anh@gmail.com', '0949607556', 1, 'Trịnh Văn Bô', '12345', 2, 1),
+(32, 'Lê Văn Long', NULL, '2014-11-17', 'long@gmail.com', '0369562321', 2, 'Cầu Diễn', '12345', 2, 1),
+(36, 'quanglam', NULL, NULL, 'quanglam5401@gmail.com', NULL, 1, NULL, '123456', 1, 1),
+(38, 'tranhien11', NULL, NULL, 'quanglam@gmail.com', NULL, 1, NULL, '123456', 2, 1),
+(39, 'quanglam', NULL, NULL, 'hieutatph52546@gmail.com', NULL, 1, NULL, '$2y$10$bo5AbKx7116sbWYnRq5Nle/.7F8Tb2MUvQeZGgef.7F.onkF1iSTG', 1, 1),
+(40, 'quanglam11', NULL, NULL, 'quachtran220@gmail.com', NULL, 1, NULL, '123456', 2, 1),
+(41, 'quanglam', NULL, NULL, 'quanglam54011@gmail.com', NULL, 1, NULL, '123456', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -419,43 +429,43 @@ ALTER TABLE `trang_thai_don_hangs`
 -- AUTO_INCREMENT for table `binh_luans`
 --
 ALTER TABLE `binh_luans`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `chi_tiet_don_hangs`
 --
 ALTER TABLE `chi_tiet_don_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=320;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=311;
 
 --
 -- AUTO_INCREMENT for table `chi_tiet_gio_hangs`
 --
 ALTER TABLE `chi_tiet_gio_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `chuc_vus`
 --
 ALTER TABLE `chuc_vus`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `danh_mucs`
 --
 ALTER TABLE `danh_mucs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `don_hangs`
 --
 ALTER TABLE `don_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 
 --
 -- AUTO_INCREMENT for table `gio_hangs`
 --
 ALTER TABLE `gio_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT for table `hinh_anh_san_phams`
@@ -479,7 +489,7 @@ ALTER TABLE `san_phams`
 -- AUTO_INCREMENT for table `tai_khoans`
 --
 ALTER TABLE `tai_khoans`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `trang_thai_don_hangs`

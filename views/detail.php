@@ -127,15 +127,20 @@
                          </p>
                          <div class="detail-pay">
                               <div class="pay-quantity">
-                                   <div class="quantity-decre">
-                                        <a href="#">- |</a>
-                                        <span>1</span>
-                                        <a href="#">| +</a>
-                                   </div>
-                                   <div class="pay-addcart">
-                                        <p>Thêm vào giỏ</p>
-                                        <a href="#">350.000đ</a>
-                                   </div>
+                                   <form action="<?= BASE_URL . '?act=them-gio-hang' ?>" method="post">
+                                        <div class="quantity-decre">
+                                             <a href="#">- |</a>
+                                             <input type="number" name="so_luong" value="1">
+                                             <a href="#">| +</a>
+                                        </div>
+                                        <div class="pay-addcart">
+                                             <input type="hidden" name="id_product" value="<?= $productDetail['id'] ?>">
+                                             <input type="hidden" name="user_product"
+                                                  value="<?= (isset($_SESSION['ho_ten']['id']) ?? '') ?>">
+                                             <button type="submit">Thêm vào giỏ</button>
+                                             <a href="#">350.000đ</a>
+                                        </div>
+                                   </form>
                               </div>
                          </div>
                          <hr />
@@ -189,14 +194,47 @@
      <!--  -->
      <section class="comments">
           <div class="container">
-               <div class="comment-product">
-                    <h3>Bình luận của sản phẩm</h3>
-                    <form action="">
-                         <textarea id="" cols="70" rows="10"></textarea> <br />
-                         <button type="submit">Gửi bình luận</button>
-                    </form>
-                    <hr />
+               <div class="comment-blocks">
+                    <div class="comment-product">
+                         <h3>Bình luận của sản phẩm</h3>
+                         <?php if (isset($_SESSION['ho_ten'])): ?>
+                              <form action="<?= BASE_URL . '?act=comment' ?>" method="post">
+                                   <textarea name="comment" cols="70" rows="10"></textarea> <br />
+                                   <input type="hidden" name="product_id" value="<?= $productDetail['id'] ?>">
+                                   <button type="submit">Gửi bình luận</button>
+                              </form>
+                         <?php else: ?>
+                              <a href="<?= BASE_URL . '?act=login' ?>">Vui lòng đăng nhập</a>
+                         <?php endif; ?>
+                    </div>
+                    <?php if (empty($comments)): ?>
+                         <p>Sản phẩm chưa có bình luận</p>
+                    <?php else: ?>
+                         <div class="comment-product-user">
+                              <table>
+                                   <thead>
+                                        <tr>
+                                             <th>Người bình luận</th>
+                                             <th>Nội dung</th>
+                                             <th>Ngày bình luận</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        <?php foreach ($comments as $cmt): ?>
+                                             <tr>
+                                                  <td><?= $cmt['ho_ten'] ?></td>
+                                                  <td><?= $cmt['noi_dung'] ?></td>
+                                                  <td><?= $cmt['ngay_dang'] ?></td>
+                                             </tr>
+                                        <?php endforeach; ?>
+                                   </tbody>
+
+                              </table>
+                         </div>
+
+                    <?php endif; ?>
                </div>
+               <hr>
           </div>
      </section>
 

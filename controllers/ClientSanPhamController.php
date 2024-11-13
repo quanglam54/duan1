@@ -4,10 +4,12 @@ class ClientSanPhamController
      public $modelSanPham;
 
      public $modelDanhMuc;
+     public $userModel;
 
      public function __construct()
      {
           $this->modelSanPham = new ClientSanPhamModel();
+          $this->userModel = new UserModel();
      }
      public function allSanPham()
      {
@@ -53,7 +55,34 @@ class ClientSanPhamController
 
           // var_dump($productDetail);
           // die;
+          $comments = $this->modelSanPham->getCommentById($product_id);
+          // var_dump($comments);
+          // die;
           require_once './views/detail.php';
      }
+     //
+
+     public function comment()
+     {
+
+          if (!isset($_SESSION['ho_ten'])) {
+               header("Location:" . BASE_URL . '?act=login');
+               exit();
+          }
+
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+               $user_id = $_SESSION['ho_ten']['id'];
+               // var_dump($user_id);
+               // die;
+               $product_id = $_POST['product_id'];
+               $comment = $_POST['comment'];
+
+               $this->modelSanPham->inSertCmt($product_id, $user_id, $comment);
+
+               header("Location:" . BASE_URL . '?act=detail&id=' . $product_id);
+               exit();
+          }
+     }
+
 }
 ?>

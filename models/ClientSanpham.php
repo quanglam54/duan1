@@ -68,6 +68,25 @@ class ClientSanphamModel
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
 
+     public function inSertCmt($product_id, $user_id, $comment)
+     {
+          $sql = "INSERT INTO binh_luans(san_pham_id,tai_khoan_id,noi_dung) VALUE(:san_pham_id,:tai_khoan_id,:noi_dung)";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':san_pham_id' => $product_id,
+               ':tai_khoan_id' => $user_id,
+               'noi_dung' => $comment
+          ]);
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
+
+     public function getCommentById($product_id)
+     {
+          $sql = "SELECT binh_luans.*, tai_khoans.ho_ten FROM binh_luans INNER JOIN tai_khoans ON tai_khoans.id=binh_luans.tai_khoan_id WHERE san_pham_id='$product_id' ORDER BY ngay_dang DESC ";
+          $stmt = $this->conn->query($sql);
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
+
 
 }
 ?>

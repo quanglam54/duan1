@@ -89,7 +89,8 @@ class UserController
                     // $in_fo = $this->userModel->getUserName($email); // lấy họ tên
                     // var_dump($ho_ten);
                     // die;
-                    $_SESSION['ho_ten'] = $user['ho_ten'];
+                    // $_SESSION['ho_ten'] = $user['ho_ten'];
+                    $_SESSION['ho_ten'] = $user;
                     echo "<script type='text/javascript'>
                          alert('đăng nhập thành công!');
                        </script>";

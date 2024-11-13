@@ -8,10 +8,12 @@ require_once './commons/function.php';
 require_once './controllers/ClientDanhmucController.php';
 require_once './controllers/ClientSanPhamController.php';
 require_once './controllers/UserController.php';
+require_once './controllers/CartController.php';
 //
 require_once './models/ClientDanhmuc.php';
 require_once './models/ClientSanpham.php';
 require_once './models/UserModel.php';
+require_once './models/CartModel.php';
 //
 $act = $_GET['act'] ?? '/';
 
@@ -25,6 +27,9 @@ match ($act) {
      'login' => (new UserController)->login(),
      'postlogin' => (new UserController)->postLogin(),
      'logout' => (new UserController)->logout(),
+     'comment' => (new ClientSanPhamController)->comment(),
+     'them-gio-hang' => (new CartController)->createCart(),
+     'view-cart' => (new CartController)->viewCart(),
 }
 
      ?>

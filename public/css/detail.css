@@ -474,6 +474,27 @@ hr {
   color: #fff;
   margin-bottom: 10px;
 }
+.comment-blocks p {
+  color: #454545;
+  font-weight: bold;
+}
+.comment-product-user table {
+  border-collapse: collapse;
+  border: 1px solid #000;
+  padding: 5px;
+}
+.comment-product-user table thead th {
+  background-color: #666;
+  color: #fff;
+  padding: 5px;
+  border: 1px solid #333;
+}
+.comment-product-user table tr td {
+  border: 1px solid #333;
+  padding: 5px;
+  color: #454545;
+  font-weight: bold;
+}
 /* css đánh giá evalute */
 .evalute {
   margin-bottom: 30px;
@@ -825,4 +846,8 @@ hr {
   color: #fff;
   rotate: -30deg;
   font-size: 20px;
+}
+.comment-blocks {
+  display: flex;
+  justify-content: space-between;
 }
