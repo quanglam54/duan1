@@ -65,6 +65,21 @@ class AdminSanPham
             echo "Lỗi: " . $e->getMessage();
         }
     }
+
+    public function getDetailBinhLuan($id){
+        try {
+            $sql = "SELECT * FROM binh_luans WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(
+                [
+                    ':id' => $id
+                ]
+            );
+            return $stmt->fetch();
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+        }
+    }
     public function updateSanPham($san_pham_id, $ten_san_pham, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $hinh_anh)
     {
 
@@ -215,6 +230,38 @@ class AdminSanPham
             WHERE binh_luans.tai_khoan_id = :id" ;
             $stmt = $this->conn->prepare($sql); 
             $stmt->execute([':id'=>$id]);
+            
+            return $stmt->fetchAll();
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
+    public function deleteBinhLuan($id){
+        try{
+            $sql = "DELETE FROM binh_luans WHERE id=:id";
+            $stmt = $this->conn->prepare($sql); 
+            $stmt->execute([':id'=>$id]);
+            
+            return true;
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
+    public function getAllThongKe(){
+        try{
+            $sql = "SELECT danh_mucs.ten_danh_muc, danh_mucs.id,
+            COUNT(san_phams.id) as countSp,
+            MIN(san_phams.gia_san_pham) as minPrice,
+            MAX(san_phams.gia_san_pham) as maxPrice,
+            AVG(san_phams.gia_san_pham) as avgPrice
+            FROM san_phams
+            INNER JOIN danh_mucs ON danh_mucs.id = san_phams.danh_muc_id
+            GROUP BY danh_mucs.ten_danh_muc, danh_mucs.id
+            ORDER BY danh_mucs.id DESC";
+            $stmt = $this->conn->prepare($sql); 
+            $stmt->execute();
             
             return $stmt->fetchAll();
         }catch(Exception $e){

@@ -3,20 +3,25 @@ class AdminSanPhamConTroller
 {
     public $modelSanPham;
     public $modelDanhMuc;
+    public $modelTaiKhoan;
 
     public function __construct()
     {
         $this->modelSanPham = new AdminSanPham();
         $this->modelDanhMuc = new AdminDanhMuc();
+        $this->modelTaiKhoan = new AdminTaiKhoan();
+
     }
 
     public function listSanPham()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         $listSanPham = $this->modelSanPham->getAllSanPham();
         require_once 'views/sanpham/listSanPham.php';
     }
     public function formAddSanPham()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         deleteSession();
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         require_once 'views/sanpham/addSanPham.php';
@@ -123,9 +128,12 @@ class AdminSanPhamConTroller
 
     public function formEditSanPham()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         $id = $_GET['id_san_pham'];
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
+        // var_dump($sanPham);die();
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
+        // var_dump($listAnhSanPham);die();
 
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         if (isset($sanPham)) {
@@ -147,7 +155,6 @@ class AdminSanPhamConTroller
             // Truy vấn 
             $sanPhamOld = $this->modelSanPham->getDetailSanPham($san_pham_id);
             $old_file = $sanPhamOld['hinh_anh']; // Lấy ảnh cũ để phục vụ cho sửa ảnh
-
             $ten_san_pham = $_POST['ten_san_pham'] ?? '';
             $gia_san_pham = $_POST['gia_san_pham'] ?? '';
             $gia_khuyen_mai = isset($_POST['gia_khuyen_mai']) && $_POST['gia_khuyen_mai'] !== '' ? $_POST['gia_khuyen_mai'] : null;
@@ -288,6 +295,7 @@ class AdminSanPhamConTroller
 
     public function detailSanPham()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         $id = $_GET['id_san_pham'];
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
         $listAnhSanPham = $this->modelSanPham->getListAnhSanPham($id);
@@ -300,4 +308,16 @@ class AdminSanPhamConTroller
             exit();
         }
     }
+
+    public function deleteBinhLuan(){
+        $id_binh_luan =$_GET['id_binh_luan'];
+        // var_dump($id_binh_luan);die();
+        $binhLuan = $this->modelSanPham->getDetailBinhLuan($id_binh_luan);
+
+        $this->modelSanPham->deleteBinhLuan($id_binh_luan);
+        // var_dump($binhLuan['san_pham_id']);die();
+        header("Location:".BASE_URL_ADMIN.'?act=xem-san-pham&id_san_pham='.$binhLuan['san_pham_id']);
+    }
+
+    
 }

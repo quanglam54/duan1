@@ -48,9 +48,9 @@
                                         <td><?= $key + 1 ?></td>
                                         <td><a href="<?= BASE_URL_ADMIN . '?act=xem-san-pham&id_san_pham=' . $binhLuan['san_pham_id'] ?>"><?= $binhLuan['ten_san_pham'] ?></a></td>
                                         <td><?= $binhLuan['noi_dung'] ?></td>
-                                        <td><?= $binhLuan['ngay_dang'] ?></td>
+                                        <td><?= formatDate( $binhLuan['ngay_dang']) ?></td>
                                         <td>
-                                            <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">Xem</button>
+                                        <a href="<?=BASE_URL_ADMIN.'?act=xoa-binh-luan&id_binh_luan='.$binhLuan['id']?>"><button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">Xóa</button></a>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -86,10 +86,9 @@
                                         <td><?= $donHang['tong_tien'] ?></td>
                                         <td><?= $donHang['ten_trang_thai'] ?></td>
 
-
                                         <td>
-                                            <a href=""><button class="btn btn-primary" type="submit" >Xem</button></a>
-                                            <a href=""><button class="btn btn-warning" type="submit">Sửa</button></a>
+                                            <a href="<?=BASE_URL_ADMIN.'?act=chi-tiet-don-hang&id_don_hang='.$donHang['id']?>"><button class="btn btn-primary" type="submit" >Xem</button></a>
+                                            <a href="<?=BASE_URL_ADMIN.'?act=form-sua-don-hang&id_don_hang='.$donHang['id']?>"><button class="btn btn-warning" type="submit">Sửa</button></a>
 
                                         </td>
                                     </tr>

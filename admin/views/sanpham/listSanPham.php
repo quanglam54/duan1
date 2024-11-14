@@ -56,7 +56,7 @@
                                                 style="width: 100%; max-height:100px">
 
                                         </td>
-                                        <td><?= $sanPham['gia_san_pham'] ?></td>
+                                        <td><?= formatPrice($sanPham['gia_san_pham']) ?></td>
                                         <td><?= $sanPham['so_luong'] ?></td>
                                         <td><?= $sanPham['ten_danh_muc'] ?></td>
                                         <td><?= $sanPham['trang_thai'] == 1 ? 'Còn bán' : 'Dừng bán' ?></td>

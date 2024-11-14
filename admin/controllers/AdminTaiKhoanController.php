@@ -16,18 +16,23 @@ class AdminTaiKhoanController
 
     public function listTaiKhoanAdmin()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
+
         $listAdmin = $this->modelTaiKhoan->getAllTaiKhoan(1);
         require_once './views/taikhoan/admin/listAdmin.php';
     }
 
     public function formThemAdmin()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
+
         require_once './views/taikhoan/admin/addAdmin.php';
         deleteSession();
     }
 
     public function addAdmin()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $ho_ten = $_POST['ho_ten'];
             $email = $_POST['email'];
@@ -70,6 +75,7 @@ class AdminTaiKhoanController
 
     public function editTrangThaiAdmin()
     {
+        
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id_tai_khoan = $_GET['id_tai_khoan'];
             $tai_khoan = $this->modelTaiKhoan->getDetailTaiKhoan($id_tai_khoan);
@@ -129,12 +135,14 @@ class AdminTaiKhoanController
 
     public function listTaiKhoanKhachHang()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         $listKhachHang = $this->modelTaiKhoan->getAllTaiKhoan(2);
         require_once './views/taikhoan/khachhang/listKhachHang.php';
     }
 
     public function detailKhachHang()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         $id_khach_hang = $_GET['id_tai_khoan'];
         $khachHang = $this->modelTaiKhoan->getDetailTaiKhoan($id_khach_hang);
 

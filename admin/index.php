@@ -45,6 +45,8 @@ match($act){
     'xoa-san-pham' => (new AdminSanPhamController)->deleteSanPham(),
     'xem-san-pham' => (new AdminSanPhamController)->detailSanPham(),
     'edit-album-anh-san-pham' => (new AdminSanPhamController)->editAlbumAnhSanPham(),
+    'xoa-binh-luan' =>(new AdminSanPhamController)-> deleteBinhLuan(),
+
 
     'list-tai-khoan-admin' =>(new AdminTaiKhoanController)-> listTaiKhoanAdmin(),
     'form-them-admin' =>(new AdminTaiKhoanController)-> formThemAdmin(),
@@ -68,9 +70,13 @@ match($act){
 
     'logout-admin' =>(new AdminTaiKhoanController)-> logout(),
 
-
-   'don-hang' =>(new AdminDonHangController())->danhSachDonHang(),
+   'don-hang' =>(new AdminDonHangController())->listDonHang(),
    'chi-tiet-don-hang' => (new AdminDonHangController())->detailDonHang(),
+   'form-sua-don-hang' => (new AdminDonHangController())->formEditDonHang(),
+   'sua-don-hang' => (new AdminDonHangController())->editDonHang(),
+
+   
+
 
 
 

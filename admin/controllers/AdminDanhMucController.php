@@ -3,14 +3,18 @@ class AdminDanhMucController
 {
 
     public $modelDanhMuc;
+    public $modelTaiKhoan;
 
     public function __construct()
     {
         $this->modelDanhMuc = new AdminDanhMuc();
+        $this->modelTaiKhoan = new AdminTaiKhoan();
+
     }
 
     public function listDanhMuc()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         // var_dump($listDanhMuc);die();
         require_once './views/danhmuc/listDanhMuc.php';
@@ -18,6 +22,7 @@ class AdminDanhMucController
 
     public function formAddDanhMuc()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         // Hiển thị form thêm danh mục
         require_once './views/danhmuc/addDanhMuc.php';
     }
@@ -47,6 +52,7 @@ class AdminDanhMucController
 
     public function formEditDanhMuc()
     {
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
         // Hiển thị form sửa và lấy thông tin danh mục
         $id = $_GET['id_danh_muc'];
         $danhMuc = $this->modelDanhMuc->getDetailDanhMuc($id);

@@ -69,3 +69,10 @@ function checkLoginAdmin(){
         exit();
     }
 }
+
+function formatDate($date){
+    echo $newDate = date("d-m-Y",strtotime($date));
+}
+function formatPrice($price){
+    return number_format($price, 0, ',', '.');
+}

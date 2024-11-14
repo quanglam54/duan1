@@ -65,14 +65,13 @@
                   <label>Hình ảnh </label>
                  <div class="input-group">
                   <div class="custom-file">
+              
                   <input type="file" class="custom-file-input" id="hinh_anh" value="<?=$sanPham['hinh_anh']?>" class="form-control" name="hinh_anh" aria-describedby="inputGroupFileAddon01">
                   <label for="hinh_anh" class="custom-file-label"><?=$sanPham['hinh_anh'] ?basename($sanPham['hinh_anh']) : 'Chọn file'?></label>
                   </div>
                  </div>
-                  <img src="<?=BASE_URL_ADMIN . $sanPham['hinh_anh']?>" style="width:100px">
-                  <?php if (isset($_SESSION['errors']['hinh_anh'])) { ?>
-                    <p class="text-danger"><?= $_SESSION['errors']['hinh_anh'] ?></p>
-                  <?php } ?>
+                  <img src="<?=BASE_URL_ADMIN .'../uploads/'. $sanPham['hinh_anh']?>" style="width:100px">
+                 
                 </div>
 
                 <div class="form-group col-6">

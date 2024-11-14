@@ -11,29 +11,25 @@
             <div class="card card-solid">
                 <div class="card-body">
                     <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="col-12">
+                                <img type="width:500px; height:500px" src="<?= BASE_URL_ADMIN . '../uploads/' . $sanPham['hinh_anh'] ?>" class="product-image" alt="Product Image">
+                            </div>
+                            <div class="col-12 product-image-thumbs">
+                                <?php foreach ($listAnhSanPham as $key => $anhSP) { ?>
+                                    <div class="product-image-thumb <?= $anhSP[$key] == 0 ? 'active' : '' ?>"><img src="<?= BASE_URL_ADMIN . $anhSP['link_hinh_anh'] ?>" alt="Product Image"></div>
+                                <?php } ?>
 
-                    <div class="col-12 col-sm-6">
-    <div class="col-12">
-        <img src="<?= BASE_URL_ADMIN . $sanPham['hinh_anh'] ?>" class="product-image" alt="Product Image" style="width: 500px; height: 500px;">
-    </div>
-    <div class="col-12 product-image-thumbs">
-        <?php foreach($listAnhSanPham as $key => $anhSP) {
-            $activeClass = ($key === 0) ? 'active' : ''; // Đánh dấu hình thu nhỏ đầu tiên là active
-        ?>
-            <div class="product-image-thumb <?= $activeClass ?>">
-                <img src="<?= BASE_URL_ADMIN . $anhSP['link_hinh_anh'] ?>" alt="Product Image">
-            </div>
-        <?php } ?>
-    </div>
-</div>
+                            </div>
+                        </div>
                         <div class="col-12 col-sm-6">
                             <h3 class="my-3"> Tên sản phẩm: <b><?= $sanPham['ten_san_pham'] ?></b></h3>
                             <hr>
-                            <h4 class="mt-3">Giá tiền: <?= $sanPham['gia_san_pham'] ?></h4>
-                            <h4 class="mt-3">Giá khuyến mãi: <?= $sanPham['gia_khuyen_mai'] ?></h4>
+                            <h4 class="mt-3">Giá tiền: <?= formatPrice( $sanPham['gia_san_pham'] )?></h4>
+                            <h4 class="mt-3">Giá khuyến mãi: <?= formatPrice( $sanPham['gia_khuyen_mai'] )?></h4>
                             <h4 class="mt-3">Số lượng: <?= $sanPham['so_luong'] ?></h4>
                             <h4 class="mt-3">Lượt xem: <?= $sanPham['luot_xem'] ?></h4>
-                            <h4 class="mt-3">Ngày nhập: <?= $sanPham['ngay_nhap'] ?></h4>
+                            <h4 class="mt-3">Ngày nhập: <?= formatDate( $sanPham['ngay_nhap'] ) ?></h4>
                             <h4 class="mt-3">Danh mục: <?= $sanPham['ten_danh_muc'] ?></h4>
                             <h4 class="mt-3">Trạng thái: <?= $sanPham['trang_thai'] == 1 ? 'Còn bán' : 'Dừng bán' ?></h4>
                             <h4 class="mt-3">Mô tả: <?= $sanPham['mo_ta'] ?></h4>
@@ -58,11 +54,11 @@
                                     <?php foreach ($listBinhLuan as $key => $binhLuan) { ?>
                                         <tr>
                                             <td><?= $key + 1 ?></td>
-                                            <td><a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_khach_hang=' . $binhLuan['tai_khoan_id'] ?>"><?= $binhLuan['ho_ten'] ?></a></td>
+                                            <td><a href="<?= BASE_URL_ADMIN . '?act=chi-tiet-khach-hang&id_tai_khoan=' . $binhLuan['tai_khoan_id'] ?>"><?= $binhLuan['ho_ten'] ?></a></td>
                                             <td><?= $binhLuan['noi_dung'] ?></td>
-                                            <td><?= $binhLuan['ngay_dang'] ?></td>
+                                            <td><?= formatDate( $binhLuan['ngay_dang'] )?></td>
                                             <td>
-                                                <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">Xóa</button>
+                                                <a href="<?=BASE_URL_ADMIN.'?act=xoa-binh-luan&id_binh_luan='.$binhLuan['id']?>"><button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có muốn xóa bình luận này không?')">Xóa</button></a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -71,14 +67,15 @@
                         </div>
                     </div>
                 </div>
-            </div>                         
+            </div>
         </div>
-    </div>                 
+    </div>
 </div>
 
 <style>
     .dataTables_wrapper .dataTables_filter {
-        float: right; /* Đặt ô tìm kiếm ở bên phải */
+        float: right;
+        /* Đặt ô tìm kiếm ở bên phải */
     }
 </style>
 
@@ -88,26 +85,25 @@
 <script src="./asset/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 
 <script>
-   $(document).ready(function() {
-    var $productImage = $('.product-image');
-    var $thumbs = $('.product-image-thumb img');
-
-    // Nếu có hình thu nhỏ, thiết lập hình ảnh chính từ hình đầu tiên
-    if ($thumbs.length > 0) {
-        $productImage.attr('src', $thumbs.first().attr('src'));
-    } else {
-        // Nếu không có hình thu nhỏ, thiết lập hình ảnh chính từ ảnh sản phẩm
-        $productImage.attr('src', '<?= BASE_URL_ADMIN . $sanPham['hinh_anh'] ?>');
-    }
-
-    // Chức năng cho hình thu nhỏ
-    $('.product-image-thumb').on('click', function() {
-        var $image_element = $(this).find('img');
-        $productImage.prop('src', $image_element.attr('src'));
-        $('.product-image-thumb.active').removeClass('active');
-        $(this).addClass('active');
+    $(document).ready(function() {
+        $('.product-image-thumb').on('click', function() {
+            var $image_element = $(this).find('img')
+            $('.product-image').prop('src', $image_element.attr('src'))
+            $('.product-image-thumb.active').removeClass('active')
+            $(this).addClass('active')
+        })
+    })
+    $(function () {
+        $("#example1").DataTable({
+            responsive: true,
+            lengthChange: false,
+            autoWidth: false,
+            paging: true,
+            searching: true
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
-});
 </script>
+
 </body>
+
 </html>
