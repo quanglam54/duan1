@@ -26,7 +26,7 @@
                             <h3 class="my-3"> Tên sản phẩm: <b><?= $sanPham['ten_san_pham'] ?></b></h3>
                             <hr>
                             <h4 class="mt-3">Giá tiền: <?= formatPrice( $sanPham['gia_san_pham'] )?></h4>
-                            <h4 class="mt-3">Giá khuyến mãi: <?= formatPrice( $sanPham['gia_khuyen_mai'] )?></h4>
+                            <h4 class="mt-3">Giá khuyến mãi: <?php  if( isset( $sanPham['gia_khuyen_mai']) ? formatPrice( $sanPham['gia_khuyen_mai'] ) : '')?></h4>
                             <h4 class="mt-3">Số lượng: <?= $sanPham['so_luong'] ?></h4>
                             <h4 class="mt-3">Lượt xem: <?= $sanPham['luot_xem'] ?></h4>
                             <h4 class="mt-3">Ngày nhập: <?= formatDate( $sanPham['ngay_nhap'] ) ?></h4>
