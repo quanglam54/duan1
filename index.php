@@ -30,6 +30,9 @@ match ($act) {
      'comment' => (new ClientSanPhamController)->comment(),
      'them-gio-hang' => (new CartController)->createCart(),
      'view-cart' => (new CartController)->viewCart(),
+     'pay' => (new CartController)->viewPay(),
+     'dat-hang' => (new CartController)->postOrder(),
+     'deleteSelectedProducts' => (new CartController)->deleteItem(),
+     'updateQuantity' => (new CartController())->updateQuantity(),
 }
-
      ?>

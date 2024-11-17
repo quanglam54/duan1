@@ -60,7 +60,7 @@ include 'views/layout/header.php';
                               <li><a href="#">Xem thêm
                                         <span><i class="fa-solid fa-chevron-down"></i></span>
                                    </a></li>
-                              <li><a href="<?= BASE_URL . '?act=view-cart' ?>">
+                              <li><a href="<?= isset($_SESSION['ho_ten']['ho_ten']) ? BASE_URL . '?act=view-cart' : '' ?>">
                                         Giỏ hàng
                                         <span> <i class="fa-solid fa-cart-shopping"></i></span>
                                    </a></li>

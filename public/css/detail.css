@@ -247,21 +247,18 @@ header {
   margin-bottom: 20px;
 }
 .pay-quantity {
-  display: flex;
-  justify-content: space-between;
   background-color: #caf2f1;
-  padding: 20px;
-  gap: 15px;
-  width: 350px;
+  padding: 10px;
   border-radius: 20px;
 }
-.pay-addcart {
+.pay-quantity form {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;
+}
+.pay-addcart {
   background-color: #55d5d2;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   cursor: pointer;
 }
 .pay-addcart p {
@@ -272,13 +269,35 @@ header {
   color: #fff;
   text-decoration: none;
 }
+.pay-addcart button {
+  padding: 5px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  background-color: #fb923c;
+  cursor: pointer;
+}
 .quantity-decre {
   margin-top: 8px;
-  border: 1px solid #666;
+  border: 1px solid #55d5d2;
   background-color: #fff;
   color: #55d5d2;
-  padding: 10px;
+  padding: 0 10px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+.quantity-decre input {
+  width: 20px;
+  height: 20px;
+  border: none;
+  text-align: center;
+  outline: none;
+}
+.quantity-decre input::-webkit-inner-spin-button {
+  display: none;
 }
 .quantity-decre span {
   font-size: 20px;

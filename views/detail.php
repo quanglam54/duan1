@@ -21,7 +21,7 @@
                <div class="container">
                     <div class="header-main">
                          <div class="header-left">
-                              <img src="./public/img/ảnh logo.svg" alt="" />
+                              <a href="<?= BASE_URL ?>"> <img src="./public/img/ảnh logo.svg" alt="" /></a>
                               <ul class="header-nav">
                                    <li>
                                         <a href="#">Sản phẩm
@@ -107,7 +107,7 @@
                     <div class="detail-item-des">
                          <h6>Gọng Kính</h6>
                          <h2><?= $productDetail['ten_san_pham'] ?></h2>
-                         <span><?= $productDetail['gia_san_pham'] ?></span>
+                         <span><?= number_format($productDetail['gia_san_pham']) ?>đ</span>
                          <div class="detail-list-color">
                               <ul>
                                    <li class="dark"></li>
@@ -116,31 +116,27 @@
                               </ul>
                          </div>
                          <p>
-                              Gọng nhựa hình oval là một lựa chọn tuyệt vời cho những ai yêu
-                              thích phong cách hiện đại và năng động. Với chất liệu nhựa cao
-                              cấp, sản phẩm này sẽ giúp bạn tự tin và thoải mái khi sử dụng
-                              trong suốt thời gian dài. Đặc điểm nổi bật: Gọng hình oval Chất
-                              liệu nhựa cao cấp Thiết kế hiện đại, năng động Sản phẩm này được
-                              thiết kế với gọng hình oval tinh tế và thanh lịch, giúp cho khuôn
-                              mặt của bạn trở nên hoàn hảo và thu hút. Chất liệu nhựa mang lại
-                              sự bền vữṇg và êm ái cho người dùng.
+                              <?= $productDetail['mo_ta'] ?>
                          </p>
                          <div class="detail-pay">
                               <div class="pay-quantity">
                                    <form action="<?= BASE_URL . '?act=them-gio-hang' ?>" method="post">
                                         <div class="quantity-decre">
-                                             <a href="#">- |</a>
-                                             <input type="number" name="so_luong" value="1">
-                                             <a href="#">| +</a>
+                                             <a href="#" class="decrease">- |</a>
+                                             <input type="number" id="quantity" name="so_luong" value="1" readonly>
+                                             <a href="#" class="increase">| +</a>
                                         </div>
                                         <div class="pay-addcart">
                                              <input type="hidden" name="id_product" value="<?= $productDetail['id'] ?>">
                                              <input type="hidden" name="user_product"
-                                                  value="<?= (isset($_SESSION['ho_ten']['id']) ?? '') ?>">
+                                                  value="<?= (isset($_SESSION['ho_ten']['id']) ? $_SESSION['ho_ten']['id'] : '') ?>">
                                              <button type="submit">Thêm vào giỏ</button>
-                                             <a href="#">350.000đ</a>
+                                             <a href="#" id="price"
+                                                  data-price="<?= $productDetail['gia_san_pham'] ?>"><?= number_format($productDetail['gia_san_pham']) ?>đ</a>
+                                             <!-- data-price lưu giasp trong html để truy cập  -->
                                         </div>
                                    </form>
+
                               </div>
                          </div>
                          <hr />
@@ -465,6 +461,7 @@
           </div>
      </footer>
      <script src="./public/js/slide.js"></script>
+     <script src="./public/js/cart.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+<!--  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +22,7 @@
                <div class="container">
                     <div class="header-main">
                          <div class="header-left">
-                              <img src="./public/img/ảnh logo.svg" alt="" />
+                              <a href="<?= BASE_URL ?>"><img src="./public/img/ảnh logo.svg" alt="" /></a>
                               <ul class="header-nav">
                                    <li>
                                         <a href="#">Sản phẩm
@@ -111,73 +112,89 @@
           <div class="container">
                <div class="cart-block">
                     <div class="cart-component-l">
-                         <table class="cart-table">
-                              <thead>
-                                   <tr>
-                                        <th><input type="checkbox"></th>
-                                        <th>Thông tin sản phẩm</th>
-                                        <th>Giá</th>
-                                        <th>Số lượng</th>
-                                        <th>Còn lại</th>
-                                        <th>Tổng cộng</th>
-                                   </tr>
-                              </thead>
-                              <tbody>
-                                   <?php foreach ($viewCarts as $cart): ?>
+                         <form id="cart-form" action="<?= BASE_URL . '?act=deleteSelectedProducts' ?>" method="post">
+                              <table class="cart-table">
+                                   <thead>
                                         <tr>
-                                             <td><input type="checkbox"></td>
-                                             <td class="cart-product-info">
-                                                  <img src="<?= "uploads/" . $cart['hinh_anh'] ?>" alt="Product Image">
-                                                  <div class="cart-a">
-                                                       <a href="#"><?= $cart['ten_san_pham'] ?></a>
-                                                       <p>Màu sắc: Đen ghi</p>
-                                                  </div>
-                                             </td>
-                                             <td><?= number_format($cart['gia_san_pham']) ?>đ</td>
-                                             <td>
-                                                  <div class="cart-quantity">
-                                                       <button class="decre">-</button>
-                                                       <input type="text" value="1">
-                                                       <button class="incre">+</button>
-                                                  </div>
-                                             </td>
-                                             <td>9 sản phẩm</td>
-                                             <td>1.600.000đ</td>
+                                             <th><input type="checkbox" id="select-all"></th>
+                                             <th>Thông tin sản phẩm</th>
+                                             <th>Giá</th>
+                                             <th>Số lượng</th>
+                                             <th>Còn lại</th>
+                                             <th>Tổng cộng</th>
                                         </tr>
-                                   <?php endforeach; ?>
-                              </tbody>
-                         </table>
-                    </div>
+                                   </thead>
+                                   <tbody>
 
-                    <div class="cart-component-r">
-                         <p>Tóm tắt đơn hàng</p>
-                         <div class="price-start">
-                              <span>Tạm tính</span>
-                              <p>1.600.000đ</p>
+                                        <?php foreach ($viewCarts as $cart): ?>
+                                             <tr>
+                                                  <td><input type="checkbox" name="selectedItems[]"
+                                                            value="<?= $cart['id'] ?>">
+                                                  </td>
+                                                  <td class="cart-product-info">
+                                                       <img src="<?= "uploads/" . $cart['hinh_anh'] ?>" alt="Product Image">
+                                                       <div class="cart-a">
+                                                            <a href="#"><?= $cart['ten_san_pham'] ?></a>
+                                                            <p>Màu sắc: Đen ghi</p>
+                                                       </div>
+                                                  </td>
+                                                  <td class="price" data-price="<?= $cart['gia_san_pham'] ?>">
+                                                       <?= number_format($cart['gia_san_pham']) ?>đ
+                                                  </td>
+                                                  <td class="quantity">
+                                                       <button class="decre" data-id="<?= $cart['id'] ?>">-</button>
+                                                       <input type="text" value="<?= $cart['so_luong'] ?>"
+                                                            class="quantity-input" data-id="<?= $cart['id'] ?>">
+                                                       <button class="incre" data-id="<?= $cart['id'] ?>">+</button>
+                                                  </td>
+                                                  <td><?= $cart['so_luong'] ?> sản phẩm</td>
+                                                  <td class="total">
+                                                       <?= number_format($cart['so_luong'] * $cart['gia_san_pham']) ?>đ
+                                                  </td>
+                                             </tr>
+                                        <?php endforeach; ?>
+                                   </tbody>
+                              </table>
+                              <div class="cart-delete-conti">
+                                   <button type="submit" class="btn" id="delete-selected-products">Xóa sản phẩm
+                                        đã
+                                        chọn</button>
+                                   <a href="<?= BASE_URL . '?act=allCategory' ?>"><button type="button"
+                                             class="btn-o">Tiếp tục mua
+                                             hàng</button></a>
+                              </div>
+                         </form>
+                    </div>
+                    <!--  -->
+                    <div class="cart-block-end">
+                         <div class="cart-component-r">
+                              <p>Tóm tắt đơn hàng</p>
+
+                              <div class="price-start">
+                                   <span>Tạm tính</span>
+
+                                   <p><?= number_format($total) ?></p>
+                              </div>
+
+                              <div class="total-end">
+                                   <span>Tổng</span>
+                                   <p><?= number_format($total) ?></p>
+                              </div>
+                              <a href="<?= BASE_URL . '?act=pay' ?>"><button>Thanh toán ngay</button></a>
                          </div>
-                         <div class="total-end">
-                              <span>Tổng</span>
-                              <p>1.600.000đ</p>
+                         <div class="cart-pay">
+                              <p>Chúng tôi chấp nhận thanh toán</p>
+                              <div class="cart-pay-img">
+                                   <img src="./public/img/visa.png" alt="Visa">
+                                   <img src="./public/img/amex.png" alt="Amex">
+                                   <img src="./public/img/discover.png" alt="Discover">
+                                   <img src="./public/img/mastercard.png" alt="Mastercard">
+                              </div>
                          </div>
-                         <button>Thanh toán ngay</button>
                     </div>
                </div>
 
-               <div class="cart-block-end">
-                    <div class="cart-delete-conti">
-                         <button>Xóa sản phẩm đã chọn</button>
-                         <button>Tiếp tục mua hàng</button>
-                    </div>
-                    <div class="cart-pay">
-                         <p>Chúng tôi chấp nhận thanh toán</p>
-                         <div class="cart-pay-img">
-                              <img src="./public/img/visa.png" alt="Visa">
-                              <img src="./public/img/amex.png" alt="Amex">
-                              <img src="./public/img/discover.png" alt="Discover">
-                              <img src="./public/img/mastercard.png" alt="Mastercard">
-                         </div>
-                    </div>
-               </div>
+
           </div>
      </section>
 
@@ -241,6 +258,69 @@
                </div>
           </div>
      </footer>
+     <script src="./public/js/cart.js"></script>
+     <script>
+          document.addEventListener("DOMContentLoaded", () => {
+               // Xử lý sự kiện khi nhấn nút tăng
+               document.querySelectorAll(".incre").forEach((button) => {
+                    button.addEventListener("click", () => {
+                         const id = button.dataset.id;
+                         updateQuantity(id, 1); // Tăng số lượng
+                    });
+               });
+
+               // Xử lý sự kiện khi nhấn nút giảm
+               document.querySelectorAll(".decre").forEach((button) => {
+                    button.addEventListener("click", () => {
+                         const id = button.dataset.id;
+                         updateQuantity(id, -1); // Giảm số lượng
+                    });
+               });
+
+               // Hàm gửi yêu cầu AJAX để cập nhật số lượng
+               function updateQuantity(cartId, change) {
+                    console.log(cartId, change)
+                    // index phải tạo route updateQuantity
+                    fetch("<?= BASE_URL . '?act=updateQuantity' ?>", {
+                         method: "POST",
+                         headers: {
+                              "Content-Type": "application/json"
+                         },
+                         body: JSON.stringify({
+                              cartId,
+                              change
+                         }),
+                    })
+                         .then((response) => response.json())
+                         .then((data) => {
+                              console.log(data);
+                              if (data.success) {
+                                   // Cập nhật giao diện (số lượng, tổng giá trị)
+                                   const quantityInput = document.querySelector(
+                                        `.quantity-input[data-id="${cartId}"]`
+                                   );
+                                   const priceElement = document.querySelector(
+                                        `.price[data-id="${cartId}"]`
+                                   );
+                                   const totalElement = document.querySelector(
+                                        `.total[data-id="${cartId}"]`
+                                   );
+
+                                   quantityInput.value = data.newQuantity;
+                                   totalElement.textContent = `${data.newTotalPrice}đ`;
+
+                                   // Cập nhật tổng giỏ hàng
+                                   document.querySelector(".cart-total").textContent = `${data.cartTotal}đ`;
+                              } else {
+                                   alert(data.message || "Cập nhật thất bại");
+                              }
+                         })
+                         .catch((error) => {
+                              console.error("Error:", error);
+                         });
+               }
+          });
+     </script>
 </body>
 
 </html>
