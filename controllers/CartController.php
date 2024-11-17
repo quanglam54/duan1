@@ -68,9 +68,15 @@ class CartController
           $viewCarts = $this->cartModel->getViewCart($user_product);
           // var_dump($viewCarts);
           // die;
+          if (isset($_GET['total'])) {
+               $total = $_GET['total'];
+          } else {
+               // Tính tổng giá trị giỏ hàng
 
-          // Tính tổng giá trị giỏ hàng
-          $total = $this->cartModel->getCartTotal($user_product);
+               $total = $this->cartModel->getCartTotal($user_product);
+
+          }
+
           require_once './views/cart/cart.php';
      }
      //
@@ -190,8 +196,10 @@ class CartController
                     // die;
                     $this->cartModel->deleteItem($itemId);
                }
-
-               header("Location:" . BASE_URL . '?act=view-cart');
+               $user_product = $_SESSION['ho_ten']['id'];
+               // tính lại tổng tiền nếu xóa
+               $total = $this->cartModel->getCartTotal($user_product);
+               header("Location:" . BASE_URL . '?act=view-cart&total=' . $total);
                exit();
           }
      }

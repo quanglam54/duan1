@@ -148,28 +148,37 @@ class CartModel
      //
 
 
+     // public function deleteItem($itemId)
+     // {
+     //      // Lấy san_pham_id từ chi_tiet_gio_hangs dựa trên itemId (chi_tiet_gio_hangs.id)
+     //      $sql = "SELECT san_pham_id FROM chi_tiet_gio_hangs WHERE id = :item_id";
+     //      $stmt = $this->conn->prepare($sql);
+     //      $stmt->execute([
+     //           ':item_id' => $itemId
+     //      ]);
+     //      // phải lấy san_pham_id trong bản chi tiet để xóa nó theo sản phẩm
+
+     //      // Lấy san_pham_id
+     //      $san_pham_id = $stmt->fetchColumn();  // Fetch the san_pham_id
+     //      // var_dump($san_pham_id);
+     //      // die;
+     //      // Xóa sản phẩm theo san_pham_id
+     //      if ($san_pham_id) {
+     //           $deleteSql = "DELETE FROM chi_tiet_gio_hangs WHERE san_pham_id = :san_pham_id";
+     //           $deleteStmt = $this->conn->prepare($deleteSql);
+     //           $deleteStmt->execute([
+     //                ':san_pham_id' => $san_pham_id
+     //           ]);
+     //      }
+     // }
+
      public function deleteItem($itemId)
      {
-          // Lấy san_pham_id từ chi_tiet_gio_hangs dựa trên itemId (chi_tiet_gio_hangs.id)
-          $sql = "SELECT san_pham_id FROM chi_tiet_gio_hangs WHERE id = :item_id";
+          $sql = "DELETE FROM chi_tiet_gio_hangs WHERE id=:item_id";
           $stmt = $this->conn->prepare($sql);
           $stmt->execute([
                ':item_id' => $itemId
           ]);
-          // phải lấy san_pham_id trong bản chi tiet để xóa nó theo sản phẩm
-
-          // Lấy san_pham_id
-          $san_pham_id = $stmt->fetchColumn();  // Fetch the san_pham_id
-          // var_dump($san_pham_id);
-          // die;
-          // Xóa sản phẩm theo san_pham_id
-          if ($san_pham_id) {
-               $deleteSql = "DELETE FROM chi_tiet_gio_hangs WHERE san_pham_id = :san_pham_id";
-               $deleteStmt = $this->conn->prepare($deleteSql);
-               $deleteStmt->execute([
-                    ':san_pham_id' => $san_pham_id
-               ]);
-          }
      }
 
      //

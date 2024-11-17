@@ -112,7 +112,7 @@
           <div class="container">
                <div class="cart-block">
                     <div class="cart-component-l">
-                         <form id="cart-form" action="<?= BASE_URL . '?act=deleteSelectedProducts' ?>" method="post">
+                         <form action="<?= BASE_URL . '?act=deleteSelectedProducts' ?>" method="post">
                               <table class="cart-table">
                                    <thead>
                                         <tr>
@@ -173,12 +173,12 @@
                               <div class="price-start">
                                    <span>Tạm tính</span>
 
-                                   <p><?= number_format($total) ?></p>
+                                   <p><?= is_numeric($total) ? number_format($total) : 0 ?></p>
                               </div>
 
                               <div class="total-end">
                                    <span>Tổng</span>
-                                   <p><?= number_format($total) ?></p>
+                                   <p><?= is_numeric($total) ? number_format($total) : 0 ?></p>
                               </div>
                               <a href="<?= BASE_URL . '?act=pay' ?>"><button>Thanh toán ngay</button></a>
                          </div>
