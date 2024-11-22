@@ -62,6 +62,19 @@ class ClientSanPhamController
      }
      //
 
+     public function searchProduct()
+     {
+          if (!empty($_POST['name'])) {
+               $searchPros = $this->modelSanPham->getSearchProduct($_POST['name']);
+               // var_dump($searchPros);
+               // die;
+          } else {
+               $searchPros = [];
+          }
+
+          require_once './views/search.php';
+     }
+     //
      public function comment()
      {
 

@@ -1,4 +1,5 @@
 <?php
+
 class CartController
 {
      public $cartModel;
@@ -56,7 +57,7 @@ class CartController
                //
 
 
-               header("Location:" . BASE_URL);
+               echo "<script>alert('Thêm sản phẩm vào giỏ hàng thành công!'); window.location.href='" . BASE_URL . "';</script>";
                exit();
           }
      }
@@ -166,12 +167,30 @@ class CartController
                $totalAmount = 0;
                $cart_items = $this->cartModel->getCartItem($user_id);
                foreach ($cart_items as $item) {
+                    // var_dump($item);
+                    // die;
                     $totalAmount += $item['so_luong'] * $item['gia_san_pham'];
                }
                $totalAmount += 30000;
-               $this->cartModel->insertOrder($user_id, $name, $phone, $email, $address, $date, $totalAmount, $description);
+               $order_id = $this->cartModel->insertOrder($user_id, $name, $phone, $email, $address, $date, $totalAmount, $description);
+               // var_dump($order_id); // trả về id của ng đặt hàng
+               // die;
+               // lưu vào bảng chi tiêt đơn
+               foreach ($cart_items as $item) {
+                    $san_pham_id = $item['san_pham_id'];
+                    $quantity = $item['so_luong'];
+                    $price = $item['gia_san_pham'];
+                    $subtotal = ($quantity * $price) + 30000;
 
-               header("Location:" . BASE_URL);
+                    $this->cartModel->insertOrderDetail(
+                         $order_id,
+                         $san_pham_id,
+                         $price,
+                         $quantity,
+                         $subtotal
+                    );
+               }
+               header("Location:" . BASE_URL . '?act=finish');
                exit();
           }
      }
@@ -188,7 +207,6 @@ class CartController
                // exit;
                // lấy ds id cần xóa
 
-               // $selectedItems = array_filter($_POST['selectedItems'], 'is_numeric');
                $selectedItems = $_POST['selectedItems'];
 
                foreach ($selectedItems as $itemId) {
@@ -199,12 +217,71 @@ class CartController
                $user_product = $_SESSION['ho_ten']['id'];
                // tính lại tổng tiền nếu xóa
                $total = $this->cartModel->getCartTotal($user_product);
-               header("Location:" . BASE_URL . '?act=view-cart&total=' . $total);
+               // header("Location:" . BASE_URL . '?act=view-cart&total=' . $total);
+               // exit();
+               echo "<script>
+               alert(\"Xóa sản phẩm thành công!\");
+               window.location.href=\"" . BASE_URL . "?act=view-cart&total=" . $total . "\";
+             </script>";
                exit();
+
           }
      }
 
+     //
+     public function viewFinish()
+     {
+          $viewEnds = $this->cartModel->getOrderDetail();
+          // var_dump($viewEnds);
+          // die;
+          require_once './views/endpay.php';
+     }
+     //
+     public function sendMail()
+     {
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+               $order_id = $_POST['order_id'];
 
+
+               $order_info = $this->cartModel->getOrderById($order_id);
+               // var_dump($order_info);
+               // die;
+               $order_fall = $this->cartModel->getOrderDetails($order_id);
+               // var_dump($order_fall);
+               // die;
+               $email = $order_info['email_nguoi_nhan'];
+               $subject = 'Xác nhận đơn hàng của bạn
+               ';
+
+               $content = '<html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Xác nhận đơn hàng</title>
+        </head>
+        <body>
+            <h1>Xác nhận đơn hàng của bạn</h1>
+            <p>Thông tin người mua hàng:</p>
+            <ul>
+                <li><strong>Mã đơn hàng:</strong> ' . $order_fall[0]['ma_don_hang'] . '</li>
+                <li><strong>Người nhận:</strong> ' . $order_fall[0]['ten_nguoi_nhan'] . '</li>
+                <li><strong>Email:</strong> ' . $order_fall[0]['email_nguoi_nhan'] . '</li>
+                <li><strong>Số điện thoại:</strong> ' . $order_fall[0]['sdt_nguoi_nhan'] . '</li>
+                <li><strong>Địa chỉ:</strong> ' . $order_fall[0]['dia_chi_nguoi_nhan'] . '</li>
+                <li><strong>Ngày đặt:</strong> ' . $order_fall[0]['ngay_dat'] . '</li>
+                <li><strong>Đơn giá:</strong> ' . $order_fall[0]['don_gia'] . '</li>
+                <li><strong>Số lượng:</strong> ' . $order_fall[0]['so_luong'] . '</li>
+                <li><strong>Thành tiền:</strong> ' . $order_fall[0]['thanh_tien'] . '</li>
+            </ul>
+        </body>
+        </html>';
+               try {
+                    sendMailer($email, $subject, $content);
+                    echo "Email xác nhận gửi thành công";
+               } catch (Exception $e) {
+                    echo "Gửi email thất bại. Lỗi:{$e->getMessage()}";
+               }
+          }
+     }
 
 
 }

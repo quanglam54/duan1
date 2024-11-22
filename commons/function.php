@@ -21,6 +21,9 @@ function connectDB()
         echo ("Connection failed: " . $e->getMessage());
     }
 }
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 // THêm file ảnh
 function uploadFile($file, $folderUpload)
 {
@@ -63,16 +66,48 @@ function deleteFile($file)
     }
 }
 
-function checkLoginAdmin(){
-    if(!isset($_SESSION['user_admin'])){
+function checkLoginAdmin()
+{
+    if (!isset($_SESSION['user_admin'])) {
         require_once './views/auth/formLogin.php';
         exit();
     }
 }
 
-function formatDate($date){
-    echo $newDate = date("d-m-Y",strtotime($date));
+function formatDate($date)
+{
+    echo $newDate = date("d-m-Y", strtotime($date));
 }
-function formatPrice($price){
+function formatPrice($price)
+{
     return number_format($price, 0, ',', '.');
+}
+
+function sendMailer($email, $subject, $content)
+{
+
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // Hoặc smtp.hostinger.com
+        $mail->SMTPAuth = true;
+        $mail->Username = 'quanglam5401@gmail.com'; // Tên đăng nhập
+        $mail->Password = 'qelg vtbw imsw gbdg'; // Mật khẩu ứng dụng hoặc mật khẩu chính
+        $mail->SMTPSecure = 'ssl';// Sử dụng STARTTLS
+        $mail->Port = 465;  // Cổng SMTP cho Gmail hoặc 465 cho Hostinger
+
+        $mail->setFrom('quanglam5401@gmail.com', 'quang lam');
+        $mail->addAddress($email, 'lammm');
+        $mail->CharSet = 'UTF-8';
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $content;
+
+        $mail->send();
+        // echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+    ;
 }

@@ -11,8 +11,10 @@ function toggleDeleteButton() {
   );
   if (anyChecked) {
     deleteButton.classList.add("active");
+    deleteButton.disabled = false;
   } else {
     deleteButton.classList.remove("active");
+    deleteButton.disabled = true;
   }
 }
 
@@ -20,44 +22,9 @@ function toggleDeleteButton() {
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", toggleDeleteButton);
 });
+toggleDeleteButton();
 
 ///
-
-document.addEventListener("DOMContentLoaded", function () {
-  const quantityInput = document.getElementById("quantity");
-  const priceElement = document.getElementById("price");
-  const basePrice = parseFloat(priceElement.dataset.price); // Lấy giá cơ bản từ data-price
-
-  // Hàm cập nhật giá
-  function updatePrice() {
-    const quantity = parseInt(quantityInput.value) || 1;
-    const totalPrice = basePrice * quantity;
-    priceElement.textContent = new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "VND",
-    }).format(totalPrice);
-  }
-
-  document
-    .querySelector(".decrease")
-    .addEventListener("click", function (event) {
-      event.preventDefault();
-      if (quantityInput.value > 1) {
-        quantityInput.value = parseInt(quantityInput.value) - 1;
-        updatePrice();
-      }
-    });
-
-  document
-    .querySelector(".increase")
-    .addEventListener("click", function (event) {
-      event.preventDefault();
-      quantityInput.value = parseInt(quantityInput.value) + 1;
-      updatePrice();
-    });
-
-  quantityInput.addEventListener("input", updatePrice);
-});
 
 // cập nhật cart giỏ hàng
 

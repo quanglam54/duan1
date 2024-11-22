@@ -64,11 +64,13 @@
                          </div>
                          <!--  -->
                          <div class="header-center">
-                              <input type="text" placeholder="Các mẫu kính râm hot nhất..." />
-
-                              <div class="center-icon">
-                                   <i class="fa-solid fa-magnifying-glass"></i>
-                              </div>
+                              <form action="<?= BASE_URL . '?act=search' ?>" method="post">
+                                   <input type="text" name="name" placeholder="Các mẫu kính râm hot nhất..." />
+                                   <div class="center-icon">
+                                        <button type="submit" name="timkiem"> <i
+                                                  class="fa-solid fa-magnifying-glass"></i></button>
+                                   </div>
+                              </form>
                          </div>
                          <!--  -->
                          <div class="header-right">
@@ -102,102 +104,120 @@
           </div>
      </section>
      <!--  -->
-     <section class="product-title">
+     <?php if (empty($viewCarts)): ?>
           <div class="container">
-               <span>Sản Phẩm</span>
-          </div>
-     </section>
+               <div class="cart-empty-blogs">
+                    <h2>Giỏ hàng trống</h2>
+                    <div class="cart-empty">
 
-     <section class="component">
-          <div class="container">
-               <div class="cart-block">
-                    <div class="cart-component-l">
-                         <form action="<?= BASE_URL . '?act=deleteSelectedProducts' ?>" method="post">
-                              <table class="cart-table">
-                                   <thead>
-                                        <tr>
-                                             <th><input type="checkbox" id="select-all"></th>
-                                             <th>Thông tin sản phẩm</th>
-                                             <th>Giá</th>
-                                             <th>Số lượng</th>
-                                             <th>Còn lại</th>
-                                             <th>Tổng cộng</th>
-                                        </tr>
-                                   </thead>
-                                   <tbody>
+                         <img src="./public/img/f1.jpeg" alt="">
+                         <img src="./public/img/anh-cart-emty.jpeg" alt="">
 
-                                        <?php foreach ($viewCarts as $cart): ?>
-                                             <tr>
-                                                  <td><input type="checkbox" name="selectedItems[]"
-                                                            value="<?= $cart['id'] ?>">
-                                                  </td>
-                                                  <td class="cart-product-info">
-                                                       <img src="<?= "uploads/" . $cart['hinh_anh'] ?>" alt="Product Image">
-                                                       <div class="cart-a">
-                                                            <a href="#"><?= $cart['ten_san_pham'] ?></a>
-                                                            <p>Màu sắc: Đen ghi</p>
-                                                       </div>
-                                                  </td>
-                                                  <td class="price" data-price="<?= $cart['gia_san_pham'] ?>">
-                                                       <?= number_format($cart['gia_san_pham']) ?>đ
-                                                  </td>
-                                                  <td class="quantity">
-                                                       <button class="decre" data-id="<?= $cart['id'] ?>">-</button>
-                                                       <input type="text" value="<?= $cart['so_luong'] ?>"
-                                                            class="quantity-input" data-id="<?= $cart['id'] ?>">
-                                                       <button class="incre" data-id="<?= $cart['id'] ?>">+</button>
-                                                  </td>
-                                                  <td><?= $cart['so_luong'] ?> sản phẩm</td>
-                                                  <td class="total">
-                                                       <?= number_format($cart['so_luong'] * $cart['gia_san_pham']) ?>đ
-                                                  </td>
-                                             </tr>
-                                        <?php endforeach; ?>
-                                   </tbody>
-                              </table>
-                              <div class="cart-delete-conti">
-                                   <button type="submit" class="btn" id="delete-selected-products">Xóa sản phẩm
-                                        đã
-                                        chọn</button>
-                                   <a href="<?= BASE_URL . '?act=allCategory' ?>"><button type="button"
-                                             class="btn-o">Tiếp tục mua
-                                             hàng</button></a>
-                              </div>
-                         </form>
+                         <img src="./public/img/f2.jpeg" alt="">
                     </div>
-                    <!--  -->
-                    <div class="cart-block-end">
-                         <div class="cart-component-r">
-                              <p>Tóm tắt đơn hàng</p>
-
-                              <div class="price-start">
-                                   <span>Tạm tính</span>
-
-                                   <p><?= is_numeric($total) ? number_format($total) : 0 ?></p>
-                              </div>
-
-                              <div class="total-end">
-                                   <span>Tổng</span>
-                                   <p><?= is_numeric($total) ? number_format($total) : 0 ?></p>
-                              </div>
-                              <a href="<?= BASE_URL . '?act=pay' ?>"><button>Thanh toán ngay</button></a>
-                         </div>
-                         <div class="cart-pay">
-                              <p>Chúng tôi chấp nhận thanh toán</p>
-                              <div class="cart-pay-img">
-                                   <img src="./public/img/visa.png" alt="Visa">
-                                   <img src="./public/img/amex.png" alt="Amex">
-                                   <img src="./public/img/discover.png" alt="Discover">
-                                   <img src="./public/img/mastercard.png" alt="Mastercard">
-                              </div>
-                         </div>
+                    <div class="cart-empty-button">
+                         <button><a href="<?= BASE_URL ?>">Tiếp tục mua hàng</a></button>
                     </div>
                </div>
-
-
           </div>
-     </section>
+     <?php else: ?>
+          <section class="product-title">
+               <div class="container">
+                    <span>Sản Phẩm</span>
+               </div>
+          </section>
 
+          <section class="component">
+               <div class="container">
+                    <div class="cart-block">
+                         <div class="cart-component-l">
+                              <form action="<?= BASE_URL . '?act=deleteSelectedProducts' ?>" method="post">
+                                   <table class="cart-table">
+                                        <thead>
+                                             <tr>
+                                                  <th><input type="checkbox" id="select-all"></th>
+                                                  <th>Thông tin sản phẩm</th>
+                                                  <th>Giá</th>
+                                                  <th>Số lượng</th>
+                                                  <th>Còn lại</th>
+                                                  <th>Tổng cộng</th>
+                                             </tr>
+                                        </thead>
+                                        <tbody>
+
+                                             <?php foreach ($viewCarts as $cart): ?>
+                                                  <tr>
+                                                       <td><input type="checkbox" name="selectedItems[]"
+                                                                 value="<?= $cart['id'] ?>">
+                                                       </td>
+                                                       <td class="cart-product-info">
+                                                            <img src="<?= "uploads/" . $cart['hinh_anh'] ?>" alt="Product Image">
+                                                            <div class="cart-a">
+                                                                 <a href="#"><?= $cart['ten_san_pham'] ?></a>
+                                                                 <p>Màu sắc: Đen ghi</p>
+                                                            </div>
+                                                       </td>
+                                                       <td class="price" data-price="<?= $cart['gia_san_pham'] ?>">
+                                                            <?= number_format($cart['gia_san_pham']) ?>đ
+                                                       </td>
+                                                       <td class="quantity">
+                                                            <button class="decre" data-id="<?= $cart['id'] ?>">-</button>
+                                                            <input type="text" value="<?= $cart['so_luong'] ?>"
+                                                                 class="quantity-input" data-id="<?= $cart['id'] ?>">
+                                                            <button class="incre" data-id="<?= $cart['id'] ?>">+</button>
+                                                       </td>
+                                                       <td><?= $cart['so_luong'] ?> sản phẩm</td>
+                                                       <td class="total">
+                                                            <?= number_format($cart['so_luong'] * $cart['gia_san_pham']) ?>đ
+                                                       </td>
+                                                  </tr>
+                                             <?php endforeach; ?>
+                                        </tbody>
+                                   </table>
+                                   <div class="cart-delete-conti">
+                                        <button type="submit" class="btn" id="delete-selected-products">Xóa sản phẩm
+                                             đã
+                                             chọn</button>
+                                        <a href="<?= BASE_URL . '?act=allCategory' ?>"><button type="button"
+                                                  class="btn-o">Tiếp tục mua
+                                                  hàng</button></a>
+                                   </div>
+                              </form>
+                         </div>
+
+                         <!--  -->
+                         <div class="cart-block-end">
+                              <div class="cart-component-r">
+                                   <p>Tóm tắt đơn hàng</p>
+
+                                   <div class="price-start">
+                                        <span>Tạm tính</span>
+
+                                        <p><?= is_numeric($total) ? number_format($total) : 0 ?></p>
+                                   </div>
+
+                                   <div class="total-end">
+                                        <span>Tổng</span>
+                                        <p><?= is_numeric($total) ? number_format($total) : 0 ?></p>
+                                   </div>
+                                   <a href="<?= BASE_URL . '?act=pay' ?>"><button>Thanh toán ngay</button></a>
+                              </div>
+                              <div class="cart-pay">
+                                   <p>Chúng tôi chấp nhận thanh toán</p>
+                                   <div class="cart-pay-img">
+                                        <img src="./public/img/visa.png" alt="Visa">
+                                        <img src="./public/img/amex.png" alt="Amex">
+                                        <img src="./public/img/discover.png" alt="Discover">
+                                        <img src="./public/img/mastercard.png" alt="Mastercard">
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+
+               </div>
+          </section>
+     <?php endif; ?>
      <!--  -->
      <footer class="footer">
           <div class="container">

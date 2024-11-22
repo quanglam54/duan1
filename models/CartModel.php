@@ -119,7 +119,7 @@ class CartModel
      //
      public function getCartItem($user_id)
      {
-          $sql = "SELECT chi_tiet_gio_hangs.so_luong,san_phams.ten_san_pham,san_phams.gia_san_pham,san_phams.hinh_anh
+          $sql = "SELECT chi_tiet_gio_hangs.so_luong,chi_tiet_gio_hangs.san_pham_id,san_phams.ten_san_pham,san_phams.gia_san_pham,san_phams.hinh_anh
           FROM chi_tiet_gio_hangs INNER JOIN san_phams ON chi_tiet_gio_hangs.san_pham_id=san_phams.id INNER JOIN gio_hangs ON chi_tiet_gio_hangs.gio_hang_id=gio_hangs.id WHERE gio_hangs.tai_khoan_id=:user_id";
 
           $stmt = $this->conn->prepare($sql);
@@ -143,34 +143,11 @@ class CartModel
                ':total' => $totalAmount,
                ':mo_ta' => $description,
           ]);
-          return true;
+          return $this->conn->lastInsertId();
+          // lấy về id của người vừa thêm vào bảng đơn hàng
      }
      //
 
-
-     // public function deleteItem($itemId)
-     // {
-     //      // Lấy san_pham_id từ chi_tiet_gio_hangs dựa trên itemId (chi_tiet_gio_hangs.id)
-     //      $sql = "SELECT san_pham_id FROM chi_tiet_gio_hangs WHERE id = :item_id";
-     //      $stmt = $this->conn->prepare($sql);
-     //      $stmt->execute([
-     //           ':item_id' => $itemId
-     //      ]);
-     //      // phải lấy san_pham_id trong bản chi tiet để xóa nó theo sản phẩm
-
-     //      // Lấy san_pham_id
-     //      $san_pham_id = $stmt->fetchColumn();  // Fetch the san_pham_id
-     //      // var_dump($san_pham_id);
-     //      // die;
-     //      // Xóa sản phẩm theo san_pham_id
-     //      if ($san_pham_id) {
-     //           $deleteSql = "DELETE FROM chi_tiet_gio_hangs WHERE san_pham_id = :san_pham_id";
-     //           $deleteStmt = $this->conn->prepare($deleteSql);
-     //           $deleteStmt->execute([
-     //                ':san_pham_id' => $san_pham_id
-     //           ]);
-     //      }
-     // }
 
      public function deleteItem($itemId)
      {
@@ -198,10 +175,52 @@ class CartModel
      }
 
      //
+     public function insertOrderDetail(
+          $order_id,
+          $san_pham_id,
+          $price,
+          $quantity,
+          $subtotal
+     ) {
+          $sql = "INSERT INTO chi_tiet_don_hangs(don_hang_id,san_pham_id,don_gia,so_luong,thanh_tien) VALUES(:order_id,:san_pham_id,:don_gia,:so_luong,:thanh_tien)";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':order_id' => $order_id,
+               ':san_pham_id' => $san_pham_id,
+               ':don_gia' => $price,
+               ':so_luong' => $quantity,
+               ':thanh_tien' => $subtotal
+          ]);
+          return true;
+     }
 
-
-
-
-
+     //
+     public function getOrderDetail()
+     {
+          $sql = "SELECT chi_tiet_don_hangs.*,don_hangs.ten_nguoi_nhan,don_hangs.email_nguoi_nhan,don_hangs.sdt_nguoi_nhan,don_hangs.dia_chi_nguoi_nhan,don_hangs.ngay_dat,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN don_hangs ON chi_tiet_don_hangs.don_hang_id=don_hangs.id INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute();
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
+     //
+     public function getOrderById($order_id)
+     {
+          $sql = "SELECT * FROM don_hangs WHERE id=:order_id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':order_id' => $order_id
+          ]);
+          return $stmt->fetch(PDO::FETCH_ASSOC);
+     }
+     //
+     public function getOrderDetails($order_id)
+     {
+          $sql = "SELECT chi_tiet_don_hangs.*,don_hangs.ten_nguoi_nhan,don_hangs.ma_don_hang,don_hangs.email_nguoi_nhan,don_hangs.sdt_nguoi_nhan,don_hangs.dia_chi_nguoi_nhan,don_hangs.ngay_dat,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN don_hangs ON chi_tiet_don_hangs.don_hang_id=don_hangs.id INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id WHERE chi_tiet_don_hangs.don_hang_id=:don_hang_id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':don_hang_id' => $order_id
+          ]);
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
 }
 ?>

@@ -55,6 +55,14 @@ header {
   top: 8px;
   color: #fff;
 }
+.center-icon button {
+  border: none;
+}
+.center-icon button i {
+  padding: 5px;
+  background: #c5c5c5;
+  cursor: pointer;
+}
 .header-nav li:first-child {
   position: relative;
 }

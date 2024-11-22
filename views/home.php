@@ -48,11 +48,13 @@ include 'views/layout/header.php';
                     </div>
                     <!--  -->
                     <div class="header-center">
-                         <input type="text" placeholder="Các mẫu kính râm hot nhất..." />
-
-                         <div class="center-icon">
-                              <i class="fa-solid fa-magnifying-glass"></i>
-                         </div>
+                         <form action="<?= BASE_URL . '?act=search' ?>" method="post">
+                              <input type="text" name="name" placeholder="Các mẫu kính râm hot nhất..." />
+                              <div class="center-icon">
+                                   <button type="submit" name="timkiem"> <i
+                                             class="fa-solid fa-magnifying-glass"></i></button>
+                              </div>
+                         </form>
                     </div>
                     <!--  -->
                     <div class="header-right">
@@ -60,12 +62,13 @@ include 'views/layout/header.php';
                               <li><a href="#">Xem thêm
                                         <span><i class="fa-solid fa-chevron-down"></i></span>
                                    </a></li>
-                              <li><a href="<?= isset($_SESSION['ho_ten']['ho_ten']) ? BASE_URL . '?act=view-cart' : '' ?>">
+                              <li><a
+                                        href="<?= isset($_SESSION['ho_ten']['ho_ten']) ? BASE_URL . '?act=view-cart' : '' ?>">
                                         Giỏ hàng
                                         <span> <i class="fa-solid fa-cart-shopping"></i></span>
                                    </a></li>
                               <?php if (isset($_SESSION['ho_ten'])): ?>
-                                   <li><a href="<?= BASE_URL . '?act=register' ?>">Xin
+                                   <li><a href="<?= BASE_URL . '?act=view-info' ?>">Xin
                                              Chào:<?= $_SESSION['ho_ten']['ho_ten'] ?>
                                              <span><i class="fa-solid fa-user"></i></i></span>
                                              <a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a>

@@ -20,6 +20,24 @@ class ClientSanphamModel
           $stmt = $this->conn->query($sql);
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
+     //
+     // public function getSearchProduct($name)
+     // {
+     //      $sql = "SELECT * FROM san_phams WHERE ten_san_pham LIKE '%$name%'";
+     //      $stmt = $this->conn->prepare($sql);
+     //      $stmt->execute();
+     //      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     // }
+     public function getSearchProduct($name)
+     {
+
+          $sql = "SELECT * FROM san_phams WHERE ten_san_pham LIKE :name";
+          $stmt = $this->conn->prepare($sql);
+          $name = "%" . trim($name) . "%";
+          $stmt->bindParam(':name', $name);
+          $stmt->execute();
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
 
      // mượn model danh mục
      public function getAllDanhMuc()

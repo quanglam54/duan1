@@ -63,11 +63,13 @@
                          </div>
                          <!--  -->
                          <div class="header-center">
-                              <input type="text" placeholder="Các mẫu kính râm hot nhất..." />
-
-                              <div class="center-icon">
-                                   <i class="fa-solid fa-magnifying-glass"></i>
-                              </div>
+                              <form action="<?= BASE_URL . '?act=search' ?>" method="post">
+                                   <input type="text" name="name" placeholder="Các mẫu kính râm hot nhất..." />
+                                   <div class="center-icon">
+                                        <button type="submit" name="timkiem"> <i
+                                                  class="fa-solid fa-magnifying-glass"></i></button>
+                                   </div>
+                              </form>
                          </div>
                          <!--  -->
                          <div class="header-right">
@@ -106,7 +108,7 @@
                               <label for="address">Địa chỉ chi tiết *</label>
                               <input type="text" name="address" placeholder="Địa chỉ chi tiết">
                               <label for="date">Ngày đặt *</label>
-                              <input type="date" name="date" placeholder="Email">
+                              <input type="date" name="date">
 
                               <label for="additional-info">Thông tin bổ sung</label>
                               <textarea id="additional-info" name="description"

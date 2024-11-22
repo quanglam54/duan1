@@ -82,6 +82,49 @@ class UserModel
           ]);
           return $stmt->fetch();
      }
+     //
+
+     public function getUser($user_id)
+     {
+          $sql = "SELECT * FROM tai_khoans WHERE id=:user_id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':user_id' => $user_id
+          ]);
+          return $stmt->fetch(PDO::FETCH_ASSOC);
+     }
+
+     public function updatePass($user_id, $new_pass)
+     {
+          $sql = "UPDATE tai_khoans SET mat_khau=:new_pass WHERE id=:user_id";
+          $stmt = $this->conn->prepare($sql);
+          $result = $stmt->execute([
+               ':new_pass' => $new_pass,
+               ':user_id' => $user_id
+          ]);
+          return $result;
+     }
+     //
+
+     public function updateUser($user_id, $name, $email, $phone, $address)
+     {
+          try {
+               $sql = "UPDATE tai_khoans SET ho_ten=:name,email=:email,so_dien_thoai=:phone,dia_chi=:address WHERE id=:user_id";
+               $stmt = $this->conn->prepare($sql);
+               $stmt->execute([
+                    ':user_id' => $user_id,
+                    ':name' => $name,
+                    ':email' => $email,
+                    ':phone' => $phone,
+                    ':address' => $address
+               ]);
+               return true;
+          } catch (PDOException $e) {
+               error_log("cập nhật người dùng thất bại" . $e->getMessage());
+               return false;
+          }
+
+     }
 }
 
 ?>

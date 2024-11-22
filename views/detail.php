@@ -63,11 +63,13 @@
                          </div>
                          <!--  -->
                          <div class="header-center">
-                              <input type="text" placeholder="Các mẫu kính râm hot nhất..." />
-
-                              <div class="center-icon">
-                                   <i class="fa-solid fa-magnifying-glass"></i>
-                              </div>
+                              <form action="<?= BASE_URL . '?act=search' ?>" method="post">
+                                   <input type="text" name="name" placeholder="Các mẫu kính râm hot nhất..." />
+                                   <div class="center-icon">
+                                        <button type="submit" name="timkiem"> <i
+                                                  class="fa-solid fa-magnifying-glass"></i></button>
+                                   </div>
+                              </form>
                          </div>
                          <!--  -->
                          <div class="header-right">
@@ -123,7 +125,7 @@
                                    <form action="<?= BASE_URL . '?act=them-gio-hang' ?>" method="post">
                                         <div class="quantity-decre">
                                              <a href="#" class="decrease">- |</a>
-                                             <input type="number" id="quantity" name="so_luong" value="1" readonly>
+                                             <input type="number" id="quantity" name="so_luong" value="1">
                                              <a href="#" class="increase">| +</a>
                                         </div>
                                         <div class="pay-addcart">
@@ -133,11 +135,10 @@
                                              <button type="submit">Thêm vào giỏ</button>
                                              <a href="#" id="price"
                                                   data-price="<?= $productDetail['gia_san_pham'] ?>"><?= number_format($productDetail['gia_san_pham']) ?>đ</a>
-                                             <!-- data-price lưu giasp trong html để truy cập  -->
                                         </div>
                                    </form>
-
                               </div>
+
                          </div>
                          <hr />
                          <div class="quantity-exist">
@@ -461,7 +462,7 @@
           </div>
      </footer>
      <script src="./public/js/slide.js"></script>
-     <script src="./public/js/cart.js"></script>
+     <script src="./public/js/detail.js"></script>
 </body>
 
 </html>
