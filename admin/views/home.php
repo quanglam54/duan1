@@ -28,9 +28,9 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>150</h3>
+              <h3><?=$newOrderCount?></h3>
 
-              <p>New Orders</p>
+              <p>Đơn hàng mới</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -43,9 +43,9 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?= formatPrice($total)?><sup style="font-size: 20px">VND</sup></h3>
 
-              <p>Bounce Rate</p>
+              <p>Doanh thu</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -58,9 +58,9 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?=$countUser?></h3>
 
-              <p>User Registrations</p>
+              <p>Người dùng</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -73,9 +73,9 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?=$toltalProduct?></h3>
 
-              <p>Unique Visitors</p>
+              <p>Sản phẩm bán ra</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
@@ -94,7 +94,7 @@
               <table id="example1" class="table table-bordered table-striped table-responsive">
                 <thead>
                   <tr>
-                    <th>Mã danh mục</th>
+                    <th>STT</th>
                     <th>Tên danh mục</th>
                     <th>Số lượng</th>
                     <th>Giá cao nhất</th>
@@ -103,9 +103,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($listThongKe as $thongKe) { ?>
+                  <?php foreach ($listThongKe as $index=>$thongKe) { ?>
                     <tr>
-                      <td><?= $thongKe['id'] ?></td>
+                      <td><?=  $index +1 ?></td>
                       <td><?= $thongKe['ten_danh_muc'] ?></td>
                       <td><?= $thongKe['countSp'] ?></td>
                       <td><?= formatPrice( $thongKe['maxPrice'] )?></td>

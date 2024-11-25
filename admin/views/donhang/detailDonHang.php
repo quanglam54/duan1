@@ -88,6 +88,7 @@
                                             <th>Tên sản phẩm</th>
                                             <th>Đơn giá</th>
                                             <th>Số lượng</th>
+                                            <th>Vận chuyển</th>
                                             <th>Thành tiền</th>
                                         </tr>
                                     </thead>
@@ -97,9 +98,10 @@
                                             <tr>
                                                 <td><?= $key + 1 ?></td>
                                                 <td><?= $sanPham['ten_san_pham'] ?></td>
-                                                <td><?= $sanPham['don_gia'] ?></td>
+                                                <td><?= formatPrice($sanPham['don_gia']) ?></td>
                                                 <td><?= $sanPham['so_luong'] ?></td>
-                                                <td><?= $sanPham['thanh_tien'] ?></td>
+                                                <td>30.000</td>
+                                                <td><?= formatPrice($sanPham['thanh_tien']) ?></td>
                                             </tr>
                                             <?php $tong_tien += $sanPham['thanh_tien']; ?>
                                         <?php } ?>
@@ -120,16 +122,8 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <tr>
-                                            <th style="width:50%">Thành tiền:</th>
-                                            <td><?= $tong_tien ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Vận chuyển:</th>
-                                            <td>200000</td>
-                                        </tr>
-                                        <tr>
                                             <th>Tổng tiền:</th>
-                                            <td><?= $tong_tien + 200000 ?></td>
+                                            <td><?= formatPrice( $tong_tien) ?></td>
                                         </tr>
                                     </table>
                                 </div>

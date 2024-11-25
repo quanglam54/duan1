@@ -158,6 +158,7 @@ class CartController
                $user_id = $_SESSION['ho_ten']['id'];
                // var_dump($user);
                // die;
+               $ma_don_hang = 'DH'.rand(1000,9999);
                $name = $_POST['name'];
                $phone = $_POST['phone'];
                $email = $_POST['email'];
@@ -172,7 +173,7 @@ class CartController
                     $totalAmount += $item['so_luong'] * $item['gia_san_pham'];
                }
                $totalAmount += 30000;
-               $order_id = $this->cartModel->insertOrder($user_id, $name, $phone, $email, $address, $date, $totalAmount, $description);
+               $order_id = $this->cartModel->insertOrder($user_id, $ma_don_hang, $name, $phone, $email, $address, $date, $totalAmount, $description);
                // var_dump($order_id); // trả về id của ng đặt hàng
                // die;
                // lưu vào bảng chi tiêt đơn
@@ -231,7 +232,8 @@ class CartController
      //
      public function viewFinish()
      {
-          $viewEnds = $this->cartModel->getOrderDetail();
+          $user_product = $_SESSION['ho_ten']['id'];
+          $viewEnds = $this->cartModel->getOrderDetail($user_product);
           // var_dump($viewEnds);
           // die;
           require_once './views/endpay.php';

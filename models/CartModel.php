@@ -129,12 +129,13 @@ class CartModel
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
 
-     public function insertOrder($user_id, $name, $phone, $email, $address, $date, $totalAmount, $description)
+     public function insertOrder($user_id,$ma_don_hang, $name, $phone, $email, $address, $date, $totalAmount, $description)
      {
-          $sql = "INSERT INTO don_hangs(tai_khoan_id,ten_nguoi_nhan,email_nguoi_nhan,sdt_nguoi_nhan,dia_chi_nguoi_nhan,ngay_dat,tong_tien,ghi_chu) VALUE(:user_id,:ho_ten,:email,:phone,:address,:date,:total,:mo_ta)";
+          $sql = "INSERT INTO don_hangs(tai_khoan_id, ma_don_hang, ten_nguoi_nhan,email_nguoi_nhan,sdt_nguoi_nhan,dia_chi_nguoi_nhan,ngay_dat,tong_tien,ghi_chu) VALUE(:user_id, :ma_don_hang, :ho_ten,:email,:phone,:address,:date,:total,:mo_ta)";
           $stmt = $this->conn->prepare($sql);
           $stmt->execute([
                ':user_id' => $user_id,
+               ':ma_don_hang' => $ma_don_hang,
                ':ho_ten' => $name,
                ':phone' => $phone,
                ':email' => $email,
@@ -195,11 +196,13 @@ class CartModel
      }
 
      //
-     public function getOrderDetail()
+     public function getOrderDetail($tai_khoan_id)
      {
-          $sql = "SELECT chi_tiet_don_hangs.*,don_hangs.ten_nguoi_nhan,don_hangs.email_nguoi_nhan,don_hangs.sdt_nguoi_nhan,don_hangs.dia_chi_nguoi_nhan,don_hangs.ngay_dat,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN don_hangs ON chi_tiet_don_hangs.don_hang_id=don_hangs.id INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id";
+          $sql = "SELECT chi_tiet_don_hangs.*,don_hangs.ten_nguoi_nhan,don_hangs.email_nguoi_nhan,don_hangs.sdt_nguoi_nhan,don_hangs.dia_chi_nguoi_nhan,don_hangs.ngay_dat,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN don_hangs ON chi_tiet_don_hangs.don_hang_id=don_hangs.id INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id WHERE tai_khoan_id = :tai_khoan_id";
           $stmt = $this->conn->prepare($sql);
-          $stmt->execute();
+          $stmt->execute([
+               ':tai_khoan_id' => $tai_khoan_id
+          ]);
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
      //

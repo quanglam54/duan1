@@ -102,11 +102,44 @@ class AdminDonHang
         }
     }
 
-   
+    // Thống kê số đơn hàng mới
+    public function countNewDonHang(){
+        try{
+            $sql = "SELECT COUNT(*) as count FROM don_hangs WHERE trang_thai_id = 1";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC); // Sử dụng PDO::FETCH_ASSOC để lấy kết quả dưới dạng mảng liên kết
+            return $result['count']; // Trả về giá trị của 'count'
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+    // Doanh thu
+    public function doanhThu(){
+        try{
+            $sql = "SELECT SUM(thanh_tien) as total FROM chi_tiet_don_hangs
+            INNER JOIN don_hangs ON chi_tiet_don_hangs.don_hang_id = don_hangs.id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC); // Sử dụng PDO::FETCH_ASSOC để lấy kết quả dưới dạng mảng liên kết
+            return $result['total']; // Trả về giá trị của 'total'
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
 
+    // Thống kê số lượng sản phẩm bán ra
+    public function countProductSold(){
+        try{
+            $sql = "SELECT SUM(so_luong) as total_product FROM chi_tiet_don_hangs";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC); // Sử dụng PDO::FETCH_ASSOC để lấy kết quả dưới dạng mảng liên kết
+            return $result['total_product']; // Trả về giá trị của 'total'
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
 
-
-   
-
-    
+  
 }

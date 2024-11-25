@@ -156,6 +156,20 @@ class AdminTaiKhoan
         }
     }
 
+
+      // Thống kê số lượng người dùng
+      public function countUser(){
+        try{
+            $sql = "SELECT COUNT(*) as count FROM tai_khoans WHERE chuc_vu_id = 2";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC); // Sử dụng PDO::FETCH_ASSOC để lấy kết quả dưới dạng mảng liên kết
+            return $result['count']; // Trả về giá trị của 'count'
+        }catch(Exception $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+    }
+
     
 
 

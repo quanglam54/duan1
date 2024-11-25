@@ -258,8 +258,7 @@ class AdminSanPham
             AVG(san_phams.gia_san_pham) as avgPrice
             FROM san_phams
             INNER JOIN danh_mucs ON danh_mucs.id = san_phams.danh_muc_id
-            GROUP BY danh_mucs.ten_danh_muc, danh_mucs.id
-            ORDER BY danh_mucs.id DESC";
+            GROUP BY danh_mucs.ten_danh_muc, danh_mucs.id";
             $stmt = $this->conn->prepare($sql); 
             $stmt->execute();
             

@@ -42,7 +42,7 @@
                           <td><?= $donHang['ten_nguoi_nhan'] ?></td>
                           <td><?= $donHang['sdt_nguoi_nhan'] ?></td>
                           <td><?= $donHang['ngay_dat'] ?></td>
-                          <td><?= $donHang['tong_tien'] ?></td>
+                          <td><?= formatPrice($donHang['tong_tien']) ?></td>
                           <td><?= $donHang['ten_trang_thai'] ?></td>
                           <td>
                       <div class="btn-group">
