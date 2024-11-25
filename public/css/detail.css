@@ -197,6 +197,19 @@ header {
   width: 600px;
   object-fit: cover;
 }
+#main-image {
+  transition: opacity 0.3s ease;
+}
+
+.small-img {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.small-img:hover {
+  opacity: 1;
+}
 .detail-item-des {
   margin-left: 30px;
 }

@@ -21,7 +21,7 @@
                <div class="container">
                     <div class="header-main">
                          <div class="header-left">
-                              <img src="./public/img/ảnh logo.svg" alt="" />
+                              <a href="<?= BASE_URL ?>"> <img src="./public/img/ảnh logo.svg" alt="" /></a>
                               <ul class="header-nav">
                                    <li>
                                         <a href="#">Sản phẩm

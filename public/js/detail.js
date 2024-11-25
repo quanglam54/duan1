@@ -40,3 +40,22 @@ document.addEventListener("DOMContentLoaded", function () {
   // Cập nhật giá ban đầu khi trang tải
   updatePrice();
 });
+
+//
+
+document.addEventListener("DOMContentLoaded", function () {
+  const smallImages = document.querySelectorAll(".small-img");
+  const mainImage = document.getElementById("main-image");
+
+  smallImages.forEach((image) => {
+    image.addEventListener("click", function () {
+      // Thay đổi src của ảnh lớn thành src của ảnh được click
+      mainImage.src = this.src;
+
+      mainImage.style.opacity = 0;
+      setTimeout(() => {
+        mainImage.style.opacity = 1;
+      }, 200);
+    });
+  });
+});

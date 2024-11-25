@@ -93,17 +93,17 @@
      <section class="detail-products">
           <div class="container">
                <div class="detail-lists">
+
                     <div class="detail-item">
-                         <img src="./public/img/sp-1.jpg" alt="" />
-                         <img src="./public/img/sp-2.jpg" alt="" />
-                         <img src="./public/img/sp-3.jpg" alt="" />
-                         <img src="./public/img/sp-gong4.jpg" alt="" />
-                         <img src="./public/img/sp-gong3.jpg" alt="" />
+                         <?php foreach ($albumAnhs as $anh): ?>
+                              <img src="<?= 'uploads/' . $anh['link_hinh_anh'] ?>" alt="" class="small-img" />
+                         <?php endforeach; ?>
                     </div>
+
                     <!--  -->
 
                     <div class="detail-item-bn">
-                         <img src="<?= "./uploads/" . $productDetail['hinh_anh'] ?>" alt="" />
+                         <img id="main-image" src="<?= "./uploads/" . $productDetail['hinh_anh'] ?>" alt="" />
                     </div>
 
                     <div class="detail-item-des">

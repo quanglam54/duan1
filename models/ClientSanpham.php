@@ -105,6 +105,14 @@ class ClientSanphamModel
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
 
-
+     public function getAnhAlbum($product_id)
+     {
+          $sql = "SELECT * FROM hinh_anh_san_phams WHERE san_pham_id=:product_id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':product_id' => $product_id
+          ]);
+          return $stmt->fetchAll();
+     }
 }
 ?>

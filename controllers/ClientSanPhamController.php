@@ -45,6 +45,8 @@ class ClientSanPhamController
      public function getProductDetail()
      {
           $product_id = $_GET['id'];
+          // var_dump($product_id);
+          // die;
 
           $productDetail = $this->modelSanPham->getSanPhamById($product_id);
           $cate_id = $productDetail['danh_muc_id'];
@@ -52,7 +54,9 @@ class ClientSanPhamController
           // var_dump($cate_id);
           // die;
           $productOther = $this->modelSanPham->getSanPhamOtherId($product_id, $cate_id);
-
+          $albumAnhs = $this->modelSanPham->getAnhAlbum($product_id);
+          // var_dump($albumAnhs);
+          // die;
           // var_dump($productDetail);
           // die;
           $comments = $this->modelSanPham->getCommentById($product_id);

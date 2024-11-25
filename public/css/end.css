@@ -214,27 +214,143 @@ header {
   }
 }
 
+.order {
+  padding: 20px;
+  background: linear-gradient(120deg, #ff7e5f, #feb47b);
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
 .order h2 {
-  color: #454545;
-  font-size: 25px;
-  margin-bottom: 10px;
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 20px;
   text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .order table {
+  width: 100%;
   border-collapse: collapse;
-  border: 1px solid #55d5d2;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 .order table th {
-  padding: 10px;
-  border: 1px solid #333;
-  background-color: #666;
+  padding: 15px;
+  background: linear-gradient(120deg, #2193b0, #6dd5ed);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.order table td {
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+.order table tr:hover td {
+  background-color: #f9f9f9;
+  color: #000;
+  transition: background 0.3s, color 0.3s;
+}
+.order table tr td:nth-child(1) {
+  color: #e63946;
+}
+
+.order table tr td:nth-child(2) {
+  color: #1d3557;
+}
+
+.order table tr td:nth-child(3) {
+  color: #457b9d;
+}
+
+.order table tr td:nth-child(4) {
+  color: #2a9d8f;
+}
+
+.order table tr td:nth-child(5) {
+  color: #f4a261;
+}
+
+.order table tr td:nth-child(6) {
+  color: #e9c46a;
+}
+
+.order table tr td:nth-child(7) {
+  color: #264653;
+}
+
+.order table tr td:nth-child(8) {
+  color: #6a4c93;
+}
+
+.order table tr td:nth-child(9) {
+  color: #ff6f61;
+}
+
+.order table tr td:nth-child(10) {
+  color: #2b2d42;
+}
+.order table tr:hover {
+  background: #f1f1f1;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.order table th:first-child,
+.order table td:first-child {
+  border-left: none;
+}
+
+.order h5 {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
   color: #fff;
 }
-.order table td {
+
+.order form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.order form input[type="text"] {
   padding: 10px;
-  border: 1px solid #333;
-  background-color: #fff;
-  color: #000;
+  width: 250px;
+  border: 2px solid #ff7e5f;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.order form input[type="text"]:focus {
+  border-color: #feb47b;
+}
+
+.order form button {
+  padding: 10px 20px;
+  background: #2193b0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.order form button:hover {
+  background: #6dd5ed;
 }
 /* css 
 footer */
