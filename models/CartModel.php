@@ -129,7 +129,7 @@ class CartModel
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
 
-     public function insertOrder($user_id,$ma_don_hang, $name, $phone, $email, $address, $date, $totalAmount, $description)
+     public function insertOrder($user_id, $ma_don_hang, $name, $phone, $email, $address, $date, $totalAmount, $description)
      {
           $sql = "INSERT INTO don_hangs(tai_khoan_id, ma_don_hang, ten_nguoi_nhan,email_nguoi_nhan,sdt_nguoi_nhan,dia_chi_nguoi_nhan,ngay_dat,tong_tien,ghi_chu) VALUE(:user_id, :ma_don_hang, :ho_ten,:email,:phone,:address,:date,:total,:mo_ta)";
           $stmt = $this->conn->prepare($sql);
@@ -224,6 +224,25 @@ class CartModel
                ':don_hang_id' => $order_id
           ]);
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
+
+     public function deleteDetailCart($gioHangId)
+     {
+          $sql = "DELETE FROM chi_tiet_gio_hangs WHERE gio_hang_id=:gio_hang_id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':gio_hang_id' => $gioHangId
+          ]);
+          return true;
+     }
+     public function deleteCart($user_id)
+     {
+          $sql = "DELETE FROM gio_hangs WHERE tai_khoan_id=:tai_khoan_id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':tai_khoan_id' => $user_id
+          ]);
+          return true;
      }
 }
 ?>

@@ -28,9 +28,6 @@ class CartController
                $id_cart = $this->cartModel->getIdCart($user_product);
                // $id_cart sẽ nhận được mảng id và tai_khoan_id của user đó
                // lấy id giỏ hàng
-               // var_dump($id_cart);
-               // die;
-
                if (!$id_cart) {
                     // nếu kh có giỏ tạo giỏ mới
                     $id_cart = $this->cartModel->insertCart($user_product);
@@ -42,7 +39,7 @@ class CartController
                // kiểm tra xem sp đã có trong giỏ chưa
                $exitsProduct = $this->cartModel->checkProductCart($id_cart, $san_pham_id);
                // var_dump($exitsProduct);
-               // die;
+// die;
 
                if ($exitsProduct) {
                     // nếu có cập nhật số lượng
@@ -57,7 +54,10 @@ class CartController
                //
 
 
-               echo "<script>alert('Thêm sản phẩm vào giỏ hàng thành công!'); window.location.href='" . BASE_URL . "';</script>";
+               echo "<script>
+ alert('Thêm sản phẩm vào giỏ hàng thành công!');
+window.location.href = '" . BASE_URL . "';
+</script>";
                exit();
           }
      }
@@ -68,7 +68,7 @@ class CartController
           $user_product = $_SESSION['ho_ten']['id'];
           $viewCarts = $this->cartModel->getViewCart($user_product);
           // var_dump($viewCarts);
-          // die;
+// die;
           if (isset($_GET['total'])) {
                $total = $_GET['total'];
           } else {
@@ -87,7 +87,7 @@ class CartController
                // Lấy dữ liệu gửi từ AJAX
                $data = json_decode(file_get_contents('php://input'), true);
                // var_dump($data);
-               // die;
+// die;
                $cartId = $data['cartId']; // lấy id từ bên json trả về
                $change = $data['change']; // số lượng khi tăng là 1 còn giảm sẽ là -1
 
@@ -158,7 +158,7 @@ class CartController
                $user_id = $_SESSION['ho_ten']['id'];
                // var_dump($user);
                // die;
-               $ma_don_hang = 'DH'.rand(1000,9999);
+               $ma_don_hang = 'DH' . rand(1000, 9999);
                $name = $_POST['name'];
                $phone = $_POST['phone'];
                $email = $_POST['email'];
@@ -173,7 +173,17 @@ class CartController
                     $totalAmount += $item['so_luong'] * $item['gia_san_pham'];
                }
                $totalAmount += 30000;
-               $order_id = $this->cartModel->insertOrder($user_id, $ma_don_hang, $name, $phone, $email, $address, $date, $totalAmount, $description);
+               $order_id = $this->cartModel->insertOrder(
+                    $user_id,
+                    $ma_don_hang,
+                    $name,
+                    $phone,
+                    $email,
+                    $address,
+                    $date,
+                    $totalAmount,
+                    $description
+               );
                // var_dump($order_id); // trả về id của ng đặt hàng
                // die;
                // lưu vào bảng chi tiêt đơn
@@ -190,7 +200,10 @@ class CartController
                          $quantity,
                          $subtotal
                     );
+                    $gio_hang_id = $item['gio_hang_id'];
+                    $this->cartModel->deleteDetailCart($gio_hang_id);
                }
+               $this->cartModel->deleteCart($user_id);
                header("Location:" . BASE_URL . '?act=finish');
                exit();
           }
@@ -221,9 +234,11 @@ class CartController
                // header("Location:" . BASE_URL . '?act=view-cart&total=' . $total);
                // exit();
                echo "<script>
-               alert(\"Xóa sản phẩm thành công!\");
-               window.location.href=\"" . BASE_URL . "?act=view-cart&total=" . $total . "\";
-             </script>";
+     alert(\"Xóa sản phẩm thành công!\");
+               window.location.href = \"" . BASE_URL .
+                    "?act=view-cart&total=" . $total .
+                    "\";
+     </script>";
                exit();
 
           }
@@ -232,6 +247,10 @@ class CartController
      //
      public function viewFinish()
      {
+          if (!isset($_SESSION['ho_ten'])) {
+               header("Location:" . BASE_URL . '?act=login');
+               exit();
+          }
           $user_product = $_SESSION['ho_ten']['id'];
           $viewEnds = $this->cartModel->getOrderDetail($user_product);
           // var_dump($viewEnds);
@@ -253,29 +272,32 @@ class CartController
                // die;
                $email = $order_info['email_nguoi_nhan'];
                $subject = 'Xác nhận đơn hàng của bạn
-               ';
+     ';
 
                $content = '<html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Xác nhận đơn hàng</title>
-        </head>
-        <body>
-            <h1>Xác nhận đơn hàng của bạn</h1>
-            <p>Thông tin người mua hàng:</p>
-            <ul>
-                <li><strong>Mã đơn hàng:</strong> ' . $order_fall[0]['ma_don_hang'] . '</li>
-                <li><strong>Người nhận:</strong> ' . $order_fall[0]['ten_nguoi_nhan'] . '</li>
-                <li><strong>Email:</strong> ' . $order_fall[0]['email_nguoi_nhan'] . '</li>
-                <li><strong>Số điện thoại:</strong> ' . $order_fall[0]['sdt_nguoi_nhan'] . '</li>
-                <li><strong>Địa chỉ:</strong> ' . $order_fall[0]['dia_chi_nguoi_nhan'] . '</li>
-                <li><strong>Ngày đặt:</strong> ' . $order_fall[0]['ngay_dat'] . '</li>
-                <li><strong>Đơn giá:</strong> ' . $order_fall[0]['don_gia'] . '</li>
-                <li><strong>Số lượng:</strong> ' . $order_fall[0]['so_luong'] . '</li>
-                <li><strong>Thành tiền:</strong> ' . $order_fall[0]['thanh_tien'] . '</li>
-            </ul>
-        </body>
-        </html>';
+
+     <head>
+          <meta charset="UTF-8">
+          <title>Xác nhận đơn hàng</title>
+     </head>
+
+     <body>
+          <h1>Xác nhận đơn hàng của bạn</h1>
+          <p>Thông tin người mua hàng:</p>
+          <ul>
+               <li><strong>Mã đơn hàng:</strong> ' . $order_fall[0]['ma_don_hang'] . '</li>
+               <li><strong>Người nhận:</strong> ' . $order_fall[0]['ten_nguoi_nhan'] . '</li>
+               <li><strong>Email:</strong> ' . $order_fall[0]['email_nguoi_nhan'] . '</li>
+               <li><strong>Số điện thoại:</strong> ' . $order_fall[0]['sdt_nguoi_nhan'] . '</li>
+               <li><strong>Địa chỉ:</strong> ' . $order_fall[0]['dia_chi_nguoi_nhan'] . '</li>
+               <li><strong>Ngày đặt:</strong> ' . $order_fall[0]['ngay_dat'] . '</li>
+               <li><strong>Đơn giá:</strong> ' . $order_fall[0]['don_gia'] . '</li>
+               <li><strong>Số lượng:</strong> ' . $order_fall[0]['so_luong'] . '</li>
+               <li><strong>Thành tiền:</strong> ' . $order_fall[0]['thanh_tien'] . '</li>
+          </ul>
+     </body>
+
+     </html>';
                try {
                     sendMailer($email, $subject, $content);
                     echo "Email xác nhận gửi thành công";
