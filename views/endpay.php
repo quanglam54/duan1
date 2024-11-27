@@ -111,8 +111,11 @@
                                    <td><?= $end['ma_don_hang'] ?></td>
                                    <td><?= $end['ngay_dat'] ?></td>
                                    <td><?= number_format($end['tong_tien']) ?>đ</td>
-                                   <td><?= $end['phuong_thuc_thanh_toan_id'] ?></td>
-                                   <td><?= $end['trang_thai_id'] ?></td>
+                                   <td><?= $phuongThucThanhToan[$end['phuong_thuc_thanh_toan_id']] ?></td>
+                                   <!-- lúc này $pttt sẽ là [1] thì sẽ lấy theo key -->
+                                   <td><?= $trangThaiDonHang[$end['trang_thai_id']] ?></td>
+                                   <!-- lúc này $ttdh sẽ là [1] theo key -->
+
                                    <td>Hủy đơn</td>
                               </tr>
                          <?php endforeach; ?>

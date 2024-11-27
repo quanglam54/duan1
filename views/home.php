@@ -1,6 +1,25 @@
 <?php
 include 'views/layout/header.php';
+
+if (isset($_SESSION['error'])) {
+     echo "<script type='text/javascript'>
+        toastr.warning(\"{$_SESSION['error']}\")
+        </script>";
+
+     // Xóa session
+     unset($_SESSION['error']);
+}
+
+if (isset($_SESSION['success'])) {
+     echo "<script type='text/javascript'>
+        toastr.success(\"{$_SESSION['success']}\")
+        </script>";
+
+     // Xóa session
+     unset($_SESSION['success']);
+}
 ?>
+
 <section class="wrapper">
      <header id="header">
           <div class="container">

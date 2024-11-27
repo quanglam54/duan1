@@ -52,12 +52,8 @@ class CartController
 
 
                //
-
-
-               echo "<script>
- alert('Thêm sản phẩm vào giỏ hàng thành công!');
-window.location.href = '" . BASE_URL . "';
-</script>";
+               $_SESSION['success'] = 'Thêm sản phẩm vào giỏ hàng thành công!';
+               header('Location: ' . BASE_URL);
                exit();
           }
      }
@@ -253,10 +249,19 @@ window.location.href = '" . BASE_URL . "';
           }
           $user_product = $_SESSION['ho_ten']['id'];
           $view = $this->cartModel->getOrderDetail($user_product);
-          $viewEnds = $this->cartModel->getOrderCartUser($user_product);
 
           // var_dump($view);
           // die;
+          // lấy trạng thái đơn
+          $arrTrangThaiDonHang = $this->cartModel->getTrangThaiDonHang();
+          $trangThaiDonHang = array_column($arrTrangThaiDonHang, 'ten_trang_thai', 'id');
+
+          // lấy trạng thái thanh toán
+          $arrPhuongThucThanhToan = $this->cartModel->getTrangThaiThanhToan();
+          $phuongThucThanhToan = array_column($arrPhuongThucThanhToan, 'ten_phuong_thuc', 'id');
+          // var_dump($phuongThucThanhToan);
+          // die;
+          $viewEnds = $this->cartModel->getOrderCartUser($user_product);
 
           require_once './views/endpay.php';
      }

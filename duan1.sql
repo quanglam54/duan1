@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 13, 2024 at 03:15 AM
+-- Generation Time: Nov 27, 2024 at 03:49 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -46,7 +46,9 @@ INSERT INTO `binh_luans` (`id`, `san_pham_id`, `tai_khoan_id`, `noi_dung`, `ngay
 (33, 19, 38, 'đẹp', '2024-11-12 12:04:38', 1),
 (34, 20, 38, 'đẹp quá', '2024-11-12 12:18:18', 1),
 (35, 27, 38, 'đẹp quá shop ơi', '2024-11-13 02:28:17', 1),
-(36, 27, 38, 'đẹp quá', '2024-11-13 02:29:37', 1);
+(36, 27, 38, 'đẹp quá', '2024-11-13 02:29:37', 1),
+(37, 40, 38, 'đẹp quá shop iu', '2024-11-13 03:32:51', 1),
+(38, 21, 38, 'đẹpppp', '2024-11-13 04:00:14', 1);
 
 -- --------------------------------------------------------
 
@@ -62,6 +64,16 @@ CREATE TABLE `chi_tiet_don_hangs` (
   `so_luong` int NOT NULL,
   `thanh_tien` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `chi_tiet_don_hangs`
+--
+
+INSERT INTO `chi_tiet_don_hangs` (`id`, `don_hang_id`, `san_pham_id`, `don_gia`, `so_luong`, `thanh_tien`) VALUES
+(331, 175, 21, '160000.00', 1, '190000'),
+(333, 177, 20, '16000000.00', 1, '16030000'),
+(334, 178, 20, '16000000.00', 1, '16030000'),
+(335, 179, 21, '160000.00', 1, '190000');
 
 -- --------------------------------------------------------
 
@@ -81,9 +93,7 @@ CREATE TABLE `chi_tiet_gio_hangs` (
 --
 
 INSERT INTO `chi_tiet_gio_hangs` (`id`, `gio_hang_id`, `san_pham_id`, `so_luong`) VALUES
-(96, 134, 20, 1),
-(97, 135, 20, 1),
-(98, 136, 40, 1);
+(165, 161, 19, 1);
 
 -- --------------------------------------------------------
 
@@ -149,6 +159,17 @@ CREATE TABLE `don_hangs` (
   `trang_thai_id` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `don_hangs`
+--
+
+INSERT INTO `don_hangs` (`id`, `ma_don_hang`, `tai_khoan_id`, `ten_nguoi_nhan`, `email_nguoi_nhan`, `sdt_nguoi_nhan`, `dia_chi_nguoi_nhan`, `ngay_dat`, `tong_tien`, `ghi_chu`, `phuong_thuc_thanh_toan_id`, `trang_thai_id`) VALUES
+(175, 'DH3454', 38, 'Hiền xinh gái', 'lamdqph53571@gmail.com', '0968551321', '28 Yên Hòa', '2024-11-26', '190000.00', '', 1, 1),
+(176, 'DH7520', 38, 'Hiền xinh gái', 'lamdqph53571@gmail.com', '0968551321', '28 Yên Hòa', '2024-11-26', '190000.00', '', 1, 1),
+(177, 'DH6879', 38, 'Đặng Quang Lâm', 'lamdqph53571@gmail.com', '0968551321', '28 Yên Hòa', '2024-11-27', '16030000.00', '', 1, 1),
+(178, 'DH8377', 38, 'Đặng Quang Lâm', 'lamdqph53571@gmail.com', '0968551321', '28 Yên Hòa', '2024-11-27', '16030000.00', '', 1, 1),
+(179, 'DH7789', 40, 'quách trần', 'quachtran220@gmail.com', '0968551321', '28 Yên Hòa', '2024-11-27', '190000.00', '', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -165,17 +186,7 @@ CREATE TABLE `gio_hangs` (
 --
 
 INSERT INTO `gio_hangs` (`id`, `tai_khoan_id`) VALUES
-(126, 38),
-(127, 38),
-(128, 38),
-(136, 38),
-(129, 40),
-(130, 40),
-(131, 40),
-(132, 40),
-(133, 40),
-(134, 40),
-(135, 40);
+(161, 38);
 
 -- --------------------------------------------------------
 
@@ -297,11 +308,9 @@ CREATE TABLE `tai_khoans` (
 INSERT INTO `tai_khoans` (`id`, `ho_ten`, `anh_dai_dien`, `ngay_sinh`, `email`, `so_dien_thoai`, `gioi_tinh`, `dia_chi`, `mat_khau`, `chuc_vu_id`, `trang_thai`) VALUES
 (31, 'Lê Thị Lan Anh', NULL, '2015-11-03', 'anh@gmail.com', '0949607556', 1, 'Trịnh Văn Bô', '12345', 2, 1),
 (32, 'Lê Văn Long', NULL, '2014-11-17', 'long@gmail.com', '0369562321', 2, 'Cầu Diễn', '12345', 2, 1),
-(36, 'quanglam', NULL, NULL, 'quanglam5401@gmail.com', NULL, 1, NULL, '123456', 1, 1),
-(38, 'tranhien11', NULL, NULL, 'quanglam@gmail.com', NULL, 1, NULL, '123456', 2, 1),
-(39, 'quanglam', NULL, NULL, 'hieutatph52546@gmail.com', NULL, 1, NULL, '$2y$10$bo5AbKx7116sbWYnRq5Nle/.7F8Tb2MUvQeZGgef.7F.onkF1iSTG', 1, 1),
+(38, 'Hiền xing', NULL, NULL, 'lamdqph53571@gmail.com', '0968551321', 1, 'Thái Bình', '1234567', 2, 1),
 (40, 'quanglam11', NULL, NULL, 'quachtran220@gmail.com', NULL, 1, NULL, '123456', 2, 1),
-(41, 'quanglam', NULL, NULL, 'quanglam54011@gmail.com', NULL, 1, NULL, '123456', 2, 1);
+(42, 'lam', NULL, NULL, 'quanglam5401@gmail.com', NULL, 1, NULL, '123456', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -429,19 +438,19 @@ ALTER TABLE `trang_thai_don_hangs`
 -- AUTO_INCREMENT for table `binh_luans`
 --
 ALTER TABLE `binh_luans`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `chi_tiet_don_hangs`
 --
 ALTER TABLE `chi_tiet_don_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=311;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=336;
 
 --
 -- AUTO_INCREMENT for table `chi_tiet_gio_hangs`
 --
 ALTER TABLE `chi_tiet_gio_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT for table `chuc_vus`
@@ -459,13 +468,13 @@ ALTER TABLE `danh_mucs`
 -- AUTO_INCREMENT for table `don_hangs`
 --
 ALTER TABLE `don_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- AUTO_INCREMENT for table `gio_hangs`
 --
 ALTER TABLE `gio_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT for table `hinh_anh_san_phams`
@@ -489,7 +498,7 @@ ALTER TABLE `san_phams`
 -- AUTO_INCREMENT for table `tai_khoans`
 --
 ALTER TABLE `tai_khoans`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `trang_thai_don_hangs`
@@ -512,15 +521,15 @@ ALTER TABLE `binh_luans`
 -- Constraints for table `chi_tiet_don_hangs`
 --
 ALTER TABLE `chi_tiet_don_hangs`
-  ADD CONSTRAINT `chi_tiet_don_hangs_ibfk_1` FOREIGN KEY (`don_hang_id`) REFERENCES `don_hangs` (`id`),
-  ADD CONSTRAINT `chi_tiet_don_hangs_ibfk_2` FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams` (`id`);
+  ADD CONSTRAINT `chi_tiet_don_hangs_ibfk_1` FOREIGN KEY (`don_hang_id`) REFERENCES `don_hangs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `chi_tiet_don_hangs_ibfk_2` FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `chi_tiet_gio_hangs`
 --
 ALTER TABLE `chi_tiet_gio_hangs`
-  ADD CONSTRAINT `chi_tiet_gio_hangs_ibfk_1` FOREIGN KEY (`gio_hang_id`) REFERENCES `gio_hangs` (`id`),
-  ADD CONSTRAINT `chi_tiet_gio_hangs_ibfk_2` FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams` (`id`);
+  ADD CONSTRAINT `chi_tiet_gio_hangs_ibfk_1` FOREIGN KEY (`gio_hang_id`) REFERENCES `gio_hangs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `chi_tiet_gio_hangs_ibfk_2` FOREIGN KEY (`san_pham_id`) REFERENCES `san_phams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `don_hangs`
@@ -534,7 +543,7 @@ ALTER TABLE `don_hangs`
 -- Constraints for table `gio_hangs`
 --
 ALTER TABLE `gio_hangs`
-  ADD CONSTRAINT `gio_hangs_ibfk_1` FOREIGN KEY (`tai_khoan_id`) REFERENCES `tai_khoans` (`id`);
+  ADD CONSTRAINT `gio_hangs_ibfk_1` FOREIGN KEY (`tai_khoan_id`) REFERENCES `tai_khoans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `hinh_anh_san_phams`
