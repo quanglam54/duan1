@@ -252,60 +252,122 @@ window.location.href = '" . BASE_URL . "';
                exit();
           }
           $user_product = $_SESSION['ho_ten']['id'];
-          $viewEnds = $this->cartModel->getOrderDetail($user_product);
-          // var_dump($viewEnds);
+          $view = $this->cartModel->getOrderDetail($user_product);
+          $viewEnds = $this->cartModel->getOrderCartUser($user_product);
+
+          // var_dump($view);
           // die;
+
           require_once './views/endpay.php';
      }
      //
+     // public function sendMail()
+     // {
+     //      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+     //           $order_id = $_POST['order_id'];
+
+
+     //           $order_info = $this->cartModel->getOrderById($order_id);
+     //           // var_dump($order_info);
+     //           // die;
+     //           $order_fall = $this->cartModel->getOrderDetails($order_id);
+     //           // var_dump($order_fall);
+     //           // die;
+     //           $email = $order_info['email_nguoi_nhan'];
+     //           $subject = 'Xác nhận đơn hàng của bạn
+     // ';
+
+     //           $content = '<html>
+
+     // <head>
+     //      <meta charset="UTF-8">
+     //      <title>Xác nhận đơn hàng</title>
+     // </head>
+
+     // <body>
+     //      <h1>Xác nhận đơn hàng của bạn</h1>
+     //      <p>Thông tin người mua hàng:</p>
+     //      <ul>
+     //           <li><strong>Mã đơn hàng:</strong> ' . $order_fall[0]['ma_don_hang'] . '</li>
+     //           <li><strong>Người nhận:</strong> ' . $order_fall[0]['ten_nguoi_nhan'] . '</li>
+     //           <li><strong>Email:</strong> ' . $order_fall[0]['email_nguoi_nhan'] . '</li>
+     //           <li><strong>Số điện thoại:</strong> ' . $order_fall[0]['sdt_nguoi_nhan'] . '</li>
+     //           <li><strong>Địa chỉ:</strong> ' . $order_fall[0]['dia_chi_nguoi_nhan'] . '</li>
+     //           <li><strong>Ngày đặt:</strong> ' . $order_fall[0]['ngay_dat'] . '</li>
+     //           <li><strong>Đơn giá:</strong> ' . $order_fall[0]['don_gia'] . '</li>
+     //           <li><strong>Số lượng:</strong> ' . $order_fall[0]['so_luong'] . '</li>
+     //           <li><strong>Thành tiền:</strong> ' . $order_fall[0]['thanh_tien'] . '</li>
+     //      </ul>
+     // </body>
+
+     // </html>';
+     //           try {
+     //                sendMailer($email, $subject, $content);
+     //                echo "Email xác nhận gửi thành công";
+     //           } catch (Exception $e) {
+     //                echo "Gửi email thất bại. Lỗi:{$e->getMessage()}";
+     //           }
+     //      }
+     // }
+
+
      public function sendMail()
      {
           if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-               $order_id = $_POST['order_id'];
+               $email = $_POST['email'];
 
+               // Lấy tất cả các order_id từ input form
+               $order_ids = $_POST['order_ids'];
 
-               $order_info = $this->cartModel->getOrderById($order_id);
-               // var_dump($order_info);
-               // die;
-               $order_fall = $this->cartModel->getOrderDetails($order_id);
-               // var_dump($order_fall);
-               // die;
-               $email = $order_info['email_nguoi_nhan'];
-               $subject = 'Xác nhận đơn hàng của bạn
-     ';
+               // Lấy thông tin các đơn hàng từ order_id
+               $order_info = [];
+               foreach ($order_ids as $order_id) {
+                    $order_info[] = $this->cartModel->getOrderById($order_id);
+               }
 
+               // Kiểm tra nếu không có đơn hàng
+               if (empty($order_info)) {
+                    echo "Không tìm thấy thông tin đơn hàng!";
+                    return;
+               }
+
+               // Tạo tiêu đề email
+               $subject = 'Xác nhận các đơn hàng của bạn';
+
+               // Xây dựng nội dung HTML cho email
                $content = '<html>
+                             <head>
+                                 <meta charset="UTF-8">
+                                 <title>Xác nhận các đơn hàng</title>
+                             </head>
+                             <body>
+                                 <h1>Xác nhận các đơn hàng của bạn</h1>
+                                 <p>Thông tin người mua hàng:</p>
+                                 <ul>';
 
-     <head>
-          <meta charset="UTF-8">
-          <title>Xác nhận đơn hàng</title>
-     </head>
+               // Tạo nội dung email với thông tin người nhận
+               foreach ($order_info as $order) {
+                    $content .= '
+                     <li><strong>Mã đơn hàng:</strong> ' . $order['ma_don_hang'] . '</li>
+                     <li><strong>Người nhận:</strong> ' . $order['ten_nguoi_nhan'] . '</li>
+                     <li><strong>Email:</strong> ' . $order['email_nguoi_nhan'] . '</li>
+                     <li><strong>Số điện thoại:</strong> ' . $order['sdt_nguoi_nhan'] . '</li>
+                     <li><strong>Địa chỉ:</strong> ' . $order['dia_chi_nguoi_nhan'] . '</li>
+                     <li><strong>Ngày đặt:</strong> ' . $order['ngay_dat'] . '</li>
+                     <br>';
+               }
 
-     <body>
-          <h1>Xác nhận đơn hàng của bạn</h1>
-          <p>Thông tin người mua hàng:</p>
-          <ul>
-               <li><strong>Mã đơn hàng:</strong> ' . $order_fall[0]['ma_don_hang'] . '</li>
-               <li><strong>Người nhận:</strong> ' . $order_fall[0]['ten_nguoi_nhan'] . '</li>
-               <li><strong>Email:</strong> ' . $order_fall[0]['email_nguoi_nhan'] . '</li>
-               <li><strong>Số điện thoại:</strong> ' . $order_fall[0]['sdt_nguoi_nhan'] . '</li>
-               <li><strong>Địa chỉ:</strong> ' . $order_fall[0]['dia_chi_nguoi_nhan'] . '</li>
-               <li><strong>Ngày đặt:</strong> ' . $order_fall[0]['ngay_dat'] . '</li>
-               <li><strong>Đơn giá:</strong> ' . $order_fall[0]['don_gia'] . '</li>
-               <li><strong>Số lượng:</strong> ' . $order_fall[0]['so_luong'] . '</li>
-               <li><strong>Thành tiền:</strong> ' . $order_fall[0]['thanh_tien'] . '</li>
-          </ul>
-     </body>
 
-     </html>';
+               // Gửi email
                try {
                     sendMailer($email, $subject, $content);
-                    echo "Email xác nhận gửi thành công";
+                    echo "Email xác nhận gửi thành công!";
                } catch (Exception $e) {
-                    echo "Gửi email thất bại. Lỗi:{$e->getMessage()}";
+                    echo "Gửi email thất bại. Lỗi: {$e->getMessage()}";
                }
           }
      }
+
 
 
 }

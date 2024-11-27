@@ -97,42 +97,48 @@
                <table>
                     <thead>
                          <tr>
-                              <th>Họ tên</th>
-                              <th>Đơn hàng ID</th>
-                              <th>Email</th>
-                              <th>Số điện thoại</th>
-                              <th>Địa chỉ</th>
+                              <th>Mã đơn hàng</th>
                               <th>Ngày đặt</th>
-                              <th>Số lượng</th>
-                              <th>Đơn giá</th>
-                              <th>Phí ship</th>
-                              <th>Thành tiền</th>
+                              <th>Tổng tiền</th>
+                              <th>Phương thức thanh toán</th>
+                              <th>Trạng thái đơn hàng</th>
+                              <th>Thao tác</th>
                          </tr>
                     </thead>
                     <tbody>
                          <?php foreach ($viewEnds as $end): ?>
                               <tr>
-                                   <td><?= $end['ten_nguoi_nhan'] ?></td>
-                                   <td><?= $end['don_hang_id'] ?></td>
-                                   <td><?= $end['email_nguoi_nhan'] ?></td>
-                                   <td><?= $end['sdt_nguoi_nhan'] ?></td>
-                                   <td><?= $end['dia_chi_nguoi_nhan'] ?></td>
+                                   <td><?= $end['ma_don_hang'] ?></td>
                                    <td><?= $end['ngay_dat'] ?></td>
-                                   <td><?= $end['so_luong'] ?></td>
-                                   <td><?= number_format($end['don_gia']) ?>VND</td>
-                                   <td><?= number_format(30000) ?>VND</td>
-                                   <td><?= number_format($end['thanh_tien']) ?>VND</td>
+                                   <td><?= number_format($end['tong_tien']) ?>đ</td>
+                                   <td><?= $end['phuong_thuc_thanh_toan_id'] ?></td>
+                                   <td><?= $end['trang_thai_id'] ?></td>
+                                   <td>Hủy đơn</td>
                               </tr>
                          <?php endforeach; ?>
                     </tbody>
                </table>
-               <h5>Gửi mail cho chúng tôi để theo dõi đơn hàng</h5>
-               <form action="<?= BASE_URL . '?act=send-mail' ?>" method="post">
-                    <input type="hidden" name="order_id" value="<?= $end['don_hang_id'] ?>">
-                    <input type="hidden" name="email" value="<?= $end['email_nguoi_nhan'] ?>">
-                    <input type="text" name="message" placeholder="nhập mail">
-                    <button>Gửi</button>
-               </form>
+               <h5>Gửi Email Xác Nhận</h5>
+               <?php
+               $ordersGroupedByEmail = [];
+               foreach ($view as $order) {
+                    $ordersGroupedByEmail[$order['email_nguoi_nhan']][] = $order;
+                    // nhóm theo email có bnh đơn cùng email sẽ push vào duyệt qua $order
+                    // email nào có 2 mã đơn trùng email sẽ nhóm
+                    // [] là thêm vào cuối mảng ktra = cách qua $order email
+               }
+
+               foreach ($ordersGroupedByEmail as $email => $orders): ?>
+                    <form action="<?= BASE_URL . '?act=send-mail' ?>" method="post">
+                         <input type="hidden" name="email" value="<?= $email ?>">
+
+                         <?php foreach ($orders as $order): ?>
+                              <input type="hidden" name="order_ids[]" value="<?= $order['don_hang_id'] ?>">
+                         <?php endforeach; ?>
+
+                         <button>Gửi email xác nhận cho các đơn hàng của <?= $email ?></button>
+                    </form>
+               <?php endforeach; ?>
           </div>
      </section>
 

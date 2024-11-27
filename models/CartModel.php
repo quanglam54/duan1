@@ -225,6 +225,15 @@ class CartModel
           ]);
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
+     public function getOrderCartUser($user_product)
+     {
+          $sql = "SELECT * FROM don_hangs WHERE tai_khoan_id=:tai_khoan_id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':tai_khoan_id' => $user_product
+          ]);
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
 
      public function deleteDetailCart($gioHangId)
      {
@@ -244,5 +253,6 @@ class CartModel
           ]);
           return true;
      }
+
 }
 ?>
