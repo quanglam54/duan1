@@ -77,9 +77,13 @@
                                    <li><a href="#">Xem thêm
                                              <span><i class="fa-solid fa-chevron-down"></i></span>
                                         </a></li>
+<<<<<<< HEAD
                                    <li><a
                                              href="<?= isset($_SESSION['ho_ten']['ho_ten']) ? BASE_URL . '?act=view-cart' : '' ?>">
                                              Giỏ hàng
+=======
+                                   <li><a href="<?=BASE_URL .'?act=view-cart'?>">Giỏ hàng
+>>>>>>> 85a3c177e11cf3a294bb6d4d6913b32543654a50
                                              <span> <i class="fa-solid fa-cart-shopping"></i></span>
                                         </a></li>
                                    <?php if (isset($_SESSION['ho_ten'])): ?>

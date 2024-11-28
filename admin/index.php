@@ -10,6 +10,8 @@ require_once './controllers/AdminDanhMucController.php';
 require_once './controllers/AdminSanPhamController.php';
 require_once './controllers/AdminTaiKhoanController.php';
 require_once './controllers/AdminDonHangController.php';
+require_once './controllers/AdminMaGiamGiaController.php';
+
 
 
 
@@ -20,6 +22,8 @@ require_once './model/AdminDanhMuc.php';
 require_once './model/AdminSanPham.php';
 require_once './model/AdminTaiKhoan.php';
 require_once './model/AdminDonHang.php';
+require_once './model/AdminMaGiamGia.php';
+
 
 
 $act = $_GET['act'] ?? '/';
@@ -74,25 +78,13 @@ match($act){
    'chi-tiet-don-hang' => (new AdminDonHangController())->detailDonHang(),
    'form-sua-don-hang' => (new AdminDonHangController())->formEditDonHang(),
    'sua-don-hang' => (new AdminDonHangController())->editDonHang(),
-
    
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
+   'list-ma-giam-gia' => (new AdminMaGiamGiaController ())->listMaGiamGIa(),
+   'form-them-ma-giam-gia' => (new AdminMaGiamGiaController())->formAddMaGiamGia(),
+   'them-ma-giam-gia' => (new AdminMaGiamGiaController())->addMaGiamGia(),
+   'xoa-ma-giam-gia' => (new AdminMaGiamGiaController())->deleteMaGiamGia(),
+   'form-sua-ma-giam-gia' => (new AdminMaGiamGiaController())->formEditMaGiamGia(),
+   'sua-ma-giam-gia' => (new AdminMaGiamGiaController())->editMaGiamGia(),
 
 
 

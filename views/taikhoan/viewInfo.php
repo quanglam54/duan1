@@ -77,6 +77,7 @@
                                    <li><a href="#">Xem thêm
                                              <span><i class="fa-solid fa-chevron-down"></i></span>
                                         </a></li>
+<<<<<<< HEAD
                                    <li><a
                                              href="<?= isset($_SESSION['ho_ten']['ho_ten']) ? BASE_URL . '?act=view-cart' : '' ?>">
                                              Giỏ hàng
@@ -94,6 +95,14 @@
                                              </a></li>
                                    <?php endif; ?>
 
+=======
+                                   <li><a href="<?=BASE_URL .'?act=view-cart'?>">Giỏ hàng
+                                             <span> <i class="fa-solid fa-cart-shopping"></i></span>
+                                        </a></li>
+                                   <li><a href="<?= BASE_URL . '?act=view-info' ?>">Tài khoản
+                                             <span><i class="fa-solid fa-user"></i></i></span>
+                                        </a></li>
+>>>>>>> 85a3c177e11cf3a294bb6d4d6913b32543654a50
                               </ul>
                          </div>
                     </div>
@@ -111,7 +120,7 @@
                               <ul>
                                    <li><a href="#">Danh sách đơn hàng</a></li>
                                    <li><a href="#">Thông tin tài khoản</a></li>
-                                   <li><a href="<?= BASE_URL . '?act=login' ?>">Đăng xuất</a></li>
+                                   <li><a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a></li>
                                    <li><a href="<?= BASE_URL . '?act=edit-info' ?>">Sửa thông tin tài khoản</a></li>
                                    <li><a href="<?= BASE_URL . '?act=finish' ?>">Lịch sử mua hàng</a></li>
                               </ul>
@@ -124,7 +133,7 @@
                               <div class="form-block">
                                    <div class="form-control">
                                         <label for="">Tên*</label>
-                                        <input type="text" placeholder="Tên">
+                                        <input type="text" placeholder="Tên" disabled>
                                    </div>
                                    <div class="form-control">
                                         <label for="">Họ*</label>
@@ -133,17 +142,17 @@
                                    <div class="form-control">
                                         <label for="">Tên hiển thị*</label>
                                         <input type="text" placeholder="Tên hiển thị"
-                                             value="<?= $viewUser['ho_ten'] ?>">
+                                             value="<?= $viewUser['ho_ten'] ?>" disabled>
                                    </div>
                                    <div class="form-control">
                                         <label for="">Địa chỉ email*</label>
                                         <input type="email" placeholder="Địa chỉ email"
-                                             value="<?= $viewUser['email'] ?>">
+                                             value="<?= $viewUser['email'] ?>" disabled>
                                    </div>
                                    <div class="form-control">
                                         <label for="">Số điện thoại*</label>
                                         <input type="number" placeholder="Số điện thoại"
-                                             value="<?= isset($viewUser['so_dien_thoai']) ? $viewUser['so_dien_thoai'] : '' ?>">
+                                             value="<?= isset($viewUser['so_dien_thoai']) ? $viewUser['so_dien_thoai'] : '' ?>" disabled>
                                    </div>
                               </div>
                               <div class="form-item">

@@ -29,7 +29,8 @@
                             </thead>
                             <tbody>
                             <?php if(isset($_SESSION['mess'])){ ?>
-                                    <div class="alert alert-success">
+                                    <div class="alert alert-info">
+                                    <i class="fa fa-coffee"></i>
                                         <?= $_SESSION['mess']?>
                                         <?php unset($_SESSION['mess']); ?> <!--Xóa thông báo sau khi hiển thị-->
                                     </div>
