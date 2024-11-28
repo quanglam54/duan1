@@ -4,8 +4,8 @@
 <head>
      <meta charset="UTF-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <title>Tìm kiếm theo sản phẩm</title>
-     <link rel="stylesheet" href="public/css/category.css" />
+     <title>Đặt hàng- Kính mắt LML</title>
+     <link rel="stylesheet" href="./public/css/end.css" />
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,7 +21,7 @@
                <div class="container">
                     <div class="header-main">
                          <div class="header-left">
-                              <a href="<?= BASE_URL ?>"><img src="./public/img/ảnh logo.svg" alt="" /></a>
+                              <a href="<?= BASE_URL ?>"> <img src="./public/img/ảnh logo.svg" alt="" /></a>
                               <ul class="header-nav">
                                    <li>
                                         <a href="#">Sản phẩm
@@ -77,101 +77,95 @@
                                    <li><a href="#">Xem thêm
                                              <span><i class="fa-solid fa-chevron-down"></i></span>
                                         </a></li>
-                                   <li><a
-                                             href="<?= isset($_SESSION['ho_ten']['ho_ten']) ? BASE_URL . '?act=view-cart' : '' ?>">
-                                             Giỏ hàng
+                                   <li><a href="#">Giỏ hàng
                                              <span> <i class="fa-solid fa-cart-shopping"></i></span>
                                         </a></li>
-                                   <?php if (isset($_SESSION['ho_ten'])): ?>
-                                        <li><a href="<?= BASE_URL . '?act=view-info' ?>">Xin
-                                                  Chào:<?= $_SESSION['ho_ten']['ho_ten'] ?>
-                                                  <span><i class="fa-solid fa-user"></i></i></span>
-                                                  <a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a>
-                                             </a></li>
-                                   <?php else: ?>
-                                        <li><a href="<?= BASE_URL . '?act=register' ?>">Tài khoản
-                                                  <span><i class="fa-solid fa-user"></i></i></span>
-                                             </a></li>
-                                   <?php endif; ?>
-
+                                   <li><a href="#">Tài khoản
+                                             <span><i class="fa-solid fa-user"></i></i></span>
+                                        </a></li>
                               </ul>
                          </div>
                     </div>
                </div>
           </header>
      </section>
-     <section class="section-sort">
-          <select name="" class="sort">
-               <option value="">Sort By</option>
-               <option value="">Giá thấp nhất</option>
-               <option value="">Giá cao nhất</option>
-               <option value="">Giá trung bình</option>
-          </select>
-     </section>
-     <main>
+     <!--  -->
+     <section class="order">
+
           <div class="container">
-               <div class="main-cate">
-                    <aside class="filter-sidebar">
-                         <h2>Bộ lọc</h2>
-                         <div class="filter-section">
-                              <h3>Màu sắc</h3>
-                              <label><input type="checkbox" /> Đen</label>
-                              <label><input type="checkbox" /> Xanh dương</label>
-                              <!-- Thêm các tùy chọn màu sắc khác -->
-                         </div>
+               <h2>Chi tiết đơn hàng</h2>
+               <table>
+                    <thead>
 
-                         <div class="filter-section">
-                              <h3>Thương hiệu</h3>
-                              <label><input type="checkbox" /> Classic</label>
-                              <label><input type="checkbox" /> Excer</label>
-                              <!-- Thêm các tùy chọn thương hiệu khác -->
-                         </div>
+                         <tr>
+                              <th>Hình ảnh</th>
+                              <th>Tên sản phẩm</th>
+                              <th>Đơn giá</th>
+                              <th>Số lượng</th>
+                              <th>Thành tiền</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         <?php foreach ($detailDonHang as $detail): ?>
+                              <tr>
+                                   <td>
+                                        <img src="<?= 'uploads/' . $detail['hinh_anh'] ?>" width="70px" alt="product">
+                                   </td>
+                                   <td><?= $detail['ten_san_pham'] ?></td>
+                                   <td><?= number_format($detail['don_gia']) ?>đ</td>
+                                   <td><?= $detail['so_luong'] ?></td>
+                                   <td><?= number_format($detail['thanh_tien']) ?>đ</td>
+                              </tr>
+                         <?php endforeach; ?>
+                    </tbody>
+               </table>
 
-                         <div class="filter-section">
-                              <h3>Chất liệu</h3>
-                              <label><input type="checkbox" /> Kim loại</label>
-                              <label><input type="checkbox" /> Nhựa</label>
-                              <!-- Thêm các tùy chọn chất liệu khác -->
-                         </div>
+               <h2>Thông tin đơn hàng</h2>
+               <table>
+                    <thead>
 
-                         <div class="filter-section">
-                              <h3>Hình dáng</h3>
-                              <label><input type="checkbox" /> Hình tròn</label>
-                              <label><input type="checkbox" /> Hình vuông</label>
-                              <!-- Thêm các tùy chọn hình dáng khác -->
-                         </div>
+                         <tr>
+                              <th>Mã đơn hàng</th>
+                              <td><?= $donHang['ma_don_hang'] ?></td>
+                         </tr>
+                         <tr>
+                              <th>Người nhận</th>
+                              <td><?= $donHang['ten_nguoi_nhan'] ?></td>
+                         </tr>
+                         <tr>
+                              <th>Email người nhận</th>
+                              <td><?= $donHang['email_nguoi_nhan'] ?></td>
+                         </tr>
+                         <tr>
+                              <th>Số điện thoại</th>
+                              <td><?= $donHang['sdt_nguoi_nhan'] ?></td>
+                         </tr>
+                         <tr>
+                              <th>Địa chỉ</th>
+                              <td><?= $donHang['dia_chi_nguoi_nhan'] ?></td>
+                         </tr>
+                         <tr>
+                              <th>Ngày đặt</th>
+                              <td><?= $donHang['ngay_dat'] ?></td>
+                         </tr>
+                         <tr>
+                              <th>Tổng tiền</th>
+                              <td><?= $phuongThucThanhToan[$donHang['phuong_thuc_thanh_toan_id']] ?></td>
+                         </tr>
+                         <tr>
+                              <th>Phương thức thanh toán</th>
+                              <td><?= $trangThaiDonHang[$donHang['trang_thai_id']] ?></td>
+                         </tr>
 
-                         <div class="filter-section">
-                              <h3>Tính năng</h3>
-                              <label><input type="checkbox" /> Chống ánh sáng xanh</label>
-                              <label><input type="checkbox" /> Siêu mỏng</label>
-                              <!-- Thêm các tùy chọn tính năng khác -->
-                         </div>
-                    </aside>
+                    </thead>
+                    <tbody>
 
-                    <section class="product-list">
-                         <?php if (!empty($searchPros)): ?>
-                              <?php foreach ($searchPros as $sp): ?>
-                                   <div class="product-card">
-                                        <div class="product-card-img">
-                                             <a href="<?= BASE_URL . '?act=detail&id=' . $sp['id'] ?>"> <img
-                                                       src="<?= "uploads/" . $sp['hinh_anh'] ?>" alt="Sản phẩm 1" /></a>
-                                        </div>
-                                        <div class="product-cart-title">
-                                             <h4><?= $sp['ten_san_pham'] ?></h4>
-                                             <span><i class="fa-solid fa-arrow-right"></i></span>
-                                        </div>
-                                   </div>
-                              <?php endforeach; ?>
-                         <?php else: ?>
-                              <h2>Không tìm thấy sản phẩm</h2>
-                         <?php endif; ?>
-                         <!-- -->
-                    </section>
-               </div>
+                    </tbody>
+               </table>
           </div>
-     </main>
-     <!-- hết -->
+     </section>
+
+     <!--  -->
      <footer class="footer">
           <div class="container">
                <div class="footer-block">
@@ -231,7 +225,6 @@
                </div>
           </div>
      </footer>
-     <script src="./public/js/cate.js"></script>
 </body>
 
 </html>

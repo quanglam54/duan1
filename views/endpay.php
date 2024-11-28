@@ -77,12 +77,23 @@
                                    <li><a href="#">Xem thêm
                                              <span><i class="fa-solid fa-chevron-down"></i></span>
                                         </a></li>
-                                   <li><a href="#">Giỏ hàng
+                                   <li><a
+                                             href="<?= isset($_SESSION['ho_ten']['ho_ten']) ? BASE_URL . '?act=view-cart' : '' ?>">
+                                             Giỏ hàng
                                              <span> <i class="fa-solid fa-cart-shopping"></i></span>
                                         </a></li>
-                                   <li><a href="#">Tài khoản
-                                             <span><i class="fa-solid fa-user"></i></i></span>
-                                        </a></li>
+                                   <?php if (isset($_SESSION['ho_ten'])): ?>
+                                        <li><a href="<?= BASE_URL . '?act=view-info' ?>">Xin
+                                                  Chào:<?= $_SESSION['ho_ten']['ho_ten'] ?>
+                                                  <span><i class="fa-solid fa-user"></i></i></span>
+                                                  <a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a>
+                                             </a></li>
+                                   <?php else: ?>
+                                        <li><a href="<?= BASE_URL . '?act=register' ?>">Tài khoản
+                                                  <span><i class="fa-solid fa-user"></i></i></span>
+                                             </a></li>
+                                   <?php endif; ?>
+
                               </ul>
                          </div>
                     </div>
@@ -116,7 +127,14 @@
                                    <td><?= $trangThaiDonHang[$end['trang_thai_id']] ?></td>
                                    <!-- lúc này $ttdh sẽ là [1] theo key -->
 
-                                   <td>Hủy đơn</td>
+                                   <td>
+                                        <a href="<?= BASE_URL . '?act=chi-tiet-mua-hang&id=' . $end['id'] ?>">Chi tiết đơn
+                                             hàng</a>
+                                        <?php if ($end['trang_thai_id'] == 1): ?>
+                                             <a href="<?= BASE_URL . '?act=huy-don-hang&id=' . $end['id'] ?>"
+                                                  onclick="return confirm('bạn muốn hủy đơn không')">Hủy đơn</a>
+                                        <?php endif; ?>
+                                   </td>
                               </tr>
                          <?php endforeach; ?>
                     </tbody>

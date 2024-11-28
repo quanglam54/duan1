@@ -3,10 +3,12 @@
 class CartController
 {
      public $cartModel;
+     public $userModel;
 
      public function __construct()
      {
           $this->cartModel = new CartModel();
+          $this->userModel = new UserModel();
      }
 
      public function createCart()
@@ -143,6 +145,7 @@ class CartController
           $cart_item = $this->cartModel->getCartItem($user_id);
           // var_dump($cart_item);
           // die;
+          $users = $this->userModel->getUser($user_id);
           require_once './views/pay.php';
      }
 
@@ -262,7 +265,8 @@ class CartController
           // var_dump($phuongThucThanhToan);
           // die;
           $viewEnds = $this->cartModel->getOrderCartUser($user_product);
-
+          // var_dump($viewEnds);
+          // die;
           require_once './views/endpay.php';
      }
      //
@@ -373,6 +377,66 @@ class CartController
           }
      }
 
+     //
+     public function huyDonHang()
+     {
+          $tai_khoan_id = $_SESSION['ho_ten']['id'];
+
+          // lấy id đơn hàng từ url
+          $donHangId = $_GET['id'];
+
+          // kiểm tra có đơn hàng hay 0
+
+          $donHang = $this->cartModel->getDonHangById($donHangId);
+
+          if ($donHang['tai_khoan_id' != $tai_khoan_id]) {
+               echo "Bạn không có quyền hủy đơn hàng này";
+               exit;
+          }
+          if ($donHang['trang_thai_id'] != 1) {
+               echo "Chỉ đơn hàng ở trạng thái 'Chưa xác nhận' mới có thể hủy";
+               exit;
+          }
+          // hủy đơn hàng
+          $this->cartModel->updateTrangThaiDonHang($donHangId, 11);
+          header("Location:" . BASE_URL . '?act=finish');
+          exit();
+
+
+     }
+     //
+     public function chiTietMuaHang()
+     {
+          $tai_khoan_id = $_SESSION['ho_ten']['id'];
+
+          // lấy id đơn hàng từ url
+          $donHangId = $_GET['id'];
+
+          $arrTrangThaiDonHang = $this->cartModel->getTrangThaiDonHang();
+          $trangThaiDonHang = array_column($arrTrangThaiDonHang, 'ten_trang_thai', 'id');
+
+          // lấy trạng thái thanh toán
+          $arrPhuongThucThanhToan = $this->cartModel->getTrangThaiThanhToan();
+          $phuongThucThanhToan = array_column($arrPhuongThucThanhToan, 'ten_phuong_thuc', 'id');
+
+          $donHang = $this->cartModel->getDonHangById($donHangId);
+          // echo '<pre>';
+          // print_r($donHang);
+
+
+          // lấy tt sản phẩm trong chi tiết
+
+          $detailDonHang = $this->cartModel->getChiTietDonHangById($donHangId);
+          // echo '<pre>';
+          // print_r($detailDonHang);
+
+          if ($donHang['tai_khoan_id'] != $tai_khoan_id) {
+               echo "Bạn không có quyền truy cập đơn hàng";
+               exit;
+          }
+          require_once './views/chiTietMuaHang.php';
+
+     }
 
 
 }

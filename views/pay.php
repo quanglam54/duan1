@@ -77,12 +77,23 @@
                                    <li><a href="#">Xem thêm
                                              <span><i class="fa-solid fa-chevron-down"></i></span>
                                         </a></li>
-                                   <li><a href="<?=BASE_URL .'?act=view-cart'?>">Giỏ hàng
+                                   <li><a
+                                             href="<?= isset($_SESSION['ho_ten']['ho_ten']) ? BASE_URL . '?act=view-cart' : '' ?>">
+                                             Giỏ hàng
                                              <span> <i class="fa-solid fa-cart-shopping"></i></span>
                                         </a></li>
-                                   <li><a href="<?=BASE_URL .'?act=view-info'?>">Tài khoản
-                                             <span><i class="fa-solid fa-user"></i></i></span>
-                                        </a></li>
+                                   <?php if (isset($_SESSION['ho_ten'])): ?>
+                                        <li><a href="<?= BASE_URL . '?act=view-info' ?>">Xin
+                                                  Chào:<?= $_SESSION['ho_ten']['ho_ten'] ?>
+                                                  <span><i class="fa-solid fa-user"></i></i></span>
+                                                  <a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a>
+                                             </a></li>
+                                   <?php else: ?>
+                                        <li><a href="<?= BASE_URL . '?act=register' ?>">Tài khoản
+                                                  <span><i class="fa-solid fa-user"></i></i></span>
+                                             </a></li>
+                                   <?php endif; ?>
+
                               </ul>
                          </div>
                     </div>
@@ -97,18 +108,18 @@
                          <h2>THANH TOÁN</h2>
                          <form action="<?= BASE_URL . '?act=dat-hang' ?>" method="post">
                               <label for="name">Họ và tên *</label>
-                              <input type="text" name="name" placeholder="Họ và tên">
+                              <input type="text" name="name" placeholder="Họ và tên" value="<?= $users['ho_ten'] ?>">
 
                               <label for="phone">Số điện thoại *</label>
                               <input type="text" name="phone" placeholder="Số điện thoại">
 
                               <label for="email">Email *</label>
-                              <input type="email" name="email" placeholder="Email">
+                              <input type="email" name="email" placeholder="Email" value="<?= $users['email'] ?>">
 
                               <label for="address">Địa chỉ chi tiết *</label>
                               <input type="text" name="address" placeholder="Địa chỉ chi tiết">
                               <label for="date">Ngày đặt *</label>
-                              <input type="date" name="date">
+                              <input type="date" name="date" value="<?= date('Y-m-d') ?>" readonly>
 
                               <label for="additional-info">Thông tin bổ sung</label>
                               <textarea id="additional-info" name="description"

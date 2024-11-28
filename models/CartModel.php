@@ -216,12 +216,21 @@ class CartModel
           return $stmt->fetch(PDO::FETCH_ASSOC);
      }
      //
-     public function getOrderDetails($order_id)
+     // public function getOrderDetails($order_id)
+     // {
+     //      $sql = "SELECT chi_tiet_don_hangs.*,don_hangs.ten_nguoi_nhan,don_hangs.ma_don_hang,don_hangs.email_nguoi_nhan,don_hangs.sdt_nguoi_nhan,don_hangs.dia_chi_nguoi_nhan,don_hangs.ngay_dat,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN don_hangs ON chi_tiet_don_hangs.don_hang_id=don_hangs.id INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id WHERE chi_tiet_don_hangs.don_hang_id=:don_hang_id";
+     //      $stmt = $this->conn->prepare($sql);
+     //      $stmt->execute([
+     //           ':don_hang_id' => $order_id
+     //      ]);
+     //      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     // }
+     public function getChiTietDonHangById($donHangId)
      {
-          $sql = "SELECT chi_tiet_don_hangs.*,don_hangs.ten_nguoi_nhan,don_hangs.ma_don_hang,don_hangs.email_nguoi_nhan,don_hangs.sdt_nguoi_nhan,don_hangs.dia_chi_nguoi_nhan,don_hangs.ngay_dat,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN don_hangs ON chi_tiet_don_hangs.don_hang_id=don_hangs.id INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id WHERE chi_tiet_don_hangs.don_hang_id=:don_hang_id";
+          $sql = "SELECT chi_tiet_don_hangs.*,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id WHERE chi_tiet_don_hangs.don_hang_id=:don_hang_id ";
           $stmt = $this->conn->prepare($sql);
           $stmt->execute([
-               ':don_hang_id' => $order_id
+               ':don_hang_id' => $donHangId
           ]);
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
      }
@@ -268,6 +277,31 @@ class CartModel
           $stmt = $this->conn->prepare($sql);
           $stmt->execute();
           return $stmt->fetchAll(PDO::FETCH_ASSOC);
+     }
+     //
+
+     public function getDonHangById($donHangId)
+     {
+          $sql = "SELECT * FROM don_hangs WHERE id=:id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':id' => $donHangId
+          ]);
+
+          return $stmt->fetch(PDO::FETCH_ASSOC);
+     }
+     //
+
+     public function updateTrangThaiDonHang($donHangId, $trangThaiId)
+     {
+          $sql = "UPDATE don_hangs SET trang_thai_id =:trang_thai_id WHERE id=:id";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->execute([
+               ':trang_thai_id' => $trangThaiId,
+               ':id' => $donHangId
+
+          ]);
+          return true;
      }
 
 }

@@ -44,6 +44,8 @@ match ($act) {
      'search' => (new ClientSanPhamController)->searchProduct(),
      'edit-info' => (new UserController)->editUser(),
      'update-info' => (new UserController)->updateUser(),
-     'send-mail' => (new CartController)->sendMail()
+     'send-mail' => (new CartController)->sendMail(),
+     'huy-don-hang' => (new CartController())->huyDonHang(),
+     'chi-tiet-mua-hang' => (new CartController)->chiTietMuaHang()
 }
      ?>
