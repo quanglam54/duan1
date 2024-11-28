@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 27, 2024 at 03:49 PM
+-- Generation Time: Nov 28, 2024 at 11:35 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -93,7 +93,8 @@ CREATE TABLE `chi_tiet_gio_hangs` (
 --
 
 INSERT INTO `chi_tiet_gio_hangs` (`id`, `gio_hang_id`, `san_pham_id`, `so_luong`) VALUES
-(165, 161, 19, 1);
+(165, 161, 19, 1),
+(166, 162, 21, 1);
 
 -- --------------------------------------------------------
 
@@ -186,7 +187,8 @@ CREATE TABLE `gio_hangs` (
 --
 
 INSERT INTO `gio_hangs` (`id`, `tai_khoan_id`) VALUES
-(161, 38);
+(161, 38),
+(162, 44);
 
 -- --------------------------------------------------------
 
@@ -226,6 +228,29 @@ INSERT INTO `hinh_anh_san_phams` (`id`, `san_pham_id`, `link_hinh_anh`) VALUES
 (67, 28, '../uploads/17309969961730558469ram3.jpg'),
 (68, 28, '../uploads/1730997068ram3_2 (1).jpeg'),
 (69, 28, '../uploads/1730997140ram3_3 (1).jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ma_giam_gias`
+--
+
+CREATE TABLE `ma_giam_gias` (
+  `id` int NOT NULL,
+  `ma_giam_gia` text NOT NULL,
+  `muc_giam_gia` decimal(10,2) NOT NULL,
+  `bat_dau` date NOT NULL,
+  `ket_thuc` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `ma_giam_gias`
+--
+
+INSERT INTO `ma_giam_gias` (`id`, `ma_giam_gia`, `muc_giam_gia`, `bat_dau`, `ket_thuc`) VALUES
+(1, 'kinhMat2024', '700000.00', '2024-11-28', '2024-11-30'),
+(2, 'kinhMatLM', '90000.00', '2024-11-20', '2024-11-14'),
+(3, 'FPOLY123', '10000.00', '2024-11-22', '2024-11-29');
 
 -- --------------------------------------------------------
 
@@ -310,7 +335,9 @@ INSERT INTO `tai_khoans` (`id`, `ho_ten`, `anh_dai_dien`, `ngay_sinh`, `email`, 
 (32, 'Lê Văn Long', NULL, '2014-11-17', 'long@gmail.com', '0369562321', 2, 'Cầu Diễn', '12345', 2, 1),
 (38, 'Hiền xing', NULL, NULL, 'lamdqph53571@gmail.com', '0968551321', 1, 'Thái Bình', '1234567', 2, 1),
 (40, 'quanglam11', NULL, NULL, 'quachtran220@gmail.com', NULL, 1, NULL, '123456', 2, 1),
-(42, 'lam', NULL, NULL, 'quanglam5401@gmail.com', NULL, 1, NULL, '123456', 1, 1);
+(42, 'lam', NULL, NULL, 'quanglam5401@gmail.com', NULL, 1, NULL, '123456', 1, 1),
+(43, 'mai', NULL, NULL, 'mai@gmail.com', NULL, 1, NULL, '123456', 1, 1),
+(44, 'ngoc mai', NULL, NULL, 'user@gmail.com', '0949607556', 1, 'Trịnh Văn Bô', '123456', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -404,6 +431,12 @@ ALTER TABLE `hinh_anh_san_phams`
   ADD KEY `san_pham_id` (`san_pham_id`);
 
 --
+-- Indexes for table `ma_giam_gias`
+--
+ALTER TABLE `ma_giam_gias`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `phuong_thuc_thanh_toans`
 --
 ALTER TABLE `phuong_thuc_thanh_toans`
@@ -450,7 +483,7 @@ ALTER TABLE `chi_tiet_don_hangs`
 -- AUTO_INCREMENT for table `chi_tiet_gio_hangs`
 --
 ALTER TABLE `chi_tiet_gio_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `chuc_vus`
@@ -474,13 +507,19 @@ ALTER TABLE `don_hangs`
 -- AUTO_INCREMENT for table `gio_hangs`
 --
 ALTER TABLE `gio_hangs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT for table `hinh_anh_san_phams`
 --
 ALTER TABLE `hinh_anh_san_phams`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
+--
+-- AUTO_INCREMENT for table `ma_giam_gias`
+--
+ALTER TABLE `ma_giam_gias`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `phuong_thuc_thanh_toans`
@@ -498,7 +537,7 @@ ALTER TABLE `san_phams`
 -- AUTO_INCREMENT for table `tai_khoans`
 --
 ALTER TABLE `tai_khoans`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `trang_thai_don_hangs`

@@ -51,6 +51,17 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="<?=BASE_URL_ADMIN . '?act=list-ma-giam-gia'?>" class="nav-link">
+            <i class="nav-icon fas fa-hand-holding-usd"></i>
+              <p>
+                Mã giảm giá
+                <i class="right"></i>
+              </p>
+            </a>
+    
+          </li>
+
 
           <li class="nav-item">
             <a href="<?=BASE_URL_ADMIN.'?act=don-hang'?>" class="nav-link">

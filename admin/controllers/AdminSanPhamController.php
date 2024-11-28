@@ -22,9 +22,10 @@ class AdminSanPhamConTroller
     public function formAddSanPham()
     {
         $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($_SESSION['user_admin']);
-        deleteSession();
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         require_once 'views/sanpham/addSanPham.php';
+        deleteSession();
+
     }
 
     public function addSanPham()
