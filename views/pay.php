@@ -13,6 +13,11 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
      <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
           rel="stylesheet" />
+     <style>
+          .text-danger {
+               color: #dc3545;
+          }
+     </style>
 </head>
 
 <body>
@@ -109,15 +114,24 @@
                          <form action="<?= BASE_URL . '?act=dat-hang' ?>" method="post">
                               <label for="name">Họ và tên *</label>
                               <input type="text" name="name" placeholder="Họ và tên" value="<?= $users['ho_ten'] ?>">
+                              <?php if (isset($_SESSION['errors']['name'])) { ?>
+                                   <p class="text-danger"><?= $_SESSION['errors']['name'] ?></p>
+                              <?php } ?>
 
                               <label for="phone">Số điện thoại *</label>
                               <input type="text" name="phone" placeholder="Số điện thoại">
+                              <?php if (isset($_SESSION['errors']['phone'])) { ?>
+                                   <p class="text-danger"><?= $_SESSION['errors']['phone'] ?></p>
+                              <?php } ?>
 
                               <label for="email">Email *</label>
                               <input type="email" name="email" placeholder="Email" value="<?= $users['email'] ?>">
 
                               <label for="address">Địa chỉ chi tiết *</label>
                               <input type="text" name="address" placeholder="Địa chỉ chi tiết">
+                              <?php if (isset($_SESSION['errors']['address'])) { ?>
+                                   <p class="text-danger"><?= $_SESSION['errors']['address'] ?></p>
+                              <?php } ?>
                               <label for="date">Ngày đặt *</label>
                               <input type="date" name="date" value="<?= date('Y-m-d') ?>" readonly>
 
@@ -152,7 +166,7 @@
                               foreach ($cart_item as $item) {
                                    $itemTotal = $item['so_luong'] * $item['gia_san_pham'];
                                    $totalAmount += $itemTotal;
-                                   ?>
+                              ?>
                                    <div class="product-item">
                                         <img src="<?= "uploads/" . $item['hinh_anh'] ?>" alt="Product Image">
                                         <div class="product-info">
