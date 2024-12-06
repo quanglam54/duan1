@@ -215,19 +215,10 @@ class CartModel
           ]);
           return $stmt->fetch(PDO::FETCH_ASSOC);
      }
-     //
-     // public function getOrderDetails($order_id)
-     // {
-     //      $sql = "SELECT chi_tiet_don_hangs.*,don_hangs.ten_nguoi_nhan,don_hangs.ma_don_hang,don_hangs.email_nguoi_nhan,don_hangs.sdt_nguoi_nhan,don_hangs.dia_chi_nguoi_nhan,don_hangs.ngay_dat,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN don_hangs ON chi_tiet_don_hangs.don_hang_id=don_hangs.id INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id WHERE chi_tiet_don_hangs.don_hang_id=:don_hang_id";
-     //      $stmt = $this->conn->prepare($sql);
-     //      $stmt->execute([
-     //           ':don_hang_id' => $order_id
-     //      ]);
-     //      return $stmt->fetchAll(PDO::FETCH_ASSOC);
-     // }
+
      public function getChiTietDonHangById($donHangId)
      {
-          $sql = "SELECT chi_tiet_don_hangs.*,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id WHERE chi_tiet_don_hangs.don_hang_id=:don_hang_id ";
+          $sql = "SELECT chi_tiet_don_hangs.*,san_phams.ten_san_pham,san_phams.hinh_anh FROM chi_tiet_don_hangs INNER JOIN san_phams ON chi_tiet_don_hangs.san_pham_id=san_phams.id WHERE chi_tiet_don_hangs.don_hang_id=:don_hang_id";
           $stmt = $this->conn->prepare($sql);
           $stmt->execute([
                ':don_hang_id' => $donHangId
@@ -236,7 +227,7 @@ class CartModel
      }
      public function getOrderCartUser($user_product)
      {
-          $sql = "SELECT * FROM don_hangs WHERE tai_khoan_id=:tai_khoan_id";
+          $sql = "SELECT * FROM don_hangs WHERE tai_khoan_id=:tai_khoan_id ORDER BY id DESC";
           $stmt = $this->conn->prepare($sql);
           $stmt->execute([
                ':tai_khoan_id' => $user_product

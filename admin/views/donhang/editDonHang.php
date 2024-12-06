@@ -37,7 +37,8 @@
               <div class="card-body">
                 <div class="form-group">
                   <label>Tên người nhận</label>
-                  <input type="text" class="form-control" name="ten_nguoi_nhan" value="<?= $donHang['ten_nguoi_nhan'] ?>" placeholder="Nhập tên người nhận">
+                  <input type="text" class="form-control" name="ten_nguoi_nhan"
+                    value="<?= $donHang['ten_nguoi_nhan'] ?>" placeholder="Nhập tên người nhận">
                   <!--check Lỗi-->
                   <?php if (isset($_SESSION['errors']['ten_nguoi_nhan'])) { ?>
                     <p class="text-danger"><?= $_SESSION['errors']['ten_nguoi_nhan'] ?></p>
@@ -45,7 +46,8 @@
                 </div>
                 <div class="form-group">
                   <label>Số điện thoại</label>
-                  <input type="text" class="form-control" name="sdt_nguoi_nhan" value="<?= $donHang['sdt_nguoi_nhan'] ?>" placeholder="Nhập số điện thoại">
+                  <input type="text" class="form-control" name="sdt_nguoi_nhan"
+                    value="<?= $donHang['sdt_nguoi_nhan'] ?>" placeholder="Nhập số điện thoại">
                   <!--check Lỗi-->
                   <?php if (isset($_SESSION['errors']['sdt_nguoi_nhan'])) { ?>
                     <p class="text-danger"><?= $_SESSION['errors']['sdt_nguoi_nhan'] ?></p>
@@ -53,7 +55,8 @@
                 </div>
                 <div class="form-group">
                   <label>Email người nhận</label>
-                  <input type="text" class="form-control" name="email_nguoi_nhan" value="<?= $donHang['email_nguoi_nhan'] ?>" placeholder="Nhập email người nhận">
+                  <input type="text" class="form-control" name="email_nguoi_nhan"
+                    value="<?= $donHang['email_nguoi_nhan'] ?>" placeholder="Nhập email người nhận">
                   <!--check Lỗi-->
 
                   <?php if (isset($_SESSION['errors']['email'])) { ?>
@@ -62,7 +65,8 @@
                 </div>
                 <div class="form-group">
                   <label>Địa chỉ</label>
-                  <input type="text" class="form-control" name="dia_chi_nguoi_nhan" value="<?= $donHang['dia_chi_nguoi_nhan'] ?>" placeholder="Nhập địa chỉ người nhận">
+                  <input type="text" class="form-control" name="dia_chi_nguoi_nhan"
+                    value="<?= $donHang['dia_chi_nguoi_nhan'] ?>" placeholder="Nhập địa chỉ người nhận">
                   <!--check Lỗi-->
                   <?php if (isset($_SESSION['errors']['dia_chi_nguoi_nhan'])) { ?>
                     <p class="text-danger"><?= $_SESSION['errors']['dia_chi_nguoi_nhan'] ?></p>
@@ -70,18 +74,17 @@
                 </div>
                 <div class="form-group">
                   <label>Ghi chú</label>
-                  <input type="text" class="form-control" name="ghi_chu" value="<?= $donHang['ghi_chu'] ?>" placeholder="Nhập ghi chú">
+                  <input type="text" class="form-control" name="ghi_chu" value="<?= $donHang['ghi_chu'] ?>"
+                    placeholder="Nhập ghi chú">
 
                 </div>
                 <div class="form-group">
                   <label for="inputStatus">Trạng thái đơn hàng</label>
                   <select name="trang_thai_id" class="custom-select" id="inputStatus">
                     <?php foreach ($listTrangThaiDonHang as $trangThai) { ?>
-                      <option
-                        <?= $trangThai['id'] < $donHang['trang_thai_id'] ? 'disabled' : '' ?>
+                      <option <?= $trangThai['id'] < $donHang['trang_thai_id'] ? 'disabled' : '' ?>
                         <?= $trangThai['id'] == $donHang['trang_thai_id'] ? 'selected' : '' ?>
-                        <?= ($donHang['trang_thai_id'] == 9 && $trangThai['id'] == 11) ? 'disabled' : '' ?>
-                        value="<?= $trangThai['id'] ?>">
+                        <?= ($donHang['trang_thai_id'] == 9) ? 'disabled' : '' ?> value="<?= $trangThai['id'] ?>">
                         <?= $trangThai['ten_trang_thai']; ?>
                       </option>
                     <?php } ?>

@@ -152,76 +152,76 @@ class CartController
 
      public function postOrder()
      {
-         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-             $user_id = $_SESSION['ho_ten']['id'];
-             $ma_don_hang = 'DH' . rand(1000, 9999);
-             $name = $_POST['name'];
-             $phone = $_POST['phone'];
-             $email = $_POST['email'];
-             $address = $_POST['address'];
-             $date = $_POST['date'];
-             $description = $_POST['description'];
-             $totalAmount = 0;
-     
-             $cart_items = $this->cartModel->getCartItem($user_id);
-             foreach ($cart_items as $item) {
-                 $totalAmount += $item['so_luong'] * $item['gia_san_pham'];
-             }
-             $totalAmount += 30000;
-     
-             $errors = []; // thông báo lỗi
-             if (empty($name)) {
-                 $errors['name'] = 'Họ và tên không được để trống';
-             }
-             if (empty($phone)) {
-                 $errors['phone'] = 'Số điện thoại không được để trống';
-             }
-             if (empty($address)) {
-                 $errors['address'] = 'Địa chỉ không được để trống';
-             }
-     
-             // Nếu có lỗi, lưu lỗi vào session và quay lại trang thanh toán
-             if (!empty($errors)) {
-                 $_SESSION['errors'] = $errors;
-                 $_SESSION['flash'] = true; // Để hiển thị thông báo lỗi
-                 header("Location:" . BASE_URL . '?act=pay');
-                 exit();
-             }
-     
-             // Nếu không có lỗi, tiếp tục thêm đơn hàng
-             $order_id = $this->cartModel->insertOrder(
-                 $user_id,
-                 $ma_don_hang,
-                 $name,
-                 $phone,
-                 $email,
-                 $address,
-                 $date,
-                 $totalAmount,
-                 $description
-             );
-     
-             // Lưu vào bảng chi tiết đơn hàng
-             foreach ($cart_items as $item) {
-                 $san_pham_id = $item['san_pham_id'];
-                 $quantity = $item['so_luong'];
-                 $price = $item['gia_san_pham'];
-                 $subtotal = ($quantity * $price) + 30000;
-     
-                 $this->cartModel->insertOrderDetail(
-                     $order_id,
-                     $san_pham_id,
-                     $price,
-                     $quantity,
-                     $subtotal
-                 );
-                 $gio_hang_id = $item['gio_hang_id'];
-                 $this->cartModel->deleteDetailCart($gio_hang_id);
-             }
-             $this->cartModel->deleteCart($user_id);
-             header("Location:" . BASE_URL . '?act=finish');
-             exit();
-         }
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+               $user_id = $_SESSION['ho_ten']['id'];
+               $ma_don_hang = 'DH' . rand(1000, 9999);
+               $name = $_POST['name'];
+               $phone = $_POST['phone'];
+               $email = $_POST['email'];
+               $address = $_POST['address'];
+               $date = $_POST['date'];
+               $description = $_POST['description'];
+               $totalAmount = 0;
+
+               $cart_items = $this->cartModel->getCartItem($user_id);
+               foreach ($cart_items as $item) {
+                    $totalAmount += $item['so_luong'] * $item['gia_san_pham'];
+               }
+               $totalAmount += 30000;
+
+               $errors = []; // thông báo lỗi
+               if (empty($name)) {
+                    $errors['name'] = 'Họ và tên không được để trống';
+               }
+               if (empty($phone)) {
+                    $errors['phone'] = 'Số điện thoại không được để trống';
+               }
+               if (empty($address)) {
+                    $errors['address'] = 'Địa chỉ không được để trống';
+               }
+
+               // Nếu có lỗi, lưu lỗi vào session và quay lại trang thanh toán
+               if (!empty($errors)) {
+                    $_SESSION['errors'] = $errors;
+                    $_SESSION['flash'] = true; // Để hiển thị thông báo lỗi
+                    header("Location:" . BASE_URL . '?act=pay');
+                    exit();
+               }
+
+               // Nếu không có lỗi, tiếp tục thêm đơn hàng
+               $order_id = $this->cartModel->insertOrder(
+                    $user_id,
+                    $ma_don_hang,
+                    $name,
+                    $phone,
+                    $email,
+                    $address,
+                    $date,
+                    $totalAmount,
+                    $description
+               );
+
+               // Lưu vào bảng chi tiết đơn hàng
+               foreach ($cart_items as $item) {
+                    $san_pham_id = $item['san_pham_id'];
+                    $quantity = $item['so_luong'];
+                    $price = $item['gia_san_pham'];
+                    $subtotal = ($quantity * $price) + 30000;
+
+                    $this->cartModel->insertOrderDetail(
+                         $order_id,
+                         $san_pham_id,
+                         $price,
+                         $quantity,
+                         $subtotal
+                    );
+                    $gio_hang_id = $item['gio_hang_id'];
+                    $this->cartModel->deleteDetailCart($gio_hang_id);
+               }
+               $this->cartModel->deleteCart($user_id);
+               header("Location:" . BASE_URL . '?act=finish');
+               exit();
+          }
      }
 
      //
@@ -284,55 +284,7 @@ class CartController
           // die;
           require_once './views/endpay.php';
      }
-     //
-     // public function sendMail()
-     // {
-     //      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-     //           $order_id = $_POST['order_id'];
 
-
-     //           $order_info = $this->cartModel->getOrderById($order_id);
-     //           // var_dump($order_info);
-     //           // die;
-     //           $order_fall = $this->cartModel->getOrderDetails($order_id);
-     //           // var_dump($order_fall);
-     //           // die;
-     //           $email = $order_info['email_nguoi_nhan'];
-     //           $subject = 'Xác nhận đơn hàng của bạn
-     // ';
-
-     //           $content = '<html>
-
-     // <head>
-     //      <meta charset="UTF-8">
-     //      <title>Xác nhận đơn hàng</title>
-     // </head>
-
-     // <body>
-     //      <h1>Xác nhận đơn hàng của bạn</h1>
-     //      <p>Thông tin người mua hàng:</p>
-     //      <ul>
-     //           <li><strong>Mã đơn hàng:</strong> ' . $order_fall[0]['ma_don_hang'] . '</li>
-     //           <li><strong>Người nhận:</strong> ' . $order_fall[0]['ten_nguoi_nhan'] . '</li>
-     //           <li><strong>Email:</strong> ' . $order_fall[0]['email_nguoi_nhan'] . '</li>
-     //           <li><strong>Số điện thoại:</strong> ' . $order_fall[0]['sdt_nguoi_nhan'] . '</li>
-     //           <li><strong>Địa chỉ:</strong> ' . $order_fall[0]['dia_chi_nguoi_nhan'] . '</li>
-     //           <li><strong>Ngày đặt:</strong> ' . $order_fall[0]['ngay_dat'] . '</li>
-     //           <li><strong>Đơn giá:</strong> ' . $order_fall[0]['don_gia'] . '</li>
-     //           <li><strong>Số lượng:</strong> ' . $order_fall[0]['so_luong'] . '</li>
-     //           <li><strong>Thành tiền:</strong> ' . $order_fall[0]['thanh_tien'] . '</li>
-     //      </ul>
-     // </body>
-
-     // </html>';
-     //           try {
-     //                sendMailer($email, $subject, $content);
-     //                echo "Email xác nhận gửi thành công";
-     //           } catch (Exception $e) {
-     //                echo "Gửi email thất bại. Lỗi:{$e->getMessage()}";
-     //           }
-     //      }
-     // }
 
 
      public function sendMail()
