@@ -3,965 +3,792 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thời trang Nam</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <title>Kính mắt team 10 dự án</title>
     <link rel="stylesheet" href="../public/css/style.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
     />
   </head>
-
   <body>
-    <header>
-      <div class="container">
-        <div class="header">
-          <div class="header-left">
-            <a href="#">
-              <img src="public/img/shop_logo_image.webp" alt=""
-            /></a>
-          </div>
-          <div class="header-center">
-            <ul class="menu">
-              <li><a href="#" id="active">Trang chủ</a></li>
-              <li><a href="#">Converse All</a></li>
-              <li><a href="#">Classic</a></li>
-              <li><a href="#">Accessories - Phụ trang</a></li>
-              <li><a href="#">Tin tức</a></li>
-              <li><a href="#">Liên hệ</a></li>
-            </ul>
-          </div>
-          <div class="header-right">
-            <div class="form">
-              <form action="">
-                <input type="text" />
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <div class="placeholder-container" id="placeholder-container">
-                  Bạn cần tìm gì
-                </div>
-              </form>
+    <section class="wrapper">
+      <header id="header">
+        <div class="container">
+          <div class="header-main">
+            <div class="header-left">
+              <img src="./public/img/ảnh logo.svg" alt="" />
+                <ul class="header-nav">
+                  <li>
+                    <a href="#">Sản phẩm
+                    <span><i class="fa-solid fa-chevron-down"></i></span>
+                  </a>
+                  <div class="hover-product">
+                    <div class="product-hover-cate">
+                      <ul>
+                        <li>GỌNG KÍNH</li>
+                        <li>TRÒNG KÍNH</li>
+                        <li>KÍNH RÂM</li>
+                        <li>KÍNH TRẺ EM</li>
+                      </ul>
+                    </div>
+                    <div class="product-hover-text">
+                      <div class="hover-text-left">
+                        <h3>Chất liệu</h3>
+                        <ul>
+                          <li>Nhựa</li>
+                          <li>Kim loại</li>
+                        </ul>
+                      </div>
+                      <div class="hover-text-right">
+                        <h3>Hình dáng</h3>
+                        <ul>
+                          <li>Mắt mèo</li>
+                          <li>Vuông</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="product-hover-img">
+                      <img src="./public/img/sp-1.jpg" alt="">
+                    </div>
+                  </div>
+                </li>
+                  <li><a href="#">Tìm cửa hàng</a></li>
+                </ul>
+             
             </div>
-            <div class="icon">
-              <a href="#"> <i class="fa-solid fa-user"></i></a>
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-cart-plus"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- banner -->
-    <section class="banners">
-      <div class="banner">
-        <div class="list-banner">
-          <img src="public/img/banner1.webp" alt="" class="img-item" />
-          <img src="public/img/banner2.webp" alt="" class="img-item" />
-          <img src="public/img/banner3.webp" alt="" class="img-item" />
-        </div>
-        <!-- button -->
-        <div class="buttons">
-          <button id="prev"><</button>
-          <button id="next">></button>
-        </div>
-        <!-- dots(dấu chấm) -->
-        <ul class="dots">
-          <li class="active"></li>
-          <li></li>
-          <li></li>
-        </ul>
-        <div class="banner-content">
-          <h1>Converse</h1>
-          <h2>Sale tất cả sản phẩm</h2>
-          <p>Giảm giá 10% cho tất cả sản phẩm</p>
-          <button>Mua ngay</button>
-        </div>
-      </div>
-    </section>
-    <!--  -->
-    <section>
-      <div class="description">
-        <div class="des-content des-ship">
-          <img src="public/img/icon1.webp" alt="" />
-          <h2>Giao hàng nhanh, miễn phí</h2>
-          <p>Đơn hàng > 900k hoặc đăng ký tài khoản được giao hàng miễn phí</p>
-        </div>
-        <div class="des-content des-return">
-          <img src="public/img/icon2.webp" alt="" />
-          <h2>Trả hàng, Bảo hành</h2>
-          <p>
-            Không thích? Trả lại hoặc đổi hàng của bạn miễn phí trong vòng 30
-            ngày.
-          </p>
-        </div>
-        <div class="des-content des-member">
-          <img src="public/img/icon3.webp" alt="" />
-          <h2>Thành viên</h2>
-          <p>
-            Ưu đãi theo từng cấp bậc thang hạng thành viên. Sinh nhật quà tặng
-            thành viên
-          </p>
-        </div>
-        <div class="des-content des-genuine">
-          <img src="public/img/icon4.webp" alt="" />
-          <h2>Chính hãng</h2>
-          <p>Sản phẩm chính hãng. Được nhập khẩu 100% từ hãng</p>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="home-fsale-wrap">
-        <div class="home-fsale">
-          <div class="home-fsale-head">
-            <h2>
-              <img src="public/img/slider-to.webp" alt="" />
-            </h2>
-            <div date-time="6/29/2024" class="date-time">
-              <p>Kết thúc sau</p>
-              <span class="day">276 ngày</span>
-              <span class="hour">10 giờ</span>
-              <span class="minute">50 phút</span>
-            </div>
-          </div>
-          <div class="home-fsale-products-container">
-            <div class="home-fsale-products-content">
-              <div class="home-fsale-products">
-                <div class="fsale-product">
-                  <a href="ctsp.html"
-                    ><img src="../public/img/product1.png" alt=""
-                  /></a>
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/Giày-Vans-Old-Skool.jpg" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/product2.webp" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/jordan11.webp" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/ulb-11.avif" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="home-fsale-products">
-                <div class="fsale-product">
-                  <img src="public/img/yz350-11.webp" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/mlb-chunky.jpg" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/sneake3.jpg" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/sneake4.jpg" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/sneaker1.jpg" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="home-fsale-products">
-                <div class="fsale-product">
-                  <img src="public/img/af1--2.jpg" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/product1.png" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/product2.webp" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/product3.webp" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-                <!--  -->
-                <div class="fsale-product">
-                  <img src="public/img/product4.webp" alt="" />
-                  <div class="fsale-product-title">
-                    <li>
-                      <img src="public/img/hot.webp" alt="" />
-                      <p>Còn lại 187 sản phẩm</p>
-                    </li>
-                    <li>Chuck Taylor All Star Classic-121184</li>
-                    <li>
-                      <a href="#">4.399.000 </a><sup>đ</sup> <span>-6%</span>
-                    </li>
-                    <li>2.399.000 <sup>đ</sup></li>
-                    <li>Free ship</li>
-                    <li>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                      <i class="fa-regular fa-star"></i>
-                    </li>
-                  </div>
-                  <button>Thêm vào giỏ</button>
-                  <div class="heart">
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!--  -->
+            <div class="header-center">
+              <input type="text" placeholder="Các mẫu kính râm hot nhất..." />
 
-            <div class="slider-content-products-btn">
-              <i class="fas fa-chevron-left"></i>
-              <i class="fas fa-chevron-right"></i>
+              <div class="center-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+            </div>
+            <!--  -->
+            <div class="header-right">
+              <ul class="header-nav">
+                <li><a href="#">Xem thêm
+                  <span><i class="fa-solid fa-chevron-down"></i></span>
+                </a></li>
+                <li><a href="#">Giỏ hàng
+                  <span> <i class="fa-solid fa-cart-shopping"></i></span>
+                </a></li>
+                <li><a href="#">Tài khoản
+                  <span><i class="fa-solid fa-user"></i></i></span>
+                </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+    <!-- hết header -->
+    
+     <!--  -->
+    <section class="sliders">
+      <div class="banner-wrapper">
+        <div class="banner-container">
+            <img
+              src="./public/img/banner (1).jpg"
+              alt="sale ngày phụ nữ"
+              class="img-item"
+            />
+            <img
+              src="./public/img/banner-2.jpg"
+              alt="sale ngày phụ nữ"
+              class="img-item"
+            />
+            <img
+              src="./public/img/banner-3.jpg"
+              alt="sale ngày phụ nữ"
+              class="img-item"
+            />
+          </div>
+          <!-- buttons -->
+          <div class="buttons">
+            <button id="prev"><</button>
+            <button id="next">></button>
+          </div>
+          <!-- dots -->
+          <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- hết section banner -->
+    <section class="bestseller">
+      <div class="container">
+        <div class="blog-bestseller">
+          <h1>BÁN CHẠY NHẤT</h1>
+         <div class="bestseller-wrap">
+          <div class="products-bestseller-container">
+            <div class="products-bestseller">
+              <div class="item-bestseller">
+                <div class="item-bestseller-img">
+                  <img src="./public/img/sp-1.jpg" alt="" />
+                </div>
+                <div class="item-title">
+                  <p>GK.M Gọng nhựa LML221393</p>
+                  <div class="item-icon">
+                    <h5>350.000đ</h5>
+                    <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="item-bestseller">
+                <div class="item-bestseller-img">
+                  <img src="./public/img/sp-2.jpg" alt="" />
+                </div>
+                <div class="item-title">
+                  <p>GK.M Gọng nhựa LML221393</p>
+                  <div class="item-icon">
+                    <h5>350.000đ</h5>
+                    <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="item-bestseller">
+                <div class="item-bestseller-img">
+                  <img src="./public/img/sp-3.jpg" alt="" />
+                </div>
+                <div class="item-title">
+                  <p>GK.M Gọng nhựa LML221393</p>
+                  <div class="item-icon">
+                    <h5>350.000đ</h5>
+                    <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="item-bestseller">
+                <div class="item-bestseller-img">
+                  <img src="./public/img/sp-14.jpg" alt="" />
+                </div>
+                <div class="item-title">
+                  <p>GK.M Gọng nhựa LML221393</p>
+                  <div class="item-icon">
+                    <h5>350.000đ</h5>
+                    <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="item-bestseller">
+                <div class="item-bestseller-img">
+                  <img src="./public/img/sp-14.jpg" alt="" />
+                </div>
+                <div class="item-title">
+                  <p>GK.M Gọng nhựa LML221393</p>
+                  <div class="item-icon">
+                    <h5>350.000đ</h5>
+                    <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="item-bestseller">
+                <div class="item-bestseller-img">
+                  <img src="./public/img/sp-14.jpg" alt="" />
+                </div>
+                <div class="item-title">
+                  <p>GK.M Gọng nhựa LML221393</p>
+                  <div class="item-icon">
+                    <h5>350.000đ</h5>
+                    <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="item-bestseller">
+                <div class="item-bestseller-img">
+                  <img src="./public/img/sp-14.jpg" alt="" />
+                </div>
+                <div class="item-title">
+                  <p>GK.M Gọng nhựa LML221393</p>
+                  <div class="item-icon">
+                    <h5>350.000đ</h5>
+                    <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+            </div>
+          </div>
+          <div class="buttons-seller">
+            <button class="prev-bestseller"><i class="fa-solid fa-arrow-left"></i></button>
+            <button  class="next-bestseller"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+         </div>
+         
+        </div>
+      </div>
+    </section>
+    <!-- hết section bestseller -->
+    <section class="banner-second">
+      <div class="container">
+        <div class="image-second">
+          <img src="./public/img/ảnh bnp.png" alt="" />
+          <img src="./public/img/ảnh-bnp2.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+    <!-- hết -->
+    <section class="collection-new">
+      <div class="container">
+        <div class="collection-category">
+          <div class="collection-title">
+            <h2>Bộ sưu tập mới nhất</h2>
+          </div>
+          <div class="collection-menu">
+            
+            <div class="collection-menu-one active">
+              <span><i class="fa-solid fa-arrow-right"></i></span>
+              <h3>Gọng kính</h3>
+            </div>
+            <div class="collection-menu-one">
+              <span><i class="fa-solid fa-arrow-right"></i></span>
+              <h3>Tròng kính</h3>
+            </div>
+            <div class="collection-menu-one">
+              <span><i class="fa-solid fa-arrow-right"></i></span>
+              <h3>Kính râm</h3>
+            </div>
+            <div class="collection-menu-one">
+              <span><i class="fa-solid fa-arrow-right"></i></span>
+              <h3>Kính áp tròng</h3>
+            </div>
+            <div class="collection-menu-one active">
+              <span><i class="fa-solid fa-arrow-right"></i></span>
+              <h3>Xem tất cả</h3>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- coupon -->
-    <section class="home-coupon">
-      <div class="home-coupon-sale">
-        <img src="public/img/home_coupon-2.webp" alt="" />
-        <div class="home-coupon-title">
-          <h1>Mã F1SHOE</h1>
-          <img src="public/img/home_coupon_item_image_1.webp" alt="" />
+    <!-- hết -->
+    <section class="main-block">
+      <div class="container">
+        
+        <div class="block-products ">
+          <div class="product-item">
+            <div class="product-item-img">
+              <img src="./public/img/sp-gọng1.jpg" alt="" />
+            </div>
+            <div class="product-item-title">
+              <h3>GK.Gọng viền nhựa Titan cao cấp NA2024</h3>
+              <div class="product-item-price">
+                <p>1.600.000đ</p>
+                <span><i class="fa-solid fa-arrow-right"></i> </span>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+          <div class="product-item">
+            <div class="product-item-img">
+              <img src="./public/img/sp-gọng1.jpg" alt="" />
+            </div>
+            <div class="product-item-title">
+              <h3>GK.Gọng viền nhựa Titan cao cấp NA2024</h3>
+              <div class="product-item-price">
+                <p>1.600.000đ</p>
+                <span><i class="fa-solid fa-arrow-right"></i> </span>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+          <div class="product-item">
+            <div class="product-item-img">
+              <img src="./public/img/sp-gọng1.jpg" alt="" />
+            </div>
+            <div class="product-item-title">
+              <h3>GK.Gọng viền nhựa Titan cao cấp NA2024</h3>
+              <div class="product-item-price">
+                <p>1.600.000đ</p>
+                <span><i class="fa-solid fa-arrow-right"></i> </span>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+          <div class="product-item">
+            <div class="product-item-img">
+              <img src="./public/img/sp-gọng1.jpg" alt="" />
+            </div>
+            <div class="product-item-title">
+              <h3>GK.Gọng viền nhựa Titan cao cấp NA2024</h3>
+              <div class="product-item-price">
+                <p>1.600.000đ</p>
+                <span><i class="fa-solid fa-arrow-right"></i> </span>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+          <div class="product-item">
+            <div class="product-item-img">
+              <img src="./public/img/sp-gọng1.jpg" alt="" />
+            </div>
+            <div class="product-item-title">
+              <h3>GK.Gọng viền nhựa Titan cao cấp NA2024</h3>
+              <div class="product-item-price">
+                <p>1.600.000đ</p>
+                <span><i class="fa-solid fa-arrow-right"></i> </span>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+          <div class="product-item">
+            <div class="product-item-img">
+              <img src="./public/img/sp-gọng1.jpg" alt="" />
+            </div>
+            <div class="product-item-title">
+              <h3>GK.Gọng viền nhựa Titan cao cấp NA2024</h3>
+              <div class="product-item-price">
+                <p>1.600.000đ</p>
+                <span><i class="fa-solid fa-arrow-right"></i> </span>
+              </div>
+            </div>
+          </div>
+          <!--   -->
+          <div class="product-item">
+            <div class="product-item-img">
+              <img src="./public/img/sp-gọng1.jpg" alt="" />
+            </div>
+            <div class="product-item-title">
+              <h3>GK.Gọng viền nhựa Titan cao cấp NA2024</h3>
+              <div class="product-item-price">
+                <p>1.600.000đ</p>
+                <span><i class="fa-solid fa-arrow-right"></i> </span>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+          <div class="product-item">
+            <div class="product-item-img">
+              <img src="./public/img/sp-gọng1.jpg" alt="" />
+            </div>
+            <div class="product-item-title">
+              <h3>GK.Gọng viền nhựa Titan cao cấp NA2024</h3>
+              <div class="product-item-price">
+                <p>1.600.000đ</p>
+                <span><i class="fa-solid fa-arrow-right"></i> </span>
+              </div>
+            </div>
+          </div>
+          <!--  -->
         </div>
-        <p>Mã giảm 10% khi mua 1 sản phẩm</p>
-        <div class="copy">
-          <a href="#">Điều kiện áp dụng</a>
-          <span>Sao chép mã</span>
-        </div>
+        
+        <button>Xem thêm gọng kính +</button>
       </div>
-      <div class="home-coupon-sale">
-        <img src="public/img/home_coupon-2.webp" alt="" />
-        <div class="home-coupon-title">
-          <h1>Mã F1SHOE</h1>
-          <img src="public/img/home_coupon_item_image_1.webp" alt="" />
-        </div>
-        <p>Mã giảm 10% khi mua 1 sản phẩm</p>
-        <div class="copy">
-          <a href="#">Điều kiện áp dụng</a>
-          <span>Sao chép mã</span>
-        </div>
-      </div>
-      <div class="home-coupon-sale">
-        <img src="public/img/home_coupon-2.webp" alt="" />
-        <div class="home-coupon-title">
-          <h1>Mã F1SHOE</h1>
-          <img src="public/img/home_coupon_item_image_1.webp" alt="" />
-        </div>
-        <p>Mã giảm 10% khi mua 1 sản phẩm</p>
-        <div class="copy">
-          <a href="#">Điều kiện áp dụng</a>
-          <span>Sao chép mã</span>
+    </section>
+    <!-- hết -->
+    <section class="introduce">
+      <div class="container">
+        <div class="introduce-blogs">
+          <div class="introduce-item introduce-protect">
+            <span><i class="fa-solid fa-shield"></i></span>
+            <p>Bảo hành trọn đời</p>
+          </div>
+          <div class="introduce-item introduce-rotate">
+            <span><i class="fa-solid fa-arrows-rotate"></i></span>
+            <p>Thu cũ đổi mới</p>
+          </div>
+          <div class="introduce-item introduce-rotate">
+            <span><i class="fa-solid fa-eye"></i></span>
+            <p>Đo mắt miễn phí</p>
+          </div>
+          <div class="introduce-item introduce-rotate">
+            <span><i class="fa-solid fa-pump-medical"></i></span>
+            <p>Vệ sinh và bảo quản kính</p>
+          </div>
         </div>
       </div>
     </section>
-    <!-- sản phẩm nổi bật -->
-    <section class="home-slider-wrap">
-      <div class="section-title-all">
-        <div>
-          <span>Converse</span>
-          <h2>Sản phẩm nổi bật</h2>
-        </div>
-      </div>
-      <div class="home-container">
-        <div class="home-block-left">
-          <div class="home-block-title">
-            <h1>Danh mục sản phẩm</h1>
+    <!-- hết -->
+    <section class="customer">
+      <div class="container">
+        <div class="customer-blogs">
+          <div class="customer-img">
+            <img src="./public/img/customer.png" alt="" />
           </div>
-          <div class="home-block-center">
-            <ul>
-              <li><a href="#">Giày sneaker AF1</a></li>
-              <li><a href="#">Giày sneaker MLB</a></li>
-              <li><a href="#">Giày sneaker GUCCI</a></li>
-              <li><a href="#">Giày Laurent</a></li>
-              <li><a href="#">Giày sneaker Converse</a></li>
-              <li><a href="#">Giày Âu</a></li>
-              <li><a href="#">Giày sneaker Vans</a></li>
-              <li><a href="#">Giày sneaker Ultrabost</a></li>
-              <li><a href="#">Giày sneaker Yz350</a></li>
-              <li><a href="#">Giày Nike</a></li>
-            </ul>
-          </div>
-          <div class="home-block-footer">
-            <form action="" method="post">
-              <input type="text" placeholder="Bạn muốn tìm gì" />
-            </form>
-          </div>
-        </div>
-        <div class="home-slider-block">
-          <div class="home-slide-products">
-            <img src="public/img/sneaker1.jpg" alt="" />
-            <p>Sneaker nam nữ AF1 bản 2024</p>
-            <div class="product-price">
-              <p>1.309.000đ <span>1.999.000đ</span></p>
+          <div class="customer-item">
+            <div class="customer-title">
+              <h2>Chọn kính phù hợp với bạn</h2>
             </div>
-            <div class="home-slide-icon">
-              <div class="heart-icon">
-                <i class="fa-solid fa-heart"></i>
+            <div class="customer-des">
+              <div class="customer-des-left">
+                <h3>Chọn kính theo khuôn mặt</h3>
+                <p>
+                  Lựa chọn kính theo hình dáng khuôn mặt và sở thích cá nhân của
+                  bạn
+                </p>
               </div>
-              <div class="search-icon">
-                <i class="fa-solid fa-magnifying-glass search"></i>
-              </div>
-              <div class="cart-icon">
-                <i class="fa-solid fa-cart-plus"></i>
+              <div class="customer-des-right">
+                <span><i class="fa-solid fa-arrow-right"></i></span>
               </div>
             </div>
-            <div class="home-slide-text">
-              <span>-11%</span>
+            <!--  -->
+            <div class="customer-des">
+              <div class="customer-des-left">
+                <h3>Chọn kính theo phong cách</h3>
+                <p>
+                  Lựa chọn kính theo hình dáng khuôn mặt và sở thích cá nhân của
+                  bạn
+                </p>
+              </div>
+              <div class="customer-des-right">
+                <span><i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+            <!--  -->
+            <div class="customer-des">
+              <div class="customer-des-left">
+                <h3>Chọn kính theo công việc</h3>
+                <p>
+                  Lựa chọn kính theo hình dáng khuôn mặt và sở thích cá nhân của
+                  bạn
+                </p>
+              </div>
+              <div class="customer-des-right">
+                <span><i class="fa-solid fa-arrow-right"></i></span>
+              </div>
             </div>
           </div>
-          <!--  -->
-          <div class="home-slide-products">
-            <img src="public/img/sneaker2.jpg" alt="" />
-            <p>Giày AF1 bản nữ mới nhất</p>
-            <div class="product-price">
-              <p>1.100.000đ <span>2.999.000đ</span></p>
-            </div>
-            <div class="home-slide-icon">
-              <div class="heart-icon">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="search-icon">
-                <i class="fa-solid fa-magnifying-glass search"></i>
-              </div>
-              <div class="cart-icon">
-                <i class="fa-solid fa-cart-plus"></i>
-              </div>
-            </div>
-            <div class="home-slide-text">
-              <span>-15%</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="home-slide-products">
-            <img src="public/img/sneake3.jpg" alt="" />
-            <p>Sneaker nam nữ Jordan bản cũ</p>
-            <div class="product-price">
-              <p>1.309.000đ <span>1.999.000đ</span></p>
-            </div>
-            <div class="home-slide-icon">
-              <div class="heart-icon">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="search-icon">
-                <i class="fa-solid fa-magnifying-glass search"></i>
-              </div>
-              <div class="cart-icon">
-                <i class="fa-solid fa-cart-plus"></i>
-              </div>
-            </div>
-            <div class="home-slide-text">
-              <span>-9%</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="home-slide-products">
-            <img src="public/img/sneake4.jpg" alt="" />
-            <p>Sneaker nam nữ Jordan trắng đen 2024</p>
-            <div class="product-price">
-              <p>1.309.000đ <span>1.999.000đ</span></p>
-            </div>
-            <div class="home-slide-icon">
-              <div class="heart-icon">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="search-icon">
-                <i class="fa-solid fa-magnifying-glass search"></i>
-              </div>
-              <div class="cart-icon">
-                <i class="fa-solid fa-cart-plus"></i>
-              </div>
-            </div>
-            <div class="home-slide-text">
-              <span>-10%</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="home-slide-products">
-            <img src="public/img/van-1.jpeg" alt="" />
-            <p>Vans mới ra mắt thị trường</p>
-            <div class="product-price">
-              <p>1.309.000đ <span>1.999.000đ</span></p>
-            </div>
-            <div class="home-slide-icon">
-              <div class="heart-icon">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="search-icon">
-                <i class="fa-solid fa-magnifying-glass search"></i>
-              </div>
-              <div class="cart-icon">
-                <i class="fa-solid fa-cart-plus"></i>
-              </div>
-            </div>
-            <div class="home-slide-text">
-              <span>-10%</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="home-slide-products">
-            <img src="public/img/mlb-chunky.jpg" alt="" />
-            <p>MLB chunky 2024</p>
-            <div class="product-price">
-              <p>1.309.000đ <span>1.999.000đ</span></p>
-            </div>
-            <div class="home-slide-icon">
-              <div class="heart-icon">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="search-icon">
-                <i class="fa-solid fa-magnifying-glass search"></i>
-              </div>
-              <div class="cart-icon">
-                <i class="fa-solid fa-cart-plus"></i>
-              </div>
-            </div>
-            <div class="home-slide-text">
-              <span>-14%</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="home-slide-products">
-            <img src="public/img/yz350-11.webp" alt="" />
-            <p>YZ350 phù hợp cả nam nữ</p>
-            <div class="product-price">
-              <p>1.309.000đ <span>1.999.000đ</span></p>
-            </div>
-            <div class="home-slide-icon">
-              <div class="heart-icon">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="search-icon">
-                <i class="fa-solid fa-magnifying-glass search"></i>
-              </div>
-              <div class="cart-icon">
-                <i class="fa-solid fa-cart-plus"></i>
-              </div>
-            </div>
-            <div class="home-slide-text">
-              <span>-14%</span>
-            </div>
-          </div>
-          <!--  -->
-          <div class="home-slide-products">
-            <img src="public/img/lauren11.jpg" alt="" />
-            <p>Laurent bản 2024</p>
-            <div class="product-price">
-              <p>1.309.000đ <span>1.999.000đ</span></p>
-            </div>
-            <div class="home-slide-icon">
-              <div class="heart-icon">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="search-icon">
-                <i class="fa-solid fa-magnifying-glass search"></i>
-              </div>
-              <div class="cart-icon">
-                <i class="fa-solid fa-cart-plus"></i>
-              </div>
-            </div>
-            <div class="home-slide-text">
-              <span>-14%</span>
-            </div>
-          </div>
-          <!--  -->
         </div>
       </div>
     </section>
-    <!--  -->
-    <section class="home-block-favorite">
-      <div class="home-favorite">
-        <div class="home-title">Top 10 sản phẩm yêu thích nhà Quang Lâm</div>
-        <div class="home-shoe-like">
-          <div class="home-shoe-product">
-            <img src="public/img/,lb2.webp" alt="" />
-            <a href="#">MLB 2024 mới nhất</a>
+    <!-- hết -->
+    <section class="text-blog">
+      <div class="container">
+        <div class="main-text-blog">
+          <div class="text-blog-des">
+            <h1>NHỮNG ĐIỀU THÚ VỊ CHỈ CÓ TẠI LML EYE</h1>
+            <p>
+              Được thành lập từ năm 2020, trải qua gần 4 năm phát triển kính mắt
+              LML đã, đang và sẽ chiếm vị trí không thể thiếu đối với các bạn
+              trẻ. Với quy mô trên toàn quốc, Anna sẽ tiếp tục mở rộng thêm chi
+              nhánh để mang những sản phẩm chất lượng đến tay người dùng
+            </p>
+            <div class="text-blog-mascot">
+              <img src="./public/img/linh-vật.png" alt="" />
+            </div>
           </div>
-          <div class="home-shoe-product">
-            <img src="public/img/af1--2.jpg" alt="" />
-            <a href="#">AF1 bản 2024</a>
+          <div class="text-blog-adress">
+            <div class="text-blog-img">
+              <div class="text-image">
+                <img src="./public/img/anhcuahnag.jpg" alt="" />
+              </div>
+              <div class="text-adress">
+                <h3>Khai trương cửa hàng mới</h3>
+                <p>Địa chỉ: LML Center | 10 Yên Hòa, Cầu Giấy, Hà Nội</p>
+              </div>
+            </div>
+            <div class="text-blog-search">
+              <h5>Tìm kiếm cửa hàng gần bạn</h5>
+              <span><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
           </div>
-          <div class="home-shoe-product">
-            <img src="public/img/Giày-Vans-Old-Skool.jpg" alt="" />
-            <a href="#">Vans bản thời trang Nam</a>
-          </div>
-          <div class="home-shoe-product">
-            <img src="public/img/yz350-1.jpg" alt="" />
-            <a href="#">YZ350 mẫu sale hot nhất</a>
-          </div>
-          <div class="home-shoe-product">
-            <img src="public/img/utb-1.webp" alt="" />
-            <a href="#">Ultrabost hợp cả nam nữ</a>
-          </div>
-          <div class="home-shoe-product">
-            <img src="public/img/jordan1.webp" alt="" />
-            <a href="#">Jordan cao cổ bản mới</a>
-          </div>
-          <div class="home-shoe-product">
-            <img src="public/img/lauren1.webp" alt="" />
-            <a href="#">Laurent boy phố</a>
-          </div>
-        </div>
-      </div>
-      <div class="home-product-likes">
-        <div class="home-item-likes">
-          <img src="public/img/mlb-chunky.jpg" alt="" />
-          <span>2.300.000đ</span>
-          <span class="item-sale">3.300.000đ</span>
-        </div>
-        <div class="home-item-likes">
-          <img src="public/img/af1-1.jpg" alt="" />
-          <span>1.500.000đ</span>
-          <span class="item-sale">3.000.000đ</span>
-        </div>
-        <div class="home-item-likes">
-          <img src="public/img/van-1.jpeg" alt="" />
-          <span>3.300.000đ</span>
-          <span class="item-sale">4.300.000đ</span>
-        </div>
-        <div class="home-item-likes">
-          <img src="public/img/yz350-11.webp" alt="" />
-          <span>2.000.000đ</span>
-          <span class="item-sale">5.000.000đ</span>
-        </div>
-        <div class="home-item-likes">
-          <img src="public/img/ulb-11.avif" alt="" />
-          <span>999.000đ</span>
-          <span class="item-sale">1.600.000đ</span>
-        </div>
-        <div class="home-item-likes">
-          <img src="public/img/jordan11.webp" alt="" />
-          <span>5.300.000đ</span>
-          <span class="item-sale">10.300.000đ</span>
-        </div>
-        <div class="home-item-likes">
-          <img src="public/img/lauren11.jpg" alt="" />
-          <span>7.300.000đ</span>
-          <span class="item-sale">14.300.000đ</span>
         </div>
       </div>
     </section>
-    <!--  -->
-    <section class="instagram swiper">
-      <div class="inta-icon">
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-      <div class="slider-wrapper">
-        <div class="cart-list swiper-wrapper">
-          <div class="cart-item swiper-slide">
-            <img src="public/img/mlb-chunky.jpg" alt="" />
-            <h2>MLB xịn nhất</h2>
-          </div>
-          <div class="cart-item swiper-slide">
-            <img src="public/img/Giày-Vans-Old-Skool.jpg" alt="" />
-            <h2>Giày đẹp xinh</h2>
-          </div>
-          <div class="cart-item swiper-slide">
-            <img src="public/img/yz350-11.webp" alt="" />
-            <h2>Yz350 mới nhất</h2>
-          </div>
-          <div class="cart-item swiper-slide">
-            <img src="public/img/sneaker1.jpg" alt="" />
-            <h2>AF1 mới nhất</h2>
-          </div>
+    <!-- hết -->
+    <section class="internet">
+      <div class="container">
+        <h2>LML trên mạng xã hội</h2>
+        <div class="internet-title">
+          <h6>
+            Hãy theo dõi chúng tôi ngay từ <br />
+            hôm nay nha...
+          </h6>
+          <h3>Theo dõi chúng tôi</h3>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
       </div>
     </section>
-    <footer>
-      <img src="public/img/footers2_background.jpg" alt="" />
-      <div class="footer-wrap">
-        <div class="footer topone">
-          <img src="public/img/shop_logo_image.webp" alt="" />
+    <!-- hết -->
+    <section class="feedback">
+      <div class="feedback-main">
+        <div class="feedback-text">
+          <h3>Hành trình tử tế</h3>
           <p>
-            F1GENZ SHOES luôn cam kết, đảm bảo đưa sản phẩm trực tiếp từ nhà sản
-            xuất đến tay người dùng và kiểm soát được chất lượng để đáp ứng được
-            nhu cầu ngày càng cao của khách hàng. Tất cả các sản phẩm tại F1GENZ
-            SHOES đều có nguồn gốc xuất xứ rõ ràng, chất lượng.
+            Chúng mình là kình mắt LML kính mắt <br />
+            của sự tử tế
           </p>
         </div>
-        <div class="footer toptwo">
-          <h2>Liên hệ</h2>
-          <li>Tư vấn dịch vụ:<a href="#">18006750</a></li>
-          <li>Hỗ trợ dịch vụ:<a href="#">18006750</a></li>
-          <li>Hỗ trợ vận chuyển:<a href="#">18006750</a></li>
-          <li>Email:support@sapo.vn<a href="#">18006750</a></li>
-        </div>
-        <div class="footer topthree">
-          <h2>Về chúng tôi</h2>
-          <li><a href="#">Giới thiệu</a></li>
-          <li><a href="#">Chính sách đổi trả</a></li>
-          <li><a href="#">Chính sách bảo mật</a></li>
-          <li><a href="#">Điều khoản dịch vụ</a></li>
-        </div>
-        <div class="footer topfour">
-          <h2>Liên hệ chúng tôi</h2>
-          <p>
-            Luôn cập nhật tất cả các hành động mà chúng tôi đã lưu cho tất cả
-            khách hàng của mình.
-          </p>
-          <div class="icon">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-youtube"></i>
-            <i class="fa-brands fa-twitter"></i>
+        <div class="feedback-img">
+          <img src="./public/img/anhkhach.png" alt="" />
+          <span><i class="fa-brands fa-tiktok"></i></span>
+          <p>Tiktok</p>
+          <h5>@KinhmatLML</h5>
+          <div class="feedback-icon">
+            <h6>Khám phá</h6>
+            <span><i class="fa-solid fa-arrow-right"></i></span>
           </div>
+        </div>
+      </div>
+      <!--  -->
+      <div class="feedback-main">
+        <div class="feedback-text">
+          <h3>Hành trình tử tế</h3>
+          <p>
+            Chúng mình là kình mắt LML kính mắt <br />
+            của sự tử tế
+          </p>
+        </div>
+        <div class="feedback-img">
+          <img src="./public/img/anhkhach2.png" alt="" />
+          <span><i class="fa-brands fa-youtube"></i></span>
+          <p>Youtube</p>
+          <h5>@KinhmatLML</h5>
+          <div class="feedback-icon">
+            <h6>Khám phá</h6>
+            <span><i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <div class="feedback-main">
+        <div class="feedback-text">
+          <h3>Hành trình tử tế</h3>
+          <p>
+            Chúng mình là kình mắt LML kính mắt <br />
+            của sự tử tế
+          </p>
+        </div>
+        <div class="feedback-img">
+          <img src="./public/img/anhkhach3.png" alt="" />
+          <span><i class="fa-brands fa-instagram"></i></span>
+          <p>Instagram</p>
+          <h5>@KinhmatLML</h5>
+          <div class="feedback-icon">
+            <h6>Khám phá</h6>
+            <span><i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- hết -->
+    <section class="blog-share">
+      <div class="container">
+        <div class="share-all">
+          <div class="share-left">
+            <h2>
+              LML blog <br />
+              & share
+            </h2>
+            <div class="share-click">
+              <p><a href="">Xem tất cả</a></p>
+              <span><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="share-right">
+            <div class="blog-share-item">
+              <div class="blog-item-img">
+                <div class="blog-image">
+                  <img src="./public/img/qua1.png" alt="" />
+                </div>
+                <h5>
+                  Top 99+ món quà sinh nhật cho nam ý nghĩa , thiết thực nhất
+                </h5>
+                <div class="blog-item-click">
+                  <p>Blog / Ngày 1/11/2024</p>
+                  <span>Đọc tiếp<i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+              <!--  -->
+              <div class="blog-item-img">
+                <div class="blog-image">
+                  <img src="./public/img/sosanh.png" alt="" />
+                </div>
+                <h5>So sánh tròng kính hoya và chemi: Nên mua loại nào?</h5>
+                <div class="blog-item-click">
+                  <p>Blog / Ngày 20/11/2024</p>
+                  <span>Đọc tiếp<i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+              <!--  -->
+              <div class="blog-item-img">
+                <div class="blog-image">
+                  <img src="./public/img/gip.png" alt="" />
+                </div>
+                <h5>Top 10 món quà sinh nhật cho nữ ý nghĩa nhất</h5>
+                <div class="blog-item-click">
+                  <p>Blog / Ngày 24/12/2024</p>
+                  <span>Đọc tiếp<i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="blog-share-item-one">
+              <div class="blog-item-img">
+                <div class="blog-image">
+                  <img src="./public/img/nhomat.png" alt="" />
+                </div>
+                <h5>Giải đáp: Nhỏ thuốc nhỏ mắt nhiều có tốt không</h5>
+                <div class="blog-item-click">
+                  <p>Blog / Ngày 10/10/2024</p>
+                  <span>Đọc tiếp<i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+              <!--  -->
+              <div class="blog-item-img">
+                <div class="blog-image">
+                  <img src="./public/img/sosanh2.png" alt="" />
+                </div>
+                <h5>
+                  So sánh tròng kính hoya và essilor mới nhất - Kính mắt LML
+                </h5>
+                <div class="blog-item-click">
+                  <p>Blog / Ngày 11/11/2024</p>
+                  <span>Đọc tiếp<i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+              <!--  -->
+              <div class="blog-item-img">
+                <div class="blog-image">
+                  <img src="./public/img/sosanh3.png" alt="" />
+                </div>
+                <h5>So sánh tròng kính chemi và essilor - Kính mắt LML</h5>
+                <div class="blog-item-click">
+                  <p>Blog / Ngày 15/11/2024</p>
+                  <span>Đọc tiếp<i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- hết -->
+    <section class="charity">
+      <div class="container">
+        <div class="charity-blog">
+          <div class="charity-img">
+            <img src="./public/img/ảnh logo.svg" alt="" />
+          </div>
+          <div class="charity-text">
+            <p>Cộng đồng sống tử tế</p>
+            <span><i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+        <!--  -->
+        <div class="charity-bg">
+          <div class="charity-item">
+            <div class="charity-one">
+              <div class="charity-one-text">
+                <h2>Đôi mắt mặt trời</h2>
+                <p>
+                  Tài trợ các ca mổ mắt dị tật bẩm sinh cho các em nhỏ có <br />
+                  hoàn cảnh khó khăn
+                </p>
+                <h2>Túi tử tế</h2>
+                <p>
+                  Tài trợ các ca mổ mắt dị tật bẩm sinh cho các em nhỏ có <br />
+                  hoàn cảnh khó khăn
+                </p>
+              </div>
+              <div class="charity-two">
+                <div class="charity-data">
+                  <h2>02</h2>
+                  <p>Tỉnh thành</p>
+                  <span>Hành trình tử tế có mặt</span>
+                </div>
+                <div class="charity-data">
+                  <h2>10</h2>
+                  <p>Em nhỏ</p>
+                  <span
+                    >Được tài trợ chi phí <br />
+                    phẫu thuật mắt</span
+                  >
+                </div>
+                <div class="charity-data">
+                  <h2>1.000.000</h2>
+                  <p>Túi tử tế</p>
+                  <span>Được phát tặng để tìm <br />người thân thất lạc</span>
+                </div>
+              </div>
+            </div>
+            <div class="charity-item-img">
+              <img src="./public/img/duan111.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- hết -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-block">
+          <div class="footer-left">
+            <img src="./public/img/ảnh logo.svg" alt="" />
+            <p>Đăng ký nhận tin sớm nhất</p>
+            <div class="footer-input">
+              <input type="text" placeholder="Để lại email của bạn" />
+              <span><i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+            <div class="footer-icon">
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-youtube"></i>
+              <i class="fa-brands fa-tiktok"></i>
+            </div>
+          </div>
+          <div class="footer-right">
+            <div class="footer-right-blogs">
+              <div class="footer-category">
+                <h4>SẢN PHẨM</h4>
+                <ul>
+                  <li>The Titan</li>
+                  <li>Gọng Kính</li>
+                  <li>Tròng kính</li>
+                  <li>Kính râm</li>
+                  <li>Kính râm trẻ em</li>
+                </ul>
+              </div>
+              <div class="footer-contact">
+                <h4>THÔNG TIN LIÊN HỆ</h4>
+                <ul>
+                  <li>19000359</li>
+                  <li>marketing@kinhmatlml.com</li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer-right-policy">
+              <div class="footer-plc-text">
+                <h4>CHÍNH SÁCH MUA HÀNG</h4>
+                <ul>
+                  <li>Hình thức thanh toán</li>
+                  <li>Chính sách giao hàng</li>
+                  <li>Chính sách bảo hành</li>
+                </ul>
+              </div>
+              <div class="footer-ply-lg">
+                <h4>MST:0108195925</h4>
+                <img
+                  src="./public/img/logo-bct_60fd99791e9948649b8a8a8f6bc64827.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-brand">
+          <hr />
+          <p>LML © 2020 - 2024. Design by OKHUB Viet Nam</p>
         </div>
       </div>
     </footer>
-    <script src="public/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-      const placeholders = [
-        "Bạn cần tìm gì",
-        "Tìm kiếm sản phẩm",
-        "Nhập từ khóa",
-      ];
-      const placeholderContainer = document.getElementById(
-        "placeholder-container"
-      );
-      let currentIndex = 0;
-
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % placeholders.length;
-        placeholderContainer.textContent = placeholders[currentIndex];
-      }, 3000); // Thay đổi chữ mỗi 3 giây
-    </script>
+   <script src="./public/js/main.js"></script>
+   <script src="./public/js/slide.js"></script>
   </body>
 </html>
