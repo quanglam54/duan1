@@ -111,7 +111,7 @@
      <section class="order">
           <marquee behavior="">Đặt hàng thành công cảm ơn quý khách</marquee>
           <div class="container">
-               <h2>Thông tin đơn hàng</h2>
+               <h2>Lịch sử đơn hàng</h2>
                <table>
                     <thead>
                          <tr>

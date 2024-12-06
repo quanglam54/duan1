@@ -149,11 +149,11 @@
                               <td><?= $donHang['ngay_dat'] ?></td>
                          </tr>
                          <tr>
-                              <th>Tổng tiền</th>
+                              <th>Phương thức</th>
                               <td><?= $phuongThucThanhToan[$donHang['phuong_thuc_thanh_toan_id']] ?></td>
                          </tr>
                          <tr>
-                              <th>Phương thức thanh toán</th>
+                              <th>Trạng thái</th>
                               <td><?= $trangThaiDonHang[$donHang['trang_thai_id']] ?></td>
                          </tr>
 
